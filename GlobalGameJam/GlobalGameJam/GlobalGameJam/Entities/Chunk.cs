@@ -90,7 +90,7 @@ namespace GlobalGameJam.Entities
 
                     Vector2 position = new Vector2(Position.X - SIZE / 2 + x, Position.Y - SIZE / 2 + y);
 
-                    float colorSub = 255 * (bworld.Evil) *((tiles[x, y] == 4 || tiles[x, y] == 5) ? 1.5f : 1);
+                    float colorSub = 255 * (bworld.Evil) + ((tiles[x, y] == 4 || tiles[x, y] == 5) ? tiles[x,y]*4 : 0);
 
                     int colorValue = (int)(255 - colorSub);
                         
