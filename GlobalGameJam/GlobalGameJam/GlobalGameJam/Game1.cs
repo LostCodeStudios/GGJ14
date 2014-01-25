@@ -87,7 +87,7 @@ namespace GlobalGameJam
 
             #endregion
 
-            spriteSheet.Animations.Add("tree", new Rectangle[] { new Rectangle(78, 1, 25, 51) });
+            spriteSheet.Animations.Add("tree", new Rectangle[] { new Rectangle(277, 99, 32, 32) });
             spriteSheet.Animations.Add("goblin", new Rectangle[] { new Rectangle(39, 58, 12, 26) });
 
             #region Tiles
