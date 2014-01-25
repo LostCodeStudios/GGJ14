@@ -18,6 +18,8 @@ namespace GlobalGameJam.Entities
                 Body b = owner.GetComponent<Body>();
                 world.CreateEntity("Blood", b.Position, bloodType).Refresh();
                 owner.Delete();
+
+                if (e.Tag == "Player") world.Evil += BoblinWorld.EVIL_INC;
             };
         }
 
@@ -47,12 +49,46 @@ namespace GlobalGameJam.Entities
 
                             if (h2.MaxHealth > h1.MaxHealth)
                             {
-                                h1.Damage(e2, h2.MaxHealth);
+                                if (e1.HasComponent<Killable>() || e2.Group == "Goblins")
+                                    h1.Damage(e2, h2.MaxHealth);
                             }
                             else if (h1.MaxHealth > h2.MaxHealth)
                             {
-                                h2.Damage(e1, h1.MaxHealth);
+                                if (e2.HasComponent<Killable>() || e1.Group == "Goblins")
+                                    h2.Damage(e1, h1.MaxHealth);
                             }
+
+                            return false;
+                        }
+                    }
+
+                    return true;
+                };
+        }
+
+        public static OnCollisionEventHandler ReleaseHeart(BoblinWorld world)
+        {
+            return (f1, f2, c) =>
+                {
+                    if (f1.Body.UserData != null && f2.Body.UserData != null && f1.Body.UserData is Entity && f2.Body.UserData is Entity)
+                    {
+                        Entity e1 = f1.Body.UserData as Entity;
+                        Entity e2 = f2.Body.UserData as Entity;
+
+                        if (e1.Tag == "Player" && e2.HasComponent<Heart>())
+                        {
+                            world.CreateEntity("Heart", f2.Body.Position).Refresh();
+                            e2.RemoveComponent<Heart>(e2.GetComponent<Heart>());
+                            world.Hearts++;
+
+                            return false;
+                        }
+
+                        else if (e2.Tag == "Player" && e1.HasComponent<Heart>())
+                        {
+                            world.CreateEntity("Heart", f1.Body.Position).Refresh();
+                            e1.RemoveComponent<Heart>(e1.GetComponent<Heart>());
+                            world.Hearts++;
 
                             return false;
                         }

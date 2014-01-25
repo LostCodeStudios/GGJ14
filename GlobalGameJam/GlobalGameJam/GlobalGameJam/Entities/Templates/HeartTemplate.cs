@@ -11,21 +11,23 @@ using System.Text;
 
 namespace GlobalGameJam.Entities.Templates
 {
-    public class BloodTemplate : IEntityTemplate
+    public class HeartTemplate : IEntityTemplate
     {
         const float BLOOD_TIME = 1.5f;
 
         public Entity BuildEntity(Entity e, params object[] args)
         {
             Vector2 position = (Vector2)args[0];
-            int bloodType = (int)args[1];
 
-            Sprite sprite = new Sprite(ScreenHelper.SpriteSheet, "blood" + bloodType, 0.3f);
+            Sprite sprite = new Sprite(ScreenHelper.SpriteSheet, "heart", 1f);
             e.AddComponent<Sprite>(sprite);
 
             Particle p = new Particle(e);
             p.Position = position;
             e.AddComponent<Particle>(p);
+
+            BloodTimer timer = new BloodTimer(BLOOD_TIME);
+            e.AddComponent<BloodTimer>(timer);
 
             return e;
         }

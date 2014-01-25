@@ -43,9 +43,11 @@ namespace GlobalGameJam.Entities.Templates
 
             Health health = new Health(1f);
             health.OnDeath += GenericEvents.BloodyDeath(world, e, 2);
-            body.OnCollision += GenericEvents.BasicCollision();
+            body.OnCollision += GenericEvents.ReleaseHeart(world);
             e.AddComponent<Health>(health);
 
+            e.AddComponent<Heart>(new Heart());
+            
             return e;
         }
     }

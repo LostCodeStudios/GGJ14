@@ -18,13 +18,31 @@ namespace GlobalGameJam
     public class BoblinWorld : World
     {
         public static int FIRST_CATS = 5;
-        public static int FIRST_GOBLINS = 0;
+        public static float FIRST_GOBLINS = 0f;
+        public static int FIRST_TREES = 25;
+
+
+        public const float EVIL_INC = 0.03f;
+
+        public const float LAVA_CHANCE = 0.09f;
+        public const float REDGROUND_COEF = 0.05f;
+        public const float TREE_RATE = 1.25f;
+        public const float CAT_RATE = 1.5f;
+        public const float GOBLIN_RATE = 3f;
+
+        public float Evil = 0f;
+
+        public int Hearts = 0;
+
+        public const int TRIGGER_HEARTS = 1;
 
         #region Constructors
         public BoblinWorld(Game game)
             : base(game, Vector2.Zero)
         {
-
+            FIRST_CATS = 5;
+            FIRST_GOBLINS = 0f;
+            FIRST_TREES = 25;
         }
         #endregion
 
@@ -49,7 +67,7 @@ namespace GlobalGameJam
             #endregion
 
             //TEST BULLSHIT
-            chunkUpdateSytem.BuildInitial(Vector2.Zero, 3, 3, FIRST_CATS, FIRST_GOBLINS, this);
+        	chunkUpdateSytem.BuildInitial(Vector2.Zero, 3, 3, this);
             //CreateEntity("Goblin", new Vector2(-7, 0)).Refresh();
 
             base.BuildEntities(Content, args);
@@ -65,6 +83,7 @@ namespace GlobalGameJam
             this.SetEntityTemplate("Player", new PlayerTemplate(this));
             this.SetEntityTemplate("Cat", new BunnyTemplate(this));
             this.SetEntityTemplate("Blood", new BloodTemplate());
+            this.SetEntityTemplate("Heart", new HeartTemplate());
 
             this.SetEntityTemplate("Goblin", new GoblinTemplate(this));
 
@@ -84,7 +103,7 @@ namespace GlobalGameJam
         {
             playerControlSystem = this.SystemManager.SetSystem(new PlayerControlSystem(this.Camera), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new BunnyMovementSystem(), ExecutionType.Update, 0);
-            //this.SystemManager.SetSystem(new BloodSystem(), ExecutionType.Update, 0);
+            this.SystemManager.SetSystem(new BloodSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new DirectionalSpriteSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new AnimationSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new GoblinSystem(), ExecutionType.Update, 0);
@@ -98,6 +117,16 @@ namespace GlobalGameJam
         #endregion
 
         #region Functioning Loop
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+
+            if (Hearts >= TRIGGER_HEARTS)
+            {
+                FIRST_GOBLINS = 0.5f;
+            }
+        }
 
         #endregion
 
