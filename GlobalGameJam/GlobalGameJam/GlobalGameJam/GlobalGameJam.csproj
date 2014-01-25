@@ -74,8 +74,10 @@
   <ItemGroup>
     <Compile Include="BoblinWorld.cs" />
     <Compile Include="Entities\Components\BunnyAI.cs" />
+    <Compile Include="Entities\Components\Health.cs" />
     <Compile Include="Entities\Systems\BunnyMovementSystem.cs" />
     <Compile Include="Entities\Systems\PlayerControlSystem.cs" />
+    <Compile Include="Entities\Templates\BloodTemplate.cs" />
     <Compile Include="Entities\Templates\ChunkTemplate.cs" />
     <Compile Include="Entities\Templates\BunnyTemplate.cs" />
     <Compile Include="Entities\Templates\PlayerTemplate.cs" />
