@@ -27,6 +27,10 @@ namespace GlobalGameJam
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics.PreferMultiSampling = true;
+            IsFixedTimeStep = true;
+
         }
 
         /// <summary>
