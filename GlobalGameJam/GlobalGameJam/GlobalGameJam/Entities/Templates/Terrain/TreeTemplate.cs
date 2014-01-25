@@ -35,8 +35,8 @@ namespace GlobalGameJam.Entities.Templates.Terrain
             //damn look at dat body its oak
             Body bitch = e.AddComponent<Body>(new Body(world, e));
             //Create a circle with radius average of height and width over 2
-            FixtureFactory.AttachCircle(ConvertUnits.ToSimUnits(sex.Source[0].Width/2), 
-                1f, bitch, new Vector2(0, ConvertUnits.ToSimUnits(21)));
+            FixtureFactory.AttachCircle(0.2f, 
+                1f, bitch, new Vector2(0, ConvertUnits.ToSimUnits(11)));
 
 
             bitch.Position = (Vector2)args[0];

@@ -86,7 +86,7 @@ namespace GlobalGameJam
 
             #endregion
 
-            spriteSheet.Animations.Add("tree", new Rectangle[] { new Rectangle(78, 1, 25, 51) });
+            spriteSheet.Animations.Add("tree", new Rectangle[] { new Rectangle(277, 99, 32, 32) });
             spriteSheet.Animations.Add("goblin", new Rectangle[] { new Rectangle(39, 58, 12, 26) });
 
             #region Tiles
@@ -117,6 +117,9 @@ namespace GlobalGameJam
             spriteSheet.Animations.Add("heart", new Rectangle[] { new Rectangle(178, 63, 22, 22) });
 
             spriteSheet.Animations.Add("corpse", new Rectangle[] { new Rectangle(7, 404, 32, 20) });
+
+            spriteSheet.Animations.Add("house", new Rectangle[] { new Rectangle(162, 373, 120, 108) });
+            spriteSheet.Animations.Add("houseOpen", new Rectangle[] { new Rectangle(302, 373, 120, 108) });
 
             #region Player
             spriteSheet.Animations.Add("playerMoveRight", new Rectangle[] { 

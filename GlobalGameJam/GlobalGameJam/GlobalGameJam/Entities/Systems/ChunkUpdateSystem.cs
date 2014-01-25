@@ -1,4 +1,5 @@
 ﻿using GameLibrary.Dependencies.Entities;
+using GameLibrary.Dependencies.Physics.Collision;
 using GameLibrary.Entities.Components.Physics;
 using GameLibrary.Helpers;
 using Microsoft.Xna.Framework;
@@ -40,9 +41,23 @@ namespace GlobalGameJam.Entities.Systems
                 {
                     Vector2 chunkPos = pos + Chunk.SIZE*(-0.5F*new Vector2(height-1, width-1) + new Vector2( x, y)); //see paper algorith
 
-                    chunks.Add(new Chunk
-                    (chunkPos,
-                    new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", chunkPos,  BoblinWorld.FIRST_CATS, BoblinWorld.FIRST_GOBLINS)),bworld));
+                    List<Entity> entities = new List<Entity>();
+                    entities.AddRange(world.CreateEntityGroup("Chunk", "terrain", chunkPos));
+                    
+                    chunks.Add(new Chunk(chunkPos, entities, bworld));
+
+                    if (x == width / 2 && y == height / 2)
+                    {
+                        AABB box = new AABB(Vector2.Zero, 5f, 5f);
+                        bworld.QueryAABB(
+                            (f) =>
+                            {
+                                Entity e = f.Body.UserData as Entity;
+                                e.Delete();
+
+                                return true;
+                            }, ref box);
+                    }
                 }
         }
 
