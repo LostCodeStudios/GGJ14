@@ -82,7 +82,7 @@ namespace GlobalGameJam
         /// </summary>
         protected override void BuildSystems()
         {
-            playerControlSystem = this.SystemManager.SetSystem(new PlayerControlSystem(), ExecutionType.Update, 0);
+            playerControlSystem = this.SystemManager.SetSystem(new PlayerControlSystem(this.Camera), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new BunnyMovementSystem(), ExecutionType.Update, 0);
             //this.SystemManager.SetSystem(new BloodSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new DirectionalSpriteSystem(), ExecutionType.Update, 0);
