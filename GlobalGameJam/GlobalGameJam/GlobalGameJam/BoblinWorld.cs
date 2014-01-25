@@ -56,9 +56,16 @@ namespace GlobalGameJam
         /// <param name="args"></param>
         protected override void BuildEntities(Microsoft.Xna.Framework.Content.ContentManager Content, params object[] args)
         {
+            //TEST BULLSHIT
+        	chunkUpdateSytem.BuildInitial(Vector2.Zero, 3, 3, this);
+            //CreateEntity("Goblin", new Vector2(-7, 0)).Refresh();
+
+            house = CreateEntity("House");
+            house.Refresh();
+
             #region Player
             //Player
-            Entity player = this.CreateEntity("Player", Content.Load<Texture2D>("Textures/player"), new Rectangle(15, 30, 50, 30));
+            Entity player = this.CreateEntity("Player");
             player.Refresh();
 
             //camerashit
@@ -66,10 +73,6 @@ namespace GlobalGameJam
             Camera.EnableTracking = true;
             Camera.EnableRotationTracking = false;
             #endregion
-
-            //TEST BULLSHIT
-        	chunkUpdateSytem.BuildInitial(Vector2.Zero, 3, 3, this);
-            //CreateEntity("Goblin", new Vector2(-7, 0)).Refresh();
 
             base.BuildEntities(Content, args);
         }
@@ -93,6 +96,7 @@ namespace GlobalGameJam
                 this.SetEntityTemplate("Tree", new TreeTemplate(this));
 
             this.SetEntityTemplate("Corpse", new CorpseTemplate());
+            this.SetEntityTemplate("House", new HouseTemplate(this));
 
             base.BuildTemplates(Content, args);
         }
@@ -134,6 +138,8 @@ namespace GlobalGameJam
         #region Properties
 
         #endregion
+
+        Entity house;
 
         #region Fields
         PlayerControlSystem playerControlSystem;

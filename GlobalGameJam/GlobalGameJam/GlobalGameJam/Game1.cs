@@ -119,6 +119,9 @@ namespace GlobalGameJam
 
             spriteSheet.Animations.Add("corpse", new Rectangle[] { new Rectangle(7, 404, 32, 20) });
 
+            spriteSheet.Animations.Add("house", new Rectangle[] { new Rectangle(162, 373, 120, 108) });
+            spriteSheet.Animations.Add("houseOpen", new Rectangle[] { new Rectangle(302, 373, 120, 108) });
+
             #region Player
             spriteSheet.Animations.Add("playerMoveRight", new Rectangle[] { 
                 new Rectangle(42, 248, 32, 32),
