@@ -11,7 +11,7 @@ namespace GlobalGameJam.Entities
 {
     public class Chunk
     {
-        public static float SIZE = 16;
+        public static float SIZE = 24;
 
         public Chunk(Vector2 position, List<Entity> terrain)
         {
