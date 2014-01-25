@@ -1,4 +1,5 @@
 ﻿using GameLibrary;
+using GlobalGameJam.Entities.Systems;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,9 @@ namespace GlobalGameJam
         /// </summary>
         protected override void BuildSystems()
         {
+            playerControlSystem = this.SystemManager.SetSystem(new PlayerControlSystem(2.235f), GameLibrary.Dependencies.Entities.ExecutionType.Update, 0);
+
+
             base.BuildSystems();
         }
 
@@ -58,7 +62,7 @@ namespace GlobalGameJam
         #endregion
 
         #region Fields
-
+        PlayerControlSystem playerControlSystem;
 
         #endregion
     }
