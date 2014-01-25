@@ -75,11 +75,15 @@ namespace GlobalGameJam
         {
             spriteSheet.Animations.Add("bunny", new Rectangle[] { new Rectangle(6, 8, 23, 20) });
 
+            #region Blood
+
             spriteSheet.Animations.Add("blood1", new Rectangle[] { new Rectangle(159, 335, 3, 3) });
             spriteSheet.Animations.Add("blood2", new Rectangle[] { new Rectangle(180, 327, 21, 17) });
             spriteSheet.Animations.Add("blood3", new Rectangle[] { new Rectangle(212, 331, 14, 11) });
             spriteSheet.Animations.Add("blood4", new Rectangle[] { new Rectangle(233, 328, 25, 17) });
             spriteSheet.Animations.Add("blood5", new Rectangle[] { new Rectangle(294, 328, 14, 18) });
+
+            #endregion
 
             spriteSheet.Animations.Add("tree", new Rectangle[] { new Rectangle(78, 1, 25, 51) });
             spriteSheet.Animations.Add("goblin", new Rectangle[] { new Rectangle(39, 58, 12, 26) });
@@ -163,6 +167,46 @@ namespace GlobalGameJam
 
             spriteSheet.Animations.Add("catUp", new Rectangle[] { 
                 new Rectangle(160, 187, 18, 21)
+            });
+
+            #endregion
+
+            #region Goblins
+
+            spriteSheet.Animations.Add("goblinMoveRight", new Rectangle[] { 
+                new Rectangle(39, 98, 32, 32),
+                new Rectangle(75, 98, 32, 32) 
+            });
+
+            spriteSheet.Animations.Add("goblinMoveDown", new Rectangle[] { 
+                new Rectangle(36, 135, 32, 32),
+                new Rectangle(72, 135, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("goblinMoveLeft", new Rectangle[] { 
+                new Rectangle(40, 171, 32, 32),
+                new Rectangle(76, 171, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("goblinMoveUp", new Rectangle[] { 
+                new Rectangle(39, 207, 32, 32),
+                new Rectangle(75, 207, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("goblinRight", new Rectangle[] { 
+                new Rectangle(39, 98, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("goblinDown", new Rectangle[] { 
+                new Rectangle(2, 135, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("goblinLeft", new Rectangle[] { 
+                new Rectangle(40, 171, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("goblinUp", new Rectangle[] { 
+                new Rectangle(3, 207, 32, 32)
             });
 
             #endregion

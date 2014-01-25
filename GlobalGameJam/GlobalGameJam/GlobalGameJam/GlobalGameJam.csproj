@@ -76,12 +76,14 @@
     <Compile Include="Entities\Components\BloodTimer.cs" />
     <Compile Include="Entities\Components\BunnyAI.cs" />
     <Compile Include="Entities\Components\DirectionalSprite.cs" />
+    <Compile Include="Entities\Components\GoblinAI.cs" />
     <Compile Include="Entities\Components\Health.cs" />
     <Compile Include="Entities\GenericEvents.cs" />
     <Compile Include="Entities\Systems\BloodSystem.cs" />
     <Compile Include="Entities\Systems\BunnyMovementSystem.cs" />
     <Compile Include="Entities\Systems\ChunkUpdateSystem.cs" />
     <Compile Include="Entities\Systems\DirectionalSpriteSystem.cs" />
+    <Compile Include="Entities\Systems\GoblinSystem.cs" />
     <Compile Include="Entities\Systems\PlayerControlSystem.cs" />
     <Compile Include="Entities\Templates\BloodTemplate.cs" />
     <Compile Include="Entities\Templates\ChunkTemplate.cs" />

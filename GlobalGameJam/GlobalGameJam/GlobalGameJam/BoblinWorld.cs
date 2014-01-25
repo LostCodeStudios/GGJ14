@@ -69,7 +69,7 @@ namespace GlobalGameJam
                 this.SetEntityTemplate("Grass", new GrassTemplate());
                 this.SetEntityTemplate("Tree", new TreeTemplate(this));
 
-                this.SetEntityTemplate("Corpse", new CorpseTemplate());
+            this.SetEntityTemplate("Corpse", new CorpseTemplate());
 
             base.BuildTemplates(Content, args);
         }
@@ -83,7 +83,8 @@ namespace GlobalGameJam
             this.SystemManager.SetSystem(new BunnyMovementSystem(), ExecutionType.Update, 0);
             //this.SystemManager.SetSystem(new BloodSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new DirectionalSpriteSystem(), ExecutionType.Update, 0);
-            this.SystemManager.SetSystem(new AnimationSystem(), ExecutionType.Update, 0);            
+            this.SystemManager.SetSystem(new AnimationSystem(), ExecutionType.Update, 0);
+            this.SystemManager.SetSystem(new GoblinSystem(), ExecutionType.Update, 0);
 
             base.BuildSystems();
         }
