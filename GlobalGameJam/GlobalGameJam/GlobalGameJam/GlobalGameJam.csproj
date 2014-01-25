@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="BoblinWorld.cs" />
     <Compile Include="Entities\Systems\PlayerControlSystem.cs" />
+    <Compile Include="Entities\Templates\BunnyTemplate.cs" />
     <Compile Include="Entities\Templates\PlayerTemplate.cs" />
     <Compile Include="Screens\GameplayScreen.cs" />
     <Compile Include="Screens\MainMenuScreen.cs" />

@@ -58,10 +58,23 @@ namespace GlobalGameJam
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            SpriteSheet spriteSheet = new SpriteSheet(Content.Load<Texture2D>("Textures/spritesheet"));
+
+            sourceRectangles(spriteSheet);
+            ScreenHelper.SpriteSheet = spriteSheet;
+
             screenManager = new ScreenManager(this);
             screenManager.Initialize();
 
             screenManager.AddScreen(new MainMenuScreen(), null);
+
+            base.LoadContent();
+        }
+
+        void sourceRectangles(SpriteSheet spriteSheet)
+        {
+            spriteSheet.Animations.Add("bunny", new Rectangle[] { new Rectangle(0, 0, 32, 32) });
+            spriteSheet.Animations.Add("grass", new Rectangle[] { new Rectangle(32, 0, 32, 32) });
         }
 
         /// <summary>

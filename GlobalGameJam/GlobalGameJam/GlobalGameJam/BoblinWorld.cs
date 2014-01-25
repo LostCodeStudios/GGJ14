@@ -12,7 +12,7 @@ using System.Text;
 
 namespace GlobalGameJam
 {
-    class BoblinWorld : World
+    public class BoblinWorld : World
     {
         #region Constructors
         public BoblinWorld(Game game)
@@ -42,6 +42,8 @@ namespace GlobalGameJam
             Camera.EnableRotationTracking = false;
             #endregion
 
+            CreateEntity("Bunny", new Vector2(5, 0)).Refresh();
+
             base.BuildEntities(Content, args);
         }
 
@@ -53,7 +55,7 @@ namespace GlobalGameJam
         protected override void BuildTemplates(Microsoft.Xna.Framework.Content.ContentManager Content, params object[] args)
         {
             this.SetEntityTemplate("Player", new PlayerTemplate(this));
-
+            this.SetEntityTemplate("Bunny", new BunnyTemplate(this));
 
             base.BuildTemplates(Content, args);
         }
