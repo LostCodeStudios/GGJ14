@@ -73,8 +73,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoblinWorld.cs" />
+    <Compile Include="Entities\Components\BloodTimer.cs" />
     <Compile Include="Entities\Components\BunnyAI.cs" />
     <Compile Include="Entities\Components\Health.cs" />
+    <Compile Include="Entities\GenericEvents.cs" />
+    <Compile Include="Entities\Systems\BloodSystem.cs" />
     <Compile Include="Entities\Systems\BunnyMovementSystem.cs" />
     <Compile Include="Entities\Systems\PlayerControlSystem.cs" />
     <Compile Include="Entities\Templates\BloodTemplate.cs" />

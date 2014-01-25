@@ -40,6 +40,11 @@ namespace GlobalGameJam.Entities.Templates
             BunnyAI ai = new BunnyAI();
             e.AddComponent<BunnyAI>(ai);
 
+            Health health = new Health(1f);
+            health.OnDeath += GenericEvents.BloodyDeath(world);
+            body.OnCollision += GenericEvents.BasicCollision();
+            e.AddComponent<Health>(health);
+
             return e;
         }
     }

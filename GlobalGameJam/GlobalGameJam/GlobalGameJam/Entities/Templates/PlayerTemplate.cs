@@ -3,6 +3,7 @@ using GameLibrary.Dependencies.Physics.Factories;
 using GameLibrary.Entities.Components;
 using GameLibrary.Entities.Components.Physics;
 using GameLibrary.Helpers;
+using GlobalGameJam.Entities.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -14,8 +15,8 @@ namespace GlobalGameJam.Entities.Templates
 {
     class PlayerTemplate : IEntityTemplate
     {
-        EntityWorld _World;
-        public PlayerTemplate(EntityWorld world)
+        BoblinWorld _World;
+        public PlayerTemplate(BoblinWorld world)
         {
             this._World = world;
         }
@@ -31,6 +32,12 @@ namespace GlobalGameJam.Entities.Templates
             e.GetComponent<Body>().FixedRotation = true;
 
             e.AddComponent<Sprite>(new Sprite(args[0] as Texture2D, source, new Vector2(30, 16), 1f, Color.White, 0.1f)); //Sprite
+
+            Health h = new Health(3f);
+            h.OnDeath += GenericEvents.BloodyDeath(_World);
+            e.GetComponent<Body>().OnCollision += GenericEvents.BasicCollision();
+
+            e.AddComponent<Health>(h);
 
             return e;
         }
