@@ -74,10 +74,50 @@ namespace GlobalGameJam
         void sourceRectangles(SpriteSheet spriteSheet)
         {
             spriteSheet.Animations.Add("bunny", new Rectangle[] { new Rectangle(6, 8, 23, 20) });
-            spriteSheet.Animations.Add("grass", new Rectangle[] { new Rectangle(34, 1, 32, 32) });
             spriteSheet.Animations.Add("blood", new Rectangle[] { new Rectangle(6, 42, 19, 22) });
             spriteSheet.Animations.Add("tree", new Rectangle[] { new Rectangle(78, 1, 25, 51) });
             spriteSheet.Animations.Add("goblin", new Rectangle[] { new Rectangle(39, 58, 12, 26) });
+
+            spriteSheet.Animations.Add("grass1", new Rectangle[] { new Rectangle(179, 227, 32, 32) });
+            spriteSheet.Animations.Add("grass2", new Rectangle[] { new Rectangle(179, 263, 32, 32) });
+
+            #region Player
+            spriteSheet.Animations.Add("playerMoveRight", new Rectangle[] { 
+                new Rectangle(42, 248, 32, 32),
+                new Rectangle(78, 248, 32, 32) 
+            });
+
+            spriteSheet.Animations.Add("playerMoveDown", new Rectangle[] { 
+                new Rectangle(36, 284, 32, 32),
+                new Rectangle(68, 284, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("playerMoveLeft", new Rectangle[] { 
+                new Rectangle(40, 320, 32, 32),
+                new Rectangle(76, 320, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("playerMoveUp", new Rectangle[] { 
+                new Rectangle(38, 358, 32, 32),
+                new Rectangle(70, 358, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("playerRight", new Rectangle[] { 
+                new Rectangle(6, 248, 32, 32) 
+            });
+
+            spriteSheet.Animations.Add("playerDown", new Rectangle[] { 
+                new Rectangle(6, 284, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("playerLeft", new Rectangle[] { 
+                new Rectangle(5, 320, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("playerUp", new Rectangle[] { 
+                new Rectangle(4, 358, 32, 32)
+            });
+            #endregion
         }
 
         /// <summary>

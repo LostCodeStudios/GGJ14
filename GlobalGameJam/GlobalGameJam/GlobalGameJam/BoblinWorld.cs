@@ -6,6 +6,7 @@ using GlobalGameJam.Entities.Templates;
 using GlobalGameJam.Entities.Templates.Terrain;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpaceHordes.Entities.Systems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,9 +77,11 @@ namespace GlobalGameJam
         /// </summary>
         protected override void BuildSystems()
         {
-            playerControlSystem = this.SystemManager.SetSystem(new PlayerControlSystem(0.5f), ExecutionType.Update, 0);
+            playerControlSystem = this.SystemManager.SetSystem(new PlayerControlSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new BunnyMovementSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new BloodSystem(), ExecutionType.Update, 0);
+            this.SystemManager.SetSystem(new DirectionalSpriteSystem(), ExecutionType.Update, 0);
+            this.SystemManager.SetSystem(new AnimationSystem(), ExecutionType.Update, 0);            
 
             base.BuildSystems();
         }
