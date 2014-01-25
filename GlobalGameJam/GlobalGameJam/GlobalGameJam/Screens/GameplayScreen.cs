@@ -15,7 +15,15 @@ namespace GlobalGameJam.Screens
 
         public GameplayScreen()
         {
+        }
+
+        public override void Activate()
+        {
+            base.Activate();
+
             world = new BoblinWorld(Manager.Game);
+            world.Initialize();
+            world.LoadContent(Manager.Game.Content);
         }
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)

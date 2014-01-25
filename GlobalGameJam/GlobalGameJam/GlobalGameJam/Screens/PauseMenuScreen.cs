@@ -17,6 +17,9 @@ namespace GlobalGameJam.Screens
             MenuEntry quit = new MenuEntry("Quit");
 
             this.gameplayScreen = gameplayScreen;
+
+            MenuEntries.Add(resume);
+            MenuEntries.Add(quit);
         }
 
         void resume_Selected(object sender, EventArgs e)
