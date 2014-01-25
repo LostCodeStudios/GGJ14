@@ -44,7 +44,7 @@ namespace GlobalGameJam
             // TODO: Add your initialization logic here
             this.IsMouseVisible = true;
             ScreenHelper.Initialize(graphics, GraphicsDevice);
-            ConvertUnits.SetDisplayUnitToSimUnitRatio(24f);
+            ConvertUnits.SetDisplayUnitToSimUnitRatio(32f);
 
             base.Initialize();
         }
