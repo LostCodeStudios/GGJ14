@@ -67,7 +67,7 @@ namespace GlobalGameJam.Entities.Systems
                 {
                     chunks.Remove(c);
                     
-                    Vector2 nChunkPos = c.Delete(oldPosition, pos);
+                    Vector2 nChunkPos = c.Delete(oldPosition, pos, world);
 
                     int cats = BoblinWorld.FIRST_CATS;
                     int goblins = BoblinWorld.FIRST_GOBLINS;

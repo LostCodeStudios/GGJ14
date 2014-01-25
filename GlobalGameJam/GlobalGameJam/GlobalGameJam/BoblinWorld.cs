@@ -90,7 +90,7 @@ namespace GlobalGameJam
             this.SystemManager.SetSystem(new GoblinSystem(), ExecutionType.Update, 0);
             chunkUpdateSytem = this.SystemManager.SetSystem(new ChunkUpdateSystem(Chunk.SIZE * (float)Math.Sqrt(2)), ExecutionType.Update, 0);
 
-            SystemManager.SetSystem(new ChunkRenderSystem(SpriteBatch, Camera), ExecutionType.Draw, 0);
+            SystemManager.SetSystem(new ChunkRenderSystem(SpriteBatch, Camera), ExecutionType.Draw, -1);
 
             base.BuildSystems();
         }

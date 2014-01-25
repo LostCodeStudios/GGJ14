@@ -1,4 +1,6 @@
 ﻿using GameLibrary.Dependencies.Entities;
+using GameLibrary.Dependencies.Physics.Collision;
+using GameLibrary.Dependencies.Physics.Dynamics;
 using GameLibrary.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -69,7 +71,7 @@ namespace GlobalGameJam.Entities
 
                     Vector2 position = new Vector2(Position.X - SIZE / 2 + x, Position.Y - SIZE / 2 + y);
 
-                    spriteBatch.Draw(texture, ConvertUnits.ToDisplayUnits(position) + offset, source, Color.White);
+                    spriteBatch.Draw(texture, ConvertUnits.ToDisplayUnits(position) + offset, source, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 }
             }
 
@@ -94,10 +96,20 @@ namespace GlobalGameJam.Entities
         /// <param name="anchor">The old center origin</param>
         /// <param name="origin">The new origin</param>
         /// <returns></returns>
-        public Vector2 Delete(Vector2 anchor, Vector2 origin)
+        public Vector2 Delete(Vector2 anchor, Vector2 origin, PhysicsWorld world)
         {
             foreach (Entity e in Terrain)
                 e.Delete();
+
+            AABB box = new AABB(Position, SIZE, SIZE);
+            world.QueryAABB(
+                (f) =>
+                {
+                    Entity e = f.Body.UserData as Entity;
+                    e.Delete();
+
+                    return true;
+                }, ref box);
 
             return anchor - Position + origin;
         }
