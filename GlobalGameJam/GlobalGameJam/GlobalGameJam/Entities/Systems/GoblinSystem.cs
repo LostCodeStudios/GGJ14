@@ -52,6 +52,10 @@ namespace GlobalGameJam.Entities.Systems
                     GoblinAI ai = new GoblinAI(target);
                     e.AddComponent<GoblinAI>(ai);
                 }
+                else
+                {
+                    e.Delete(); //avoid repeated fruitless searchers
+                }
             }
             else
             {
