@@ -1,5 +1,6 @@
 ﻿using GameLibrary;
 using GameLibrary.Dependencies.Entities;
+using GameLibrary.Entities.Components.Physics;
 using GlobalGameJam.Entities.Systems;
 using GlobalGameJam.Entities.Templates;
 using Microsoft.Xna.Framework;
