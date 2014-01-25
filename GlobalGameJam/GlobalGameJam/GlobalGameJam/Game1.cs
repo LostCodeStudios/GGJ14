@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using GameLibrary.GameStates;
+using GlobalGameJam.Screens;
+using GameLibrary.Helpers;
 
 namespace GlobalGameJam
 {
@@ -48,8 +50,12 @@ namespace GlobalGameJam
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            ScreenHelper.Initialize(graphics, GraphicsDevice);
 
             screenManager = new ScreenManager(this);
+            screenManager.Initialize();
+
+            screenManager.AddScreen(new MainMenuScreen(), null);
         }
 
         /// <summary>
