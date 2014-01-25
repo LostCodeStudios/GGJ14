@@ -38,6 +38,9 @@ namespace GlobalGameJam
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            this.IsMouseVisible = true;
+            ScreenHelper.Initialize(graphics, GraphicsDevice);
+            ConvertUnits.SetDisplayUnitToSimUnitRatio(24f);
 
             base.Initialize();
         }
@@ -50,7 +53,6 @@ namespace GlobalGameJam
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            ScreenHelper.Initialize(graphics, GraphicsDevice);
 
             screenManager = new ScreenManager(this);
             screenManager.Initialize();
