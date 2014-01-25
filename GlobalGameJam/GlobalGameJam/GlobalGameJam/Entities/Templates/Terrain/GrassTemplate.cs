@@ -20,7 +20,7 @@ namespace GlobalGameJam.Entities.Templates.Terrain
         /// <returns></returns>
         public Entity BuildEntity(Entity e, params object[] args)
         {
-            e.AddComponent<Sprite>(new Sprite(ScreenHelper.SpriteSheet, "grass"));
+            e.AddComponent<Sprite>(new Sprite(ScreenHelper.SpriteSheet, "grass", 0f));
             e.AddComponent<Particle>(new Particle(e, (Vector2)args[0], 0f, Vector2.Zero, 0f));
 
             e.Refresh();

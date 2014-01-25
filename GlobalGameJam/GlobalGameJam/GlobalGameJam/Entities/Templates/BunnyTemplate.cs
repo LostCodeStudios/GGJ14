@@ -26,13 +26,15 @@ namespace GlobalGameJam.Entities.Templates
         {
             Vector2 position = (Vector2)args[0];
 
-            Sprite sprite = new Sprite(ScreenHelper.SpriteSheet, "bunny");
+            Sprite sprite = new Sprite(ScreenHelper.SpriteSheet, "bunny", 0.5f);
 
             e.AddComponent<Sprite>(sprite);
 
             Body body = new Body(world, e);
             FixtureFactory.AttachCircle(0.2f, 1, body);
             body.Position = position;
+            body.BodyType = GameLibrary.Dependencies.Physics.Dynamics.BodyType.Dynamic;
+            body.FixedRotation = true;
             e.AddComponent<Body>(body);
 
             BunnyAI ai = new BunnyAI();
