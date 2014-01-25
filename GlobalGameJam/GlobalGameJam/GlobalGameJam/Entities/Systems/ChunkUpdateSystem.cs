@@ -27,18 +27,22 @@ namespace GlobalGameJam.Entities.Systems
 
         Vector2 oldPosition;
         float radius;
+        BoblinWorld bworld;
 
         #endregion
 
-        public void BuildInitial(Vector2 pos, int width, int height)
+
+        public void BuildInitial(Vector2 pos, int width, int height, BoblinWorld bworld)
         {
+            this.bworld = bworld;
             for (int x = 0; x < width; x++)
                 for (int y = 0; y < height; y++)
                 {
-                    Vector2 chunkPos = pos + Chunk.SIZE*(-0.5F*new Vector2(height-1, width-1) + new Vector2( x, y)); //see paper algorithm
-                    chunks.Add(
-                        new Chunk((world as BoblinWorld), chunkPos,
-                            new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", chunkPos, BoblinWorld.FIRST_CATS, BoblinWorld.FIRST_GOBLINS))));
+                    Vector2 chunkPos = pos + Chunk.SIZE*(-0.5F*new Vector2(height-1, width-1) + new Vector2( x, y)); //see paper algorith
+
+                    chunks.Add(new Chunk
+                    (chunkPos,
+                    new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", chunkPos,  BoblinWorld.FIRST_CATS, BoblinWorld.FIRST_GOBLINS)),bworld));
                 }
         }
 
@@ -72,8 +76,7 @@ namespace GlobalGameJam.Entities.Systems
                     BoblinWorld.FIRST_TREES -= (int)((world as BoblinWorld).Evil * BoblinWorld.TREE_RATE);
                     BoblinWorld.FIRST_CATS -= (int)((world as BoblinWorld).Evil * BoblinWorld.CAT_RATE);
                     BoblinWorld.FIRST_GOBLINS += (int)((world as BoblinWorld).Evil * BoblinWorld.GOBLIN_RATE);
-                    chunks.Add(new Chunk(
-                        (world as BoblinWorld), nChunkPos, new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", nChunkPos))));
+                    chunks.Add(new Chunk( nChunkPos, new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", nChunkPos)), this.bworld));
                 }
 
                 toRemove.Clear();

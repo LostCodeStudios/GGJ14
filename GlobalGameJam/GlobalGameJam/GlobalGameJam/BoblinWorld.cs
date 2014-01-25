@@ -67,7 +67,7 @@ namespace GlobalGameJam
             #endregion
 
             //TEST BULLSHIT
-            chunkUpdateSytem.BuildInitial(Vector2.Zero, 3, 3);
+        	chunkUpdateSytem.BuildInitial(Vector2.Zero, 3, 3, this);
             //CreateEntity("Goblin", new Vector2(-7, 0)).Refresh();
 
             base.BuildEntities(Content, args);

@@ -68,7 +68,7 @@ namespace GlobalGameJam.Entities.Systems
 
             #endregion
 
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed && elapsedCharge < chargeMax && elapsedCooldown == -1)
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed && charge > 0 && !recharge)
             {
                 Vector2 mouseLoc = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
                 Vector2 mouseWorldLoc = mouseLoc - ScreenHelper.Center;
@@ -77,28 +77,22 @@ namespace GlobalGameJam.Entities.Systems
                 b.LinearVelocity = -aiming * PLAYER_SPEED * 1.5f;
 
                 e.GetComponent<Health>().SetHealth(e, 10);
-                elapsedCharge += world.Delta / 1000f;
+                charge -= world.Delta / 300f;
             }
-            else if(elapsedCharge >= chargeMax)
+            else
+                recharge = true;
+
+            if (recharge)
             {
-                elapsedCharge = -1;
-                elapsedCooldown = 0;
+                charge += world.Delta / 2000f;
+                if (charge >= 1)
+                    recharge = false;
             }
-            else if(elapsedCooldown > -1){
-                 elapsedCooldown += world.Delta / 1000f;
-                 if (elapsedCooldown >= chargeCooldown)
-                 {
-                     elapsedCooldown = -1;
-                     elapsedCharge = 0;
-                 }
-            }
+
 
         }
 
-
-        float elapsedCharge = 0;
-        float chargeCooldown = 1;
-        float chargeMax = 0.5f;
-        float elapsedCooldown = 0;
+        float charge = 1;
+        bool recharge = false;
     }
 }
