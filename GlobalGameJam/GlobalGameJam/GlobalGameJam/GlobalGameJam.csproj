@@ -80,6 +80,7 @@
     <Compile Include="Entities\GenericEvents.cs" />
     <Compile Include="Entities\Systems\BloodSystem.cs" />
     <Compile Include="Entities\Systems\BunnyMovementSystem.cs" />
+    <Compile Include="Entities\Systems\ChunkUpdateSystem.cs" />
     <Compile Include="Entities\Systems\DirectionalSpriteSystem.cs" />
     <Compile Include="Entities\Systems\PlayerControlSystem.cs" />
     <Compile Include="Entities\Templates\BloodTemplate.cs" />
