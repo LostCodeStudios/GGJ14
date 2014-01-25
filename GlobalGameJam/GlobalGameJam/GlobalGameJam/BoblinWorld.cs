@@ -1,4 +1,5 @@
 ﻿using GameLibrary;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,11 @@ namespace GlobalGameJam
     class BoblinWorld : World
     {
         #region Constructors
+        public BoblinWorld(Game game)
+            : base(game, Vector2.Zero)
+        {
 
+        }
         #endregion
 
         #region Initialization
