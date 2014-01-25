@@ -23,7 +23,7 @@ namespace GlobalGameJam.Entities.Systems
 
         protected override void ProcessEntities(Dictionary<int, Entity> entities)
         {
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, null, null, null, null, camera.View);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, null, null, null, null, null, camera.View);
             
             foreach (Chunk chunk in (world as BoblinWorld).chunkUpdateSytem.chunks)
             {

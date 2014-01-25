@@ -34,8 +34,8 @@ namespace GlobalGameJam.Entities
                 tileKeys.Add(1, "grass2");
                 tileKeys.Add(2, "water1");
                 tileKeys.Add(3, "water2");
-                tileKeys.Add(4, "redGround1");
-                tileKeys.Add(5, "redGround2");
+                tileKeys.Add(4, "corrupt");
+                tileKeys.Add(5, "corrupt2");
                 tileKeys.Add(6, "lava1");
                 tileKeys.Add(7, "lava2");
             }
@@ -85,13 +85,16 @@ namespace GlobalGameJam.Entities
             {
                 for (int x = 0; x < SIZE; ++x)
                 {
-                    int idx = tiles[y, x];
+                    int idx = (tiles[x,y] == 4 || tiles[x,y] == 5) ? tiles[x, y] -4 : tiles[x,y];
                     source = spriteSheet.Animations[tileKeys[idx]][0];
 
                     Vector2 position = new Vector2(Position.X - SIZE / 2 + x, Position.Y - SIZE / 2 + y);
 
-                    //float colorValue = 255 * (bworld.Evil);
-                    spriteBatch.Draw(texture, ConvertUnits.ToDisplayUnits(position) + offset, source, new Color(255,0,0), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                    float colorSub = 255 * (bworld.Evil) *((tiles[x, y] == 4 || tiles[x, y] == 5) ? 1.5f : 1);
+
+                    int colorValue = (int)(255 - colorSub);
+                        
+                    spriteBatch.Draw(texture, ConvertUnits.ToDisplayUnits(position) + offset, source, new Color(255,colorValue, colorValue), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 }
             }
 

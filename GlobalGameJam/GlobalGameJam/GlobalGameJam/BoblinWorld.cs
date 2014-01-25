@@ -25,7 +25,7 @@ namespace GlobalGameJam
         public const float EVIL_INC = 0.03f;
 
         public const float LAVA_CHANCE = 0.09f;
-        public const float REDGROUND_COEF = 0.05f;
+        public const float REDGROUND_COEF = 1f;
         public const float TREE_RATE = 1.25f;
         public const float CAT_RATE = 1.5f;
         public const float GOBLIN_RATE = 3f;
