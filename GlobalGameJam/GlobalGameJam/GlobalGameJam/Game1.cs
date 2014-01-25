@@ -99,6 +99,15 @@ namespace GlobalGameJam
 
             spriteSheet.Animations.Add("lava1", new Rectangle[] { new Rectangle(143, 227, 32, 32) });
             spriteSheet.Animations.Add("lava2", new Rectangle[] { new Rectangle(143, 263, 32, 32) });
+
+            spriteSheet.Animations.Add("grayGround1", new Rectangle[] { new Rectangle(320, 227, 32, 32) });
+            spriteSheet.Animations.Add("grayGround2", new Rectangle[] { new Rectangle(320, 263, 32, 32) });
+
+            spriteSheet.Animations.Add("grayWater1", new Rectangle[] { new Rectangle(358, 227, 32, 32) });
+            spriteSheet.Animations.Add("grayWater2", new Rectangle[] { new Rectangle(358, 263, 32, 32) });
+
+            spriteSheet.Animations.Add("grayLava1", new Rectangle[] { new Rectangle(396, 227, 32, 32) });
+            spriteSheet.Animations.Add("grayLava2", new Rectangle[] { new Rectangle(396, 263, 32, 32) });
             
             spriteSheet.Animations.Add("corpse", new Rectangle[] { new Rectangle(7, 404, 32, 20) });
 
