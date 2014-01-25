@@ -118,6 +118,46 @@ namespace GlobalGameJam
                 new Rectangle(4, 358, 32, 32)
             });
             #endregion
+
+            #region Cats
+
+            spriteSheet.Animations.Add("catMoveRight", new Rectangle[] { 
+                new Rectangle(185, 113, 24, 21),
+                new Rectangle(212, 113, 24, 21)
+            });
+
+            spriteSheet.Animations.Add("catMoveDown", new Rectangle[] { 
+                new Rectangle(179, 136, 18, 21),
+                new Rectangle(203, 136, 18, 21)
+            });
+
+            spriteSheet.Animations.Add("catMoveLeft", new Rectangle[] { 
+                new Rectangle(185, 162, 24, 21),
+                new Rectangle(212, 162, 24, 21)
+            });
+
+            spriteSheet.Animations.Add("catMoveUp", new Rectangle[] { 
+                new Rectangle(184, 187, 18, 21),
+                new Rectangle(208, 187, 18, 21)
+            });
+
+            spriteSheet.Animations.Add("catRight", new Rectangle[] { 
+                new Rectangle(158, 113, 24, 21) 
+            });
+
+            spriteSheet.Animations.Add("catDown", new Rectangle[] { 
+                new Rectangle(158, 136, 18, 21)
+            });
+
+            spriteSheet.Animations.Add("catLeft", new Rectangle[] { 
+                new Rectangle(158, 162, 24, 21)
+            });
+
+            spriteSheet.Animations.Add("catUp", new Rectangle[] { 
+                new Rectangle(160, 187, 18, 21)
+            });
+
+            #endregion
         }
 
         /// <summary>
