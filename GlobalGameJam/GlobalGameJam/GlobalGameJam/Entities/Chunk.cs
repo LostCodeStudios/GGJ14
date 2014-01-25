@@ -13,10 +13,36 @@ namespace GlobalGameJam.Entities
     {
         public static float SIZE = 24;
 
+        static Dictionary<int, string> tileKeys;
+        static Random r = new Random();
+
+        int[,] tiles = new int[(int)SIZE, (int)SIZE];
+
         public Chunk(Vector2 position, List<Entity> terrain)
         {
             this.Position = position;
             this.Terrain = terrain;
+
+            if (tileKeys == null)
+            {
+                tileKeys = new Dictionary<int, string>();
+                tileKeys.Add(0, "grass1");
+                tileKeys.Add(1, "grass2");
+                tileKeys.Add(2, "water1");
+                tileKeys.Add(3, "water2");
+                tileKeys.Add(4, "redground1");
+                tileKeys.Add(5, "redground2");
+                tileKeys.Add(6, "lava1");
+                tileKeys.Add(7, "lava2");
+            }
+
+            for (int y = 0; y < SIZE; ++y)
+            {
+                for (int x = 0; x < SIZE; ++x)
+                {
+                    tiles[y, x] = r.Next(2);
+                }
+            }
         }
         /// <summary>
         /// The position of the chunk in world coordinates
@@ -32,20 +58,34 @@ namespace GlobalGameJam.Entities
         {
             SpriteSheet spriteSheet = ScreenHelper.SpriteSheet;
             Texture2D texture = spriteSheet.Texture;
+            Vector2 offset = new Vector2(-16, -16);
 
-            
-            Vector2 corner1 = ConvertUnits.ToDisplayUnits(Position + new Vector2(-SIZE / 2, -SIZE / 2));
-            Vector2 corner2 = ConvertUnits.ToDisplayUnits(Position + new Vector2(SIZE / 2, -SIZE / 2));
-            Vector2 corner3 = ConvertUnits.ToDisplayUnits(Position + new Vector2(-SIZE / 2, SIZE / 2));
-            Vector2 corner4 = ConvertUnits.ToDisplayUnits(Position + new Vector2(SIZE / 2, SIZE / 2));
+            Rectangle source;
+            for (int y = 0; y < SIZE; ++y)
+            {
+                for (int x = 0; x < SIZE; ++x)
+                {
+                    source = spriteSheet.Animations[tileKeys[tiles[y, x]]][0];
 
-            Rectangle source = spriteSheet.Animations["bunny"][0];
-            spriteBatch.Draw(texture, corner1, source, Color.White);
-            spriteBatch.Draw(texture, corner2, source, Color.White);
-            spriteBatch.Draw(texture, corner3, source, Color.White);
-            spriteBatch.Draw(texture, corner4, source, Color.White);
+                    Vector2 position = new Vector2(Position.X - SIZE / 2 + x, Position.Y - SIZE / 2 + y);
+
+                    spriteBatch.Draw(texture, ConvertUnits.ToDisplayUnits(position) + offset, source, Color.White);
+                }
+            }
+
+            //Vector2 corner1 = ConvertUnits.ToDisplayUnits(Position + new Vector2(-SIZE / 2, -SIZE / 2));
+            //Vector2 corner2 = ConvertUnits.ToDisplayUnits(Position + new Vector2(SIZE / 2, -SIZE / 2));
+            //Vector2 corner3 = ConvertUnits.ToDisplayUnits(Position + new Vector2(-SIZE / 2, SIZE / 2));
+            //Vector2 corner4 = ConvertUnits.ToDisplayUnits(Position + new Vector2(SIZE / 2, SIZE / 2));
+
+            //source = spriteSheet.Animations["bunny"][0];
+            //spriteBatch.Draw(texture, corner1, source, Color.White);
+            //spriteBatch.Draw(texture, corner2, source, Color.White);
+            //spriteBatch.Draw(texture, corner3, source, Color.White);
+            //spriteBatch.Draw(texture, corner4, source, Color.White);
 
             //spriteBatch.Draw(texture, ConvertUnits.ToDisplayUnits(Position), source, Color.White);
+            
         }
 
         /// <summary>

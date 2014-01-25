@@ -19,12 +19,24 @@ namespace GlobalGameJam.Entities.Templates
             List<Entity> terrain = new List<Entity>();
 
             Vector2 position = (Vector2)args[0];
+            int cats = (int)args[1];
+            int goblins = (int)args[2];
 
-            /////and god said let there be grass
-            //for (int x = 0; x < Chunk.SIZE; x++)
-            //    for (int y = 0; y < Chunk.SIZE; y++)
-            //        terrain.Add(world.CreateEntity("Grass",
-            //            position+new Vector2(x-Chunk.SIZE/2, y-Chunk.SIZE/2)));
+            for (int i = 0; i < cats; ++i)
+            {
+                Vector2 pos = position + new Vector2((float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE/2,
+                        (float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE/2);
+
+                world.CreateEntity("Cat", pos);
+            }
+
+            for (int i = 0; i < goblins; ++i)
+            {
+                Vector2 pos = position + new Vector2((float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE / 2,
+                        (float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE / 2);
+
+                world.CreateEntity("Goblin", pos);
+            }
 
             //and god said, fuck okay, trees.
             for (int i = 0; i < 25; i++)

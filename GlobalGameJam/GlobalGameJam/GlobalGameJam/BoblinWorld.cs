@@ -17,6 +17,9 @@ namespace GlobalGameJam
 {
     public class BoblinWorld : World
     {
+        public static int FIRST_CATS = 5;
+        public static int FIRST_GOBLINS = 0;
+
         #region Constructors
         public BoblinWorld(Game game)
             : base(game, Vector2.Zero)
@@ -46,8 +49,7 @@ namespace GlobalGameJam
             #endregion
 
             //TEST BULLSHIT
-            CreateEntity("Bunny", new Vector2(5, 0)).Refresh();
-            chunkUpdateSytem.BuildInitial(Vector2.Zero, 3, 3);
+            chunkUpdateSytem.BuildInitial(Vector2.Zero, 3, 3, FIRST_CATS, FIRST_GOBLINS);
             //CreateEntity("Goblin", new Vector2(-7, 0)).Refresh();
 
             base.BuildEntities(Content, args);
@@ -61,7 +63,7 @@ namespace GlobalGameJam
         protected override void BuildTemplates(Microsoft.Xna.Framework.Content.ContentManager Content, params object[] args)
         {
             this.SetEntityTemplate("Player", new PlayerTemplate(this));
-            this.SetEntityTemplate("Bunny", new BunnyTemplate(this));
+            this.SetEntityTemplate("Cat", new BunnyTemplate(this));
             this.SetEntityTemplate("Blood", new BloodTemplate());
 
             this.SetEntityTemplate("Goblin", new GoblinTemplate(this));
