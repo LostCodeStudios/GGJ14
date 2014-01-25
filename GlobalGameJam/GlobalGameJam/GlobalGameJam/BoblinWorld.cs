@@ -1,5 +1,7 @@
 ﻿using GameLibrary;
+using GameLibrary.Dependencies.Entities;
 using GlobalGameJam.Entities.Systems;
+using GlobalGameJam.Entities.Templates;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -27,6 +29,15 @@ namespace GlobalGameJam
         /// <param name="args"></param>
         protected override void BuildEntities(Microsoft.Xna.Framework.Content.ContentManager Content, params object[] args)
         {
+            #region Player
+            Entity player = this.CreateEntity("Player");
+
+            //camerashit
+            Camera.TrackingBody = player.GetComponent<Body>();
+            Camera.EnableTracking = true;
+            Camera.EnableRotationTracking = false;
+            #endregion
+
             base.BuildEntities(Content, args);
         }
 
@@ -37,6 +48,9 @@ namespace GlobalGameJam
         /// <param name="args"></param>
         protected override void BuildTemplates(Microsoft.Xna.Framework.Content.ContentManager Content, params object[] args)
         {
+            this.SetEntityTemplate("Player", new PlayerTemplate(this));
+
+
             base.BuildTemplates(Content, args);
         }
 
