@@ -9,12 +9,14 @@ namespace GlobalGameJam.Screens
     public class PauseMenuScreen : MenuScreen
     {
         GameplayScreen gameplayScreen;
+        private MainMenuScreen main;
 
-        public PauseMenuScreen(GameplayScreen gameplayScreen)
+        public PauseMenuScreen(GameplayScreen gameplayScreen, MainMenuScreen main)
             : base("Paused")
         {
             MenuEntry resume = new MenuEntry("Resume");
             MenuEntry quit = new MenuEntry("Quit");
+            this.main = main;
 
             this.gameplayScreen = gameplayScreen;
 
@@ -32,6 +34,7 @@ namespace GlobalGameJam.Screens
 
         void quit_Selected(object sender, EventArgs e)
         {
+            main.OnFocus();
             ExitScreen();
             Manager.RemoveScreen(gameplayScreen);
         }

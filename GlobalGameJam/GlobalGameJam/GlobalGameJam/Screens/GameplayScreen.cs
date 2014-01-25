@@ -11,20 +11,16 @@ namespace GlobalGameJam.Screens
 {
     public class GameplayScreen : GameScreen
     {
-        BoblinWorld world;
+        public BoblinWorld World;
+        MainMenuScreen mainMenu;
 
-        public GameplayScreen()
+        public GameplayScreen(BoblinWorld world, MainMenuScreen mainMenu)
         {
+            this.World = world;
+            this.mainMenu = mainMenu;
+            world.Start();
         }
 
-        public override void Activate()
-        {
-            base.Activate();
-
-            world = new BoblinWorld(Manager.Game);
-            world.Initialize();
-            world.LoadContent(Manager.Game.Content);
-        }
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
@@ -32,7 +28,7 @@ namespace GlobalGameJam.Screens
 
             if (!otherScreenHasFocus)
             {
-                world.Update(gameTime);
+                World.Update(gameTime);
             }
         }
 
@@ -40,7 +36,7 @@ namespace GlobalGameJam.Screens
         {
             base.Draw(gameTime);
 
-            world.Draw(gameTime);
+            World.Draw(gameTime);
         }
 
         public override void HandleInput(GameTime gameTime, InputState input)
@@ -50,7 +46,7 @@ namespace GlobalGameJam.Screens
             PlayerIndex index;
             if (input.IsKeyPressed(Keys.Escape, null, out index))
             {
-                Manager.AddScreen(new PauseMenuScreen(this), null);
+                Manager.AddScreen(new PauseMenuScreen(this, mainMenu), null);
             }
         }
     }

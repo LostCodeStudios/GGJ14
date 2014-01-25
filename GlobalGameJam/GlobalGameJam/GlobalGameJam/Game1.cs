@@ -69,7 +69,6 @@ namespace GlobalGameJam
             screenManager.Initialize();
 
             screenManager.AddScreen(new MainMenuScreen(), null);
-
             base.LoadContent();
         }
 
