@@ -88,6 +88,8 @@ namespace GlobalGameJam
             this.SystemManager.SetSystem(new GoblinSystem(), ExecutionType.Update, 0);
             chunkUpdateSytem = this.SystemManager.SetSystem(new ChunkUpdateSystem(Chunk.SIZE * (float)Math.Sqrt(2) + 1), ExecutionType.Update, 0);
 
+            SystemManager.SetSystem(new ChunkRenderSystem(SpriteBatch, Camera), ExecutionType.Draw, 0);
+
             base.BuildSystems();
         }
 
@@ -103,7 +105,7 @@ namespace GlobalGameJam
 
         #region Fields
         PlayerControlSystem playerControlSystem;
-        ChunkUpdateSystem chunkUpdateSytem;
+        public ChunkUpdateSystem chunkUpdateSytem;
         #endregion
     }
 }

@@ -82,6 +82,7 @@
     <Compile Include="Entities\Systems\BloodSystem.cs" />
     <Compile Include="Entities\Systems\BunnyMovementSystem.cs" />
     <Compile Include="Entities\Chunk.cs" />
+    <Compile Include="Entities\Systems\ChunkRenderSystem.cs" />
     <Compile Include="Entities\Systems\ChunkUpdateSystem.cs" />
     <Compile Include="Entities\Systems\DirectionalSpriteSystem.cs" />
     <Compile Include="Entities\Systems\GoblinSystem.cs" />

@@ -1,5 +1,6 @@
 ﻿using GameLibrary.Dependencies.Entities;
 using GameLibrary.Entities.Components.Physics;
+using GameLibrary.Helpers;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace GlobalGameJam.Entities.Systems
         }
         #region Fields
 
-        List<Chunk> chunks;
+        public List<Chunk> chunks;
 
         Vector2 oldPosition;
         float radius;
