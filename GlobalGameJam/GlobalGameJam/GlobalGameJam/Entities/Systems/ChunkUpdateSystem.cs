@@ -42,7 +42,7 @@ namespace GlobalGameJam.Entities.Systems
 
                     chunks.Add(new Chunk
                     (chunkPos,
-                    new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", chunkPos,  BoblinWorld.FIRST_CATS, BoblinWorld.FIRST_GOBLINS,bworld));
+                    new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", chunkPos,  BoblinWorld.FIRST_CATS, BoblinWorld.FIRST_GOBLINS)),bworld));
                 }
         }
 

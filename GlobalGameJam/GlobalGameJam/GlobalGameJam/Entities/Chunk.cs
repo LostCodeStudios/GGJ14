@@ -46,7 +46,7 @@ namespace GlobalGameJam.Entities
                 {
                     tiles[y, x] = r.Next(2);
 
-                    if (percentChance(world.Evil * BoblinWorld.REDGROUND_COEF))
+                    if (percentChance(bworld.Evil * BoblinWorld.REDGROUND_COEF))
                     {
                         tiles[y, x] = r.Next(2) + 4;
 
@@ -90,7 +90,7 @@ namespace GlobalGameJam.Entities
 
                     Vector2 position = new Vector2(Position.X - SIZE / 2 + x, Position.Y - SIZE / 2 + y);
 
-                    /float colorValue = 255 * (bworld.Evil);
+                    //float colorValue = 255 * (bworld.Evil);
                     spriteBatch.Draw(texture, ConvertUnits.ToDisplayUnits(position) + offset, source, new Color(255,0,0), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 }
             }
