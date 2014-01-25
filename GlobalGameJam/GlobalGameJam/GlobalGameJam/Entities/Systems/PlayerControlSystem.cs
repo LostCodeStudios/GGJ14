@@ -74,7 +74,7 @@ namespace GlobalGameJam.Entities.Systems
                 Vector2 mouseWorldLoc = mouseLoc - ScreenHelper.Center;
                 Vector2 aiming = b.Position - camera.ConvertScreenToWorld(mouseLoc);
                 aiming.Normalize();
-                b.LinearVelocity = -aiming * PLAYER_SPEED * 2;
+                b.LinearVelocity = -aiming * PLAYER_SPEED * 1.5f;
 
                 e.GetComponent<Health>().SetHealth(e, 10);
                 elapsedCharge += world.Delta / 1000f;
@@ -98,7 +98,7 @@ namespace GlobalGameJam.Entities.Systems
 
         float elapsedCharge = 0;
         float chargeCooldown = 1;
-        float chargeMax = 0.2f;
+        float chargeMax = 0.5f;
         float elapsedCooldown = 0;
     }
 }
