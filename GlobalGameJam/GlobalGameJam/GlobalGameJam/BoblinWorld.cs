@@ -19,6 +19,18 @@ namespace GlobalGameJam
     {
         public static int FIRST_CATS = 5;
         public static int FIRST_GOBLINS = 0;
+        public static int FIRST_TREES = 25;
+
+
+        public static float EVIL_INC = 0.03f;
+
+        public static float LAVA_CHANCE = 0.09f;
+        public static float REDGROUND_COEF = 0.05f;
+        public static float TREE_RATE = 1.25f;
+        public static float CAT_RATE = 1.5f;
+        public static float GOBLIN_RATE = 1f;
+
+        public float Evil = 0f;
 
         #region Constructors
         public BoblinWorld(Game game)
@@ -65,6 +77,7 @@ namespace GlobalGameJam
             this.SetEntityTemplate("Player", new PlayerTemplate(this));
             this.SetEntityTemplate("Cat", new BunnyTemplate(this));
             this.SetEntityTemplate("Blood", new BloodTemplate());
+            this.SetEntityTemplate("Heart", new HeartTemplate());
 
             this.SetEntityTemplate("Goblin", new GoblinTemplate(this));
 
@@ -84,7 +97,7 @@ namespace GlobalGameJam
         {
             playerControlSystem = this.SystemManager.SetSystem(new PlayerControlSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new BunnyMovementSystem(), ExecutionType.Update, 0);
-            //this.SystemManager.SetSystem(new BloodSystem(), ExecutionType.Update, 0);
+            this.SystemManager.SetSystem(new BloodSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new DirectionalSpriteSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new AnimationSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new GoblinSystem(), ExecutionType.Update, 0);

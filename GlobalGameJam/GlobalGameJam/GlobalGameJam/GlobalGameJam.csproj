@@ -78,6 +78,8 @@
     <Compile Include="Entities\Components\DirectionalSprite.cs" />
     <Compile Include="Entities\Components\GoblinAI.cs" />
     <Compile Include="Entities\Components\Health.cs" />
+    <Compile Include="Entities\Components\Heart.cs" />
+    <Compile Include="Entities\Components\Killable.cs" />
     <Compile Include="Entities\GenericEvents.cs" />
     <Compile Include="Entities\Systems\BloodSystem.cs" />
     <Compile Include="Entities\Systems\BunnyMovementSystem.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Entities\Templates\BunnyTemplate.cs" />
     <Compile Include="Entities\Templates\CorpseTemplate.cs" />
     <Compile Include="Entities\Templates\GoblinTemplate.cs" />
+    <Compile Include="Entities\Templates\HeartTemplate.cs" />
     <Compile Include="Entities\Templates\PlayerTemplate.cs" />
     <Compile Include="Entities\Templates\Terrain\GrassTemplate.cs" />
     <Compile Include="Entities\Templates\Terrain\TreeTemplate.cs" />

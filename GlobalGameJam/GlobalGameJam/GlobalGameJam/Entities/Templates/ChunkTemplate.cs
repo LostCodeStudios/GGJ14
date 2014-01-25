@@ -35,11 +35,11 @@ namespace GlobalGameJam.Entities.Templates
                 Vector2 pos = position + new Vector2((float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE / 2,
                         (float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE / 2);
 
-                world.CreateEntity("Goblin", pos);
+                world.CreateEntity("Goblin", pos).Refresh();
             }
 
             //and god said, fuck okay, trees.
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < BoblinWorld.FIRST_TREES; i++)
                 terrain.Add(world.CreateEntity("Tree",
                     position + new Vector2((float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE/2,
                         (float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE/2)));

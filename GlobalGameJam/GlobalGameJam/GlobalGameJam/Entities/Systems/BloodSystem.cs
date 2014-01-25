@@ -1,5 +1,6 @@
 ﻿using GameLibrary.Dependencies.Entities;
 using GameLibrary.Entities.Components;
+using GameLibrary.Entities.Components.Physics;
 using GlobalGameJam.Entities.Components;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ namespace GlobalGameJam.Entities.Systems
 {
     public class BloodSystem : EntityProcessingSystem
     {
+        const float FLOAT_SPEED = 0.5f;
+
         public BloodSystem()
             : base(typeof(BloodTimer))
         {
@@ -33,6 +36,9 @@ namespace GlobalGameJam.Entities.Systems
 
             Sprite sprite = e.GetComponent<Sprite>();
             sprite.Color.A = (byte)(alpha * 255);
+
+            Particle p = e.GetComponent<Particle>();
+            p.Position = new Microsoft.Xna.Framework.Vector2(p.Position.X, p.Position.Y - FLOAT_SPEED * (world.Delta / 1000f));
 
             e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
             e.AddComponent<Sprite>(sprite);

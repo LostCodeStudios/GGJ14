@@ -20,7 +20,7 @@ namespace GlobalGameJam.Entities
 
         int[,] tiles = new int[(int)SIZE, (int)SIZE];
 
-        public Chunk(Vector2 position, List<Entity> terrain)
+        public Chunk(BoblinWorld world, Vector2 position, List<Entity> terrain)
         {
             this.Position = position;
             this.Terrain = terrain;
@@ -32,8 +32,8 @@ namespace GlobalGameJam.Entities
                 tileKeys.Add(1, "grass2");
                 tileKeys.Add(2, "water1");
                 tileKeys.Add(3, "water2");
-                tileKeys.Add(4, "redground1");
-                tileKeys.Add(5, "redground2");
+                tileKeys.Add(4, "redGround1");
+                tileKeys.Add(5, "redGround2");
                 tileKeys.Add(6, "lava1");
                 tileKeys.Add(7, "lava2");
             }
@@ -43,9 +43,25 @@ namespace GlobalGameJam.Entities
                 for (int x = 0; x < SIZE; ++x)
                 {
                     tiles[y, x] = r.Next(2);
+
+                    if (percentChance(world.Evil * BoblinWorld.REDGROUND_COEF))
+                    {
+                        tiles[y, x] = r.Next(2) + 4;
+
+                        if (percentChance(BoblinWorld.LAVA_CHANCE))
+                        {
+                            tiles[y, x] = r.Next(2) + 6;
+                        }
+                    }
                 }
             }
         }
+
+        private bool percentChance(float chance)
+        {
+            return r.NextDouble() < chance;
+        }
+
         /// <summary>
         /// The position of the chunk in world coordinates
         /// </summary>
@@ -67,7 +83,8 @@ namespace GlobalGameJam.Entities
             {
                 for (int x = 0; x < SIZE; ++x)
                 {
-                    source = spriteSheet.Animations[tileKeys[tiles[y, x]]][0];
+                    int idx = tiles[y, x];
+                    source = spriteSheet.Animations[tileKeys[idx]][0];
 
                     Vector2 position = new Vector2(Position.X - SIZE / 2 + x, Position.Y - SIZE / 2 + y);
 
