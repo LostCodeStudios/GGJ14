@@ -41,7 +41,7 @@ namespace GlobalGameJam.Entities.Templates
             e.AddComponent<BunnyAI>(ai);
 
             Health health = new Health(1f);
-            health.OnDeath += GenericEvents.BloodyDeath(world);
+            health.OnDeath += GenericEvents.BloodyDeath(world, e);
             body.OnCollision += GenericEvents.BasicCollision();
             e.AddComponent<Health>(health);
 

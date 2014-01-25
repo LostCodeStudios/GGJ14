@@ -34,7 +34,7 @@ namespace GlobalGameJam.Entities.Templates
             e.AddComponent<Sprite>(new Sprite(args[0] as Texture2D, source, new Vector2(30, 16), 1f, Color.White, 0.1f)); //Sprite
 
             Health h = new Health(3f);
-            h.OnDeath += GenericEvents.BloodyDeath(_World);
+            h.OnDeath += GenericEvents.BloodyDeath(_World, e);
             e.GetComponent<Body>().OnCollision += GenericEvents.BasicCollision();
 
             e.AddComponent<Health>(h);

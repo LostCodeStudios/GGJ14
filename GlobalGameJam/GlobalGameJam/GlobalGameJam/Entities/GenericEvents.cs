@@ -11,13 +11,13 @@ namespace GlobalGameJam.Entities
 {
     public static class GenericEvents
     {
-        public static Action<Entity> BloodyDeath(BoblinWorld world)
+        public static Action<Entity> BloodyDeath(BoblinWorld world, Entity owner)
         {
             return (e) =>
             {
-                Body b = e.GetComponent<Body>();
+                Body b = owner.GetComponent<Body>();
                 world.CreateEntity("Blood", b.Position).Refresh();
-                e.Delete();
+                owner.Delete();
             };
         }
 
@@ -37,10 +37,12 @@ namespace GlobalGameJam.Entities
 
                             h1.Damage(e2, h2.MaxHealth);
                             h2.Damage(e1, h1.MaxHealth);
+
+                            return false;
                         }
                     }
 
-                    return false;
+                    return true;
                 };
         }
     }

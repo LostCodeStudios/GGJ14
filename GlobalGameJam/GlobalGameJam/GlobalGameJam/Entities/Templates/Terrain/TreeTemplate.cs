@@ -1,4 +1,5 @@
 ﻿using GameLibrary.Dependencies.Entities;
+using GameLibrary.Dependencies.Physics.Dynamics;
 using GameLibrary.Dependencies.Physics.Factories;
 using GameLibrary.Entities.Components;
 using GameLibrary.Entities.Components.Physics;
@@ -29,7 +30,7 @@ namespace GlobalGameJam.Entities.Templates.Terrain
         public Entity BuildEntity(Entity e, params object[] args)
         {
             //gotta lok pretty. its firday put makeup on
-            Sprite sex = e.AddComponent<Sprite>(new Sprite(ScreenHelper.SpriteSheet, "tree", 0.1f));
+            Sprite sex = e.AddComponent<Sprite>(new Sprite(ScreenHelper.SpriteSheet, "tree", 0.6f));
 
             //damn look at dat body its oak
             Body bitch = e.AddComponent<Body>(new Body(world, e));
@@ -39,7 +40,8 @@ namespace GlobalGameJam.Entities.Templates.Terrain
 
 
             bitch.Position = (Vector2)args[0];
-            
+            bitch.BodyType = BodyType.Static;
+
             e.Refresh();
             return e;
         }
