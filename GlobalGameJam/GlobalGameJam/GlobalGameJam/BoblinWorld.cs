@@ -4,6 +4,7 @@ using GameLibrary.Entities.Components.Physics;
 using GlobalGameJam.Entities.Systems;
 using GlobalGameJam.Entities.Templates;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace GlobalGameJam
         {
             #region Player
             //Player
-            Entity player = this.CreateEntity("Player", Content.Load<Texture2D>("player"), new Rectangle(15, 30, 50, 30));
+            Entity player = this.CreateEntity("Player", Content.Load<Texture2D>("Textures/player"), new Rectangle(15, 30, 50, 30));
             player.Refresh();
 
             //camerashit
