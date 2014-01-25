@@ -16,11 +16,7 @@ namespace GlobalGameJam.Entities.Systems
     {
         ComponentMapper<Body> bodyMapper;
 
-#if DEBUG
         const float PLAYER_SPEED = 9f;
-#else
-        const float PLAYER_SPEED = 3f;
-#endif
 
         public PlayerControlSystem(Camera c)
             : base("Player")
@@ -76,11 +72,14 @@ namespace GlobalGameJam.Entities.Systems
                 aiming.Normalize();
                 b.LinearVelocity = -aiming * PLAYER_SPEED * 1.5f;
 
-                e.GetComponent<Health>().SetHealth(e, 10);
+                e.GetComponent<Health>().MaxHealth = 10;
                 charge -= world.Delta / 300f;
             }
             else
+            {
                 recharge = true;
+                e.GetComponent<Health>().MaxHealth = 3;
+            }
 
             if (recharge)
             {

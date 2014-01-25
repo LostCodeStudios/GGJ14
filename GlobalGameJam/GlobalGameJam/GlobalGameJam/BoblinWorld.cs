@@ -29,6 +29,7 @@ namespace GlobalGameJam
         public const float TREE_RATE = 1.25f;
         public const float CAT_RATE = 1.5f;
         public const float GOBLIN_RATE = 3f;
+        public const float KILLING_EVIL = 0.3f;
 
         public float Evil = 0f;
 

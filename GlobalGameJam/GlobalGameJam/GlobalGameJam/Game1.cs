@@ -83,7 +83,7 @@ namespace GlobalGameJam
             spriteSheet.Animations.Add("blood2", new Rectangle[] { new Rectangle(180, 327, 21, 17) });
             spriteSheet.Animations.Add("blood3", new Rectangle[] { new Rectangle(212, 331, 14, 11) });
             spriteSheet.Animations.Add("blood4", new Rectangle[] { new Rectangle(233, 328, 25, 17) });
-            spriteSheet.Animations.Add("blood5", new Rectangle[] { new Rectangle(294, 328, 14, 18) });
+            spriteSheet.Animations.Add("blood5", new Rectangle[] { new Rectangle(262, 328, 25, 21) });
 
             #endregion
 
