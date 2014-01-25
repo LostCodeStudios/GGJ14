@@ -1,7 +1,9 @@
 ﻿using GameLibrary.Dependencies.Entities;
+using GameLibrary.Dependencies.Physics.Factories;
 using GameLibrary.Entities.Components;
 using GameLibrary.Entities.Components.Physics;
 using GameLibrary.Helpers;
+using GlobalGameJam.Entities.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -29,8 +31,12 @@ namespace GlobalGameJam.Entities.Templates
             e.AddComponent<Sprite>(sprite);
 
             Body body = new Body(world, e);
-
+            FixtureFactory.AttachCircle(0.2f, 1, body);
+            body.Position = position;
             e.AddComponent<Body>(body);
+
+            BunnyAI ai = new BunnyAI();
+            e.AddComponent<BunnyAI>(ai);
 
             return e;
         }
