@@ -91,6 +91,15 @@ namespace GlobalGameJam
             spriteSheet.Animations.Add("grass1", new Rectangle[] { new Rectangle(179, 227, 32, 32) });
             spriteSheet.Animations.Add("grass2", new Rectangle[] { new Rectangle(179, 263, 32, 32) });
 
+            spriteSheet.Animations.Add("water1", new Rectangle[] { new Rectangle(217, 227, 32, 32) });
+            spriteSheet.Animations.Add("water2", new Rectangle[] { new Rectangle(217, 263, 32, 32) });
+
+            spriteSheet.Animations.Add("redground1", new Rectangle[] { new Rectangle(281, 227, 32, 32) });
+            spriteSheet.Animations.Add("redground2", new Rectangle[] { new Rectangle(281, 263, 32, 32) });
+
+            spriteSheet.Animations.Add("lava1", new Rectangle[] { new Rectangle(143, 227, 32, 32) });
+            spriteSheet.Animations.Add("lava2", new Rectangle[] { new Rectangle(143, 263, 32, 32) });
+            
             spriteSheet.Animations.Add("corpse", new Rectangle[] { new Rectangle(7, 404, 32, 20) });
 
             #region Player
