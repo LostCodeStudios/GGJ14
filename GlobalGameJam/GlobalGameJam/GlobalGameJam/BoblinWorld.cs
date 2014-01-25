@@ -1,4 +1,6 @@
 ﻿using GameLibrary;
+using GlobalGameJam.Entities.Systems;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,11 @@ namespace GlobalGameJam
     class BoblinWorld : World
     {
         #region Constructors
+        public BoblinWorld(Game game)
+            : base(game, Vector2.Zero)
+        {
 
+        }
         #endregion
 
         #region Initialization
@@ -39,6 +45,9 @@ namespace GlobalGameJam
         /// </summary>
         protected override void BuildSystems()
         {
+            playerControlSystem = this.SystemManager.SetSystem(new PlayerControlSystem(2.235f), GameLibrary.Dependencies.Entities.ExecutionType.Update, 0);
+
+
             base.BuildSystems();
         }
 
@@ -53,7 +62,7 @@ namespace GlobalGameJam
         #endregion
 
         #region Fields
-
+        PlayerControlSystem playerControlSystem;
 
         #endregion
     }
