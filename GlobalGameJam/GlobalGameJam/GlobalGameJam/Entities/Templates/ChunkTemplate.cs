@@ -27,7 +27,7 @@ namespace GlobalGameJam.Entities.Templates
                 Vector2 pos = position + new Vector2((float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE/2,
                         (float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE/2);
 
-                world.CreateEntity("Cat", pos);
+                world.CreateEntity("Cat", pos).Refresh(); ;
             }
 
             for (int i = 0; i < goblins; ++i)
