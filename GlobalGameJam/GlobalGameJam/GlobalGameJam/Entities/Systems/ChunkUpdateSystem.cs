@@ -27,18 +27,21 @@ namespace GlobalGameJam.Entities.Systems
 
         Vector2 oldPosition;
         float radius;
+        BoblinWorld bworld;
 
         #endregion
 
-        public void BuildInitial(Vector2 pos, int width, int height, int catsPer, int goblinsPer)
+
+        public void BuildInitial(Vector2 pos, int width, int height, int catsPer, int goblinsPer, BoblinWorld bworld)
         {
+            this.bworld = bworld;
             for (int x = 0; x < width; x++)
                 for (int y = 0; y < height; y++)
                 {
                     Vector2 chunkPos = pos + Chunk.SIZE*(-0.5F*new Vector2(height-1, width-1) + new Vector2( x, y)); //see paper algorithm
                     chunks.Add(new Chunk
                     (chunkPos,
-                    new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", chunkPos, catsPer, goblinsPer))));
+                    new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", chunkPos, catsPer, goblinsPer)),bworld));
                 }
         }
 
@@ -71,7 +74,7 @@ namespace GlobalGameJam.Entities.Systems
 
                     int cats = BoblinWorld.FIRST_CATS;
                     int goblins = BoblinWorld.FIRST_GOBLINS;
-                    chunks.Add(new Chunk(nChunkPos, new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", nChunkPos, cats, goblins))));
+                    chunks.Add(new Chunk(nChunkPos, new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", nChunkPos, cats, goblins)),bworld));
                 }
 
                 toRemove.Clear();
