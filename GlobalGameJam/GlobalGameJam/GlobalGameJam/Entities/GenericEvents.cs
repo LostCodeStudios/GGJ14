@@ -2,6 +2,7 @@
 using GameLibrary.Dependencies.Physics.Dynamics;
 using GameLibrary.Entities.Components.Physics;
 using GlobalGameJam.Entities.Components;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,15 @@ namespace GlobalGameJam.Entities
     {
         public static Action<Entity> BloodyDeath(BoblinWorld world, Entity owner, int bloodType)
         {
+            return BloodyDeath(world, owner, bloodType, Vector2.Zero);
+        }
+
+        public static Action<Entity> BloodyDeath(BoblinWorld world, Entity owner, int bloodType, Vector2 bloodOffset)
+        {
             return (e) =>
             {
                 Body b = owner.GetComponent<Body>();
-                world.CreateEntity("Blood", b.Position, bloodType).Refresh();
+                world.CreateEntity("Blood", b.Position + bloodOffset, bloodType).Refresh();
                 owner.Delete();
 
                 if (e.Tag == "Player") world.Evil += BoblinWorld.EVIL_INC;
