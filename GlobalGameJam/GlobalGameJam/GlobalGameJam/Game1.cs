@@ -25,7 +25,9 @@ namespace GlobalGameJam
 
         public Game1()
         {
+            Window.Title = "Cats & Goblins";
             graphics = new GraphicsDeviceManager(this);
+            
             Content.RootDirectory = "Content";
 
             graphics.PreferMultiSampling = true;
