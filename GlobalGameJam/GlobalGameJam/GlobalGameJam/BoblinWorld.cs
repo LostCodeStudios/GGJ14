@@ -31,7 +31,9 @@ namespace GlobalGameJam
         protected override void BuildEntities(Microsoft.Xna.Framework.Content.ContentManager Content, params object[] args)
         {
             #region Player
-            Entity player = this.CreateEntity("Player");
+            //Player
+            Entity player = this.CreateEntity("Player", Content.Load<Texture2D>("player"), new Rectangle(15, 30, 50, 30));
+            player.Refresh();
 
             //camerashit
             Camera.TrackingBody = player.GetComponent<Body>();
