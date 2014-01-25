@@ -46,6 +46,7 @@ namespace GlobalGameJam
             //TEST BULLSHIT
             CreateEntity("Bunny", new Vector2(5, 0)).Refresh();
             CreateEntityGroup("Chunk", "iamchunkTEST", Vector2.Zero);
+            CreateEntity("Goblin", new Vector2(-7, 0)).Refresh();
 
             base.BuildEntities(Content, args);
         }
@@ -61,6 +62,8 @@ namespace GlobalGameJam
             this.SetEntityTemplate("Bunny", new BunnyTemplate(this));
             this.SetEntityTemplate("Blood", new BloodTemplate());
 
+            this.SetEntityTemplate("Goblin", new GoblinTemplate(this));
+
             this.SetEntityGroupTemplate("Chunk", new ChunkTemplate());
                 this.SetEntityTemplate("Grass", new GrassTemplate());
                 this.SetEntityTemplate("Tree", new TreeTemplate(this));
@@ -73,7 +76,7 @@ namespace GlobalGameJam
         /// </summary>
         protected override void BuildSystems()
         {
-            playerControlSystem = this.SystemManager.SetSystem(new PlayerControlSystem(2.235f), ExecutionType.Update, 0);
+            playerControlSystem = this.SystemManager.SetSystem(new PlayerControlSystem(0.5f), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new BunnyMovementSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new BloodSystem(), ExecutionType.Update, 0);
 

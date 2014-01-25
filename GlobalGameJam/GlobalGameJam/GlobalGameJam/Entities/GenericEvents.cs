@@ -35,8 +35,14 @@ namespace GlobalGameJam.Entities
                             Health h1 = e1.GetComponent<Health>();
                             Health h2 = e2.GetComponent<Health>();
 
-                            h1.Damage(e2, h2.MaxHealth);
-                            h2.Damage(e1, h1.MaxHealth);
+                            if (h2.MaxHealth > h1.MaxHealth)
+                            {
+                                h1.Damage(e2, h2.MaxHealth);
+                            }
+                            else if (h1.MaxHealth > h2.MaxHealth)
+                            {
+                                h2.Damage(e1, h1.MaxHealth);
+                            }
 
                             return false;
                         }

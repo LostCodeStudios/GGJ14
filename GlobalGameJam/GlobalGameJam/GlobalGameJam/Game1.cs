@@ -77,6 +77,7 @@ namespace GlobalGameJam
             spriteSheet.Animations.Add("grass", new Rectangle[] { new Rectangle(34, 1, 32, 32) });
             spriteSheet.Animations.Add("blood", new Rectangle[] { new Rectangle(6, 42, 19, 22) });
             spriteSheet.Animations.Add("tree", new Rectangle[] { new Rectangle(78, 1, 25, 51) });
+            spriteSheet.Animations.Add("goblin", new Rectangle[] { new Rectangle(39, 58, 12, 26) });
         }
 
         /// <summary>

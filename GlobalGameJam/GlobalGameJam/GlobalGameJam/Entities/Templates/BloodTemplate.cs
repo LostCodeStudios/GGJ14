@@ -19,7 +19,7 @@ namespace GlobalGameJam.Entities.Templates
         {
             Vector2 position = (Vector2)args[0];
 
-            Sprite sprite = new Sprite(ScreenHelper.SpriteSheet, "blood");
+            Sprite sprite = new Sprite(ScreenHelper.SpriteSheet, "blood", 0.3f);
             e.AddComponent<Sprite>(sprite);
 
             Particle p = new Particle(e);
