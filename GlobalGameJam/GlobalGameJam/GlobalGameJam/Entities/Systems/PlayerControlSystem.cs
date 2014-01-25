@@ -14,7 +14,11 @@ namespace GlobalGameJam.Entities.Systems
     {
         ComponentMapper<Body> bodyMapper;
 
+#if DEBUG
+        const float PLAYER_SPEED = 9f;
+#else
         const float PLAYER_SPEED = 3f;
+#endif
 
         public PlayerControlSystem()
             : base("Player")

@@ -1,6 +1,7 @@
 ﻿using GameLibrary;
 using GameLibrary.Dependencies.Entities;
 using GameLibrary.Entities.Components.Physics;
+using GlobalGameJam.Entities;
 using GlobalGameJam.Entities.Systems;
 using GlobalGameJam.Entities.Templates;
 using GlobalGameJam.Entities.Templates.Terrain;
@@ -46,8 +47,8 @@ namespace GlobalGameJam
 
             //TEST BULLSHIT
             CreateEntity("Bunny", new Vector2(5, 0)).Refresh();
-            chunkUpdateSytem.BuildInitial(Vector2.Zero, 3,3);
-            CreateEntity("Goblin", new Vector2(-7, 0)).Refresh();
+            chunkUpdateSytem.BuildInitial(Vector2.Zero, 3, 3);
+            //CreateEntity("Goblin", new Vector2(-7, 0)).Refresh();
 
             base.BuildEntities(Content, args);
         }
@@ -85,7 +86,7 @@ namespace GlobalGameJam
             this.SystemManager.SetSystem(new DirectionalSpriteSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new AnimationSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new GoblinSystem(), ExecutionType.Update, 0);
-            chunkUpdateSytem = this.SystemManager.SetSystem(new ChunkUpdateSystem(64), ExecutionType.Update, 0);
+            chunkUpdateSytem = this.SystemManager.SetSystem(new ChunkUpdateSystem(Chunk.SIZE * (float)Math.Sqrt(2) + 1), ExecutionType.Update, 0);
 
             base.BuildSystems();
         }

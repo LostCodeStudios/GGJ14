@@ -1,4 +1,5 @@
 ﻿using GameLibrary.Dependencies.Entities;
+using GlobalGameJam.Entities.Systems;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -19,17 +20,17 @@ namespace GlobalGameJam.Entities.Templates
 
             Vector2 position = (Vector2)args[0];
 
-            ///and god said let there be grass
-            for (int x = 0; x < 32; x++)
-                for (int y = 0; y < 32; y++)
-                    terrain.Add(world.CreateEntity("Grass",
-                        position+new Vector2(x-16, y-16)));
+            /////and god said let there be grass
+            //for (int x = 0; x < Chunk.SIZE; x++)
+            //    for (int y = 0; y < Chunk.SIZE; y++)
+            //        terrain.Add(world.CreateEntity("Grass",
+            //            position+new Vector2(x-Chunk.SIZE/2, y-Chunk.SIZE/2)));
 
-            ////and god said, fuck okay, trees.
-            //for (int i = 0; i < 25; i++ )
-            //    terrain.Add(world.CreateEntity("Tree",
-            //        position + new Vector2((float)r.NextDouble() * 32 - 16,
-            //            (float)r.NextDouble() * 32 - 16)));
+            //and god said, fuck okay, trees.
+            for (int i = 0; i < 25; i++)
+                terrain.Add(world.CreateEntity("Tree",
+                    position + new Vector2((float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE/2,
+                        (float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE/2)));
                 return terrain.ToArray();
         }
     }

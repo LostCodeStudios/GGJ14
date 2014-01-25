@@ -34,7 +34,7 @@ namespace GlobalGameJam.Entities.Systems
             for (int x = 0; x < width; x++)
                 for (int y = 0; y < height; y++)
                 {
-                    Vector2 chunkPos = pos + new Vector2(32 * x, 32 * y) - new Vector2(32); //see paper algorithm
+                    Vector2 chunkPos = pos + Chunk.SIZE*(-0.5F*new Vector2(height-1, width-1) + new Vector2( x, y)); //see paper algorithm
                     chunks.Add(new Chunk
                     (chunkPos,
                     new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", chunkPos))));
@@ -50,9 +50,12 @@ namespace GlobalGameJam.Entities.Systems
         public override void Process(Entity e)
         {
             Vector2 pos = e.GetComponent<Body>().Position;
-            pos = new Vector2((((int)pos.X)/32)*32f, (((int)pos.Y)/32)*32f);
+            pos = new Vector2((((int)pos.X) / (int)Chunk.SIZE) * Chunk.SIZE, (((int)pos.Y) / (int)Chunk.SIZE) * Chunk.SIZE);
+
+            
             if (pos != oldPosition)
             {
+                Console.WriteLine(pos);
                 List<Chunk> toRemove = new List<Chunk>();
 
                 foreach(Chunk c in chunks)
@@ -67,6 +70,8 @@ namespace GlobalGameJam.Entities.Systems
                 }
 
                 toRemove.Clear();
+
+                oldPosition = pos;
 
             }
 
