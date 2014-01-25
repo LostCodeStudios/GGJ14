@@ -18,6 +18,9 @@ namespace GlobalGameJam.Screens
 
             this.gameplayScreen = gameplayScreen;
 
+            resume.Selected += resume_Selected;
+            quit.Selected += quit_Selected;
+
             MenuEntries.Add(resume);
             MenuEntries.Add(quit);
         }

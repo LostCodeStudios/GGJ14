@@ -19,8 +19,8 @@ namespace GlobalGameJam.Entities.Templates
             List<Entity> terrain = new List<Entity>();
 
             Vector2 position = (Vector2)args[0];
-            int cats = (int)args[1];
-            int goblins = (int)args[2];
+            int cats = BoblinWorld.FIRST_CATS;
+            int goblins = toInt(BoblinWorld.FIRST_GOBLINS);
 
             for (int i = 0; i < cats; ++i)
             {
@@ -44,6 +44,21 @@ namespace GlobalGameJam.Entities.Templates
                     position + new Vector2((float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE/2,
                         (float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE/2)));
                 return terrain.ToArray();
+        }
+
+        private bool percentChance(float chance)
+        {
+            return r.NextDouble() < chance;
+        }
+
+        private int toInt(float chance)
+        {
+            int intPart = (int)chance;
+            float decimalPart = chance - intPart;
+
+            if (percentChance(decimalPart)) intPart++;
+
+            return intPart;
         }
     }
 }

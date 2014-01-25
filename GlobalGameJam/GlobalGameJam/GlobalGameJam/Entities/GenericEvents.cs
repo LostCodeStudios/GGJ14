@@ -49,12 +49,12 @@ namespace GlobalGameJam.Entities
 
                             if (h2.MaxHealth > h1.MaxHealth)
                             {
-                                if (e1.HasComponent<Killable>())
+                                if (e1.HasComponent<Killable>() || e2.Group == "Goblins")
                                     h1.Damage(e2, h2.MaxHealth);
                             }
                             else if (h1.MaxHealth > h2.MaxHealth)
                             {
-                                if (e2.HasComponent<Killable>())
+                                if (e2.HasComponent<Killable>() || e1.Group == "Goblins")
                                     h2.Damage(e1, h1.MaxHealth);
                             }
 
@@ -79,6 +79,7 @@ namespace GlobalGameJam.Entities
                         {
                             world.CreateEntity("Heart", f2.Body.Position).Refresh();
                             e2.RemoveComponent<Heart>(e2.GetComponent<Heart>());
+                            world.Hearts++;
 
                             return false;
                         }
@@ -87,6 +88,7 @@ namespace GlobalGameJam.Entities
                         {
                             world.CreateEntity("Heart", f1.Body.Position).Refresh();
                             e1.RemoveComponent<Heart>(e1.GetComponent<Heart>());
+                            world.Hearts++;
 
                             return false;
                         }

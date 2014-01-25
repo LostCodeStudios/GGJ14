@@ -12,7 +12,7 @@ namespace GlobalGameJam.Entities.Systems
 {
     public class GoblinSystem : GroupSystem
     {
-        const float SEARCH_DISTANCE = 30;
+        const float SEARCH_DISTANCE = 10;
         const float GOBLIN_SPEED = 4;
 
         public GoblinSystem()
@@ -29,6 +29,7 @@ namespace GlobalGameJam.Entities.Systems
                 Entity target = null;
 
                 AABB box = new AABB(position, SEARCH_DISTANCE * 2, SEARCH_DISTANCE * 2);
+                float smallestDistance = float.MaxValue;
                 world.QueryAABB(
                     (f) =>
                     {
@@ -39,9 +40,8 @@ namespace GlobalGameJam.Entities.Systems
 
                         if (e1.Group != "Goblins" && e1.HasComponent<Health>())
                         {
-                            target = e1;
-
-                            return false;
+                            if (Vector2.Distance(position, b.Position) < smallestDistance)
+                                target = e1;
                         }
 
                         return true;

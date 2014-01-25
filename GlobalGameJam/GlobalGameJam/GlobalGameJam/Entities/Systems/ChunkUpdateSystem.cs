@@ -30,7 +30,7 @@ namespace GlobalGameJam.Entities.Systems
 
         #endregion
 
-        public void BuildInitial(Vector2 pos, int width, int height, int catsPer, int goblinsPer)
+        public void BuildInitial(Vector2 pos, int width, int height)
         {
             for (int x = 0; x < width; x++)
                 for (int y = 0; y < height; y++)
@@ -38,7 +38,7 @@ namespace GlobalGameJam.Entities.Systems
                     Vector2 chunkPos = pos + Chunk.SIZE*(-0.5F*new Vector2(height-1, width-1) + new Vector2( x, y)); //see paper algorithm
                     chunks.Add(
                         new Chunk((world as BoblinWorld), chunkPos,
-                            new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", chunkPos, catsPer, goblinsPer))));
+                            new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", chunkPos, BoblinWorld.FIRST_CATS, BoblinWorld.FIRST_GOBLINS))));
                 }
         }
 
@@ -69,13 +69,11 @@ namespace GlobalGameJam.Entities.Systems
                     
                     Vector2 nChunkPos = c.Delete(oldPosition, pos, world);
 
-                    int cats = BoblinWorld.FIRST_CATS;
-                    int goblins = BoblinWorld.FIRST_GOBLINS;
                     BoblinWorld.FIRST_TREES -= (int)((world as BoblinWorld).Evil * BoblinWorld.TREE_RATE);
                     BoblinWorld.FIRST_CATS -= (int)((world as BoblinWorld).Evil * BoblinWorld.CAT_RATE);
                     BoblinWorld.FIRST_GOBLINS += (int)((world as BoblinWorld).Evil * BoblinWorld.GOBLIN_RATE);
                     chunks.Add(new Chunk(
-                        (world as BoblinWorld), nChunkPos, new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", nChunkPos, cats, goblins))));
+                        (world as BoblinWorld), nChunkPos, new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", nChunkPos))));
                 }
 
                 toRemove.Clear();
