@@ -11,12 +11,22 @@ namespace GlobalGameJam.Entities
 {
     public static class GenericEvents
     {
-        public static Action<Entity> BloodyDeath(BoblinWorld world, Entity owner)
+        public static Action<Entity> BloodyDeath(BoblinWorld world, Entity owner, int bloodType)
         {
             return (e) =>
             {
                 Body b = owner.GetComponent<Body>();
-                world.CreateEntity("Blood", b.Position).Refresh();
+                world.CreateEntity("Blood", b.Position, bloodType).Refresh();
+                owner.Delete();
+            };
+        }
+
+        public static Action<Entity> CorpseDeath(BoblinWorld world, Entity owner)
+        {
+            return (e) =>
+            {
+                Body b = owner.GetComponent<Body>();
+                world.CreateEntity("Corpse", b.Position).Refresh();
                 owner.Delete();
             };
         }

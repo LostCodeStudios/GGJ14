@@ -1,4 +1,5 @@
 ﻿using GameLibrary.Dependencies.Entities;
+using GameLibrary.Dependencies.Physics.Dynamics;
 using GameLibrary.Dependencies.Physics.Factories;
 using GameLibrary.Entities.Components;
 using GameLibrary.Entities.Components.Physics;
@@ -25,18 +26,22 @@ namespace GlobalGameJam.Entities.Templates
         {
             Vector2 position = (Vector2)args[0];
 
-            Sprite sprite = new Sprite(ScreenHelper.SpriteSheet, "goblin", 0.5f);
-            sprite.Scale = 4f;
-            e.AddComponent<Sprite>(sprite);
+            e.Group = "Goblins";
+
+            DirectionalSprite ds = new DirectionalSprite("goblin");
+            e.AddComponent<DirectionalSprite>(ds);
+            e.AddComponent<Sprite>(ds.CurrentSprite);
 
             Body body = new Body(world, e);
+            body.BodyType = BodyType.Dynamic;
+            body.FixedRotation = true;
             FixtureFactory.AttachCircle(0.2f, 1f, body);
             body.Position = position;
             body.OnCollision += GenericEvents.BasicCollision();
             e.AddComponent<Body>(body);
 
             Health health = new Health(5f);
-            health.OnDeath += GenericEvents.BloodyDeath(world, e);
+            health.OnDeath += GenericEvents.BloodyDeath(world, e, 5);
             e.AddComponent<Health>(health);
 
             return e;

@@ -31,10 +31,13 @@ namespace GlobalGameJam.Entities.Templates
             e.GetComponent<Body>().BodyType = GameLibrary.Dependencies.Physics.Dynamics.BodyType.Dynamic;
             e.GetComponent<Body>().FixedRotation = true;
 
-            e.AddComponent<Sprite>(new Sprite(args[0] as Texture2D, source, new Vector2(30, 16), 1f, Color.White, 0.1f)); //Sprite
+            DirectionalSprite sprite = new DirectionalSprite("player");
+            e.AddComponent<DirectionalSprite>(sprite);
+            e.AddComponent<Sprite>(sprite.CurrentSprite);
 
             Health h = new Health(3f);
-            h.OnDeath += GenericEvents.BloodyDeath(_World, e);
+            h.OnDeath += GenericEvents.BloodyDeath(_World, e, 5);
+            h.OnDeath += GenericEvents.CorpseDeath(_World, e);
             e.GetComponent<Body>().OnCollision += GenericEvents.BasicCollision();
 
             e.AddComponent<Health>(h);

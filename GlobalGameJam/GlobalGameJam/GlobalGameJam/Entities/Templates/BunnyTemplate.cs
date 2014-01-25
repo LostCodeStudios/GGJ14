@@ -26,9 +26,10 @@ namespace GlobalGameJam.Entities.Templates
         {
             Vector2 position = (Vector2)args[0];
 
-            Sprite sprite = new Sprite(ScreenHelper.SpriteSheet, "bunny", 0.5f);
 
-            e.AddComponent<Sprite>(sprite);
+            DirectionalSprite ds = new DirectionalSprite("cat");
+            e.AddComponent<DirectionalSprite>(ds);
+            e.AddComponent<Sprite>(ds.CurrentSprite);
 
             Body body = new Body(world, e);
             FixtureFactory.AttachCircle(0.2f, 1, body);
@@ -41,7 +42,7 @@ namespace GlobalGameJam.Entities.Templates
             e.AddComponent<BunnyAI>(ai);
 
             Health health = new Health(1f);
-            health.OnDeath += GenericEvents.BloodyDeath(world, e);
+            health.OnDeath += GenericEvents.BloodyDeath(world, e, 2);
             body.OnCollision += GenericEvents.BasicCollision();
             e.AddComponent<Health>(health);
 

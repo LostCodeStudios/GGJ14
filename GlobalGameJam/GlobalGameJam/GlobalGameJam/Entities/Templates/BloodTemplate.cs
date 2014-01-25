@@ -18,8 +18,9 @@ namespace GlobalGameJam.Entities.Templates
         public Entity BuildEntity(Entity e, params object[] args)
         {
             Vector2 position = (Vector2)args[0];
+            int bloodType = (int)args[1];
 
-            Sprite sprite = new Sprite(ScreenHelper.SpriteSheet, "blood", 0.3f);
+            Sprite sprite = new Sprite(ScreenHelper.SpriteSheet, "blood" + bloodType, 0.3f);
             e.AddComponent<Sprite>(sprite);
 
             Particle p = new Particle(e);

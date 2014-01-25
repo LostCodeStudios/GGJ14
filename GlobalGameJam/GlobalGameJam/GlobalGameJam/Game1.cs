@@ -74,10 +74,142 @@ namespace GlobalGameJam
         void sourceRectangles(SpriteSheet spriteSheet)
         {
             spriteSheet.Animations.Add("bunny", new Rectangle[] { new Rectangle(6, 8, 23, 20) });
-            spriteSheet.Animations.Add("grass", new Rectangle[] { new Rectangle(34, 1, 32, 32) });
-            spriteSheet.Animations.Add("blood", new Rectangle[] { new Rectangle(6, 42, 19, 22) });
+
+            #region Blood
+
+            spriteSheet.Animations.Add("blood1", new Rectangle[] { new Rectangle(159, 335, 3, 3) });
+            spriteSheet.Animations.Add("blood2", new Rectangle[] { new Rectangle(180, 327, 21, 17) });
+            spriteSheet.Animations.Add("blood3", new Rectangle[] { new Rectangle(212, 331, 14, 11) });
+            spriteSheet.Animations.Add("blood4", new Rectangle[] { new Rectangle(233, 328, 25, 17) });
+            spriteSheet.Animations.Add("blood5", new Rectangle[] { new Rectangle(294, 328, 14, 18) });
+
+            #endregion
+
             spriteSheet.Animations.Add("tree", new Rectangle[] { new Rectangle(78, 1, 25, 51) });
             spriteSheet.Animations.Add("goblin", new Rectangle[] { new Rectangle(39, 58, 12, 26) });
+
+            spriteSheet.Animations.Add("grass1", new Rectangle[] { new Rectangle(179, 227, 32, 32) });
+            spriteSheet.Animations.Add("grass2", new Rectangle[] { new Rectangle(179, 263, 32, 32) });
+
+            spriteSheet.Animations.Add("corpse", new Rectangle[] { new Rectangle(7, 404, 32, 20) });
+
+            #region Player
+            spriteSheet.Animations.Add("playerMoveRight", new Rectangle[] { 
+                new Rectangle(42, 248, 32, 32),
+                new Rectangle(78, 248, 32, 32) 
+            });
+
+            spriteSheet.Animations.Add("playerMoveDown", new Rectangle[] { 
+                new Rectangle(36, 284, 32, 32),
+                new Rectangle(68, 284, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("playerMoveLeft", new Rectangle[] { 
+                new Rectangle(40, 320, 32, 32),
+                new Rectangle(76, 320, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("playerMoveUp", new Rectangle[] { 
+                new Rectangle(38, 358, 32, 32),
+                new Rectangle(70, 358, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("playerRight", new Rectangle[] { 
+                new Rectangle(6, 248, 32, 32) 
+            });
+
+            spriteSheet.Animations.Add("playerDown", new Rectangle[] { 
+                new Rectangle(6, 284, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("playerLeft", new Rectangle[] { 
+                new Rectangle(5, 320, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("playerUp", new Rectangle[] { 
+                new Rectangle(4, 358, 32, 32)
+            });
+            #endregion
+
+            #region Cats
+
+            spriteSheet.Animations.Add("catMoveRight", new Rectangle[] { 
+                new Rectangle(185, 113, 24, 21),
+                new Rectangle(212, 113, 24, 21)
+            });
+
+            spriteSheet.Animations.Add("catMoveDown", new Rectangle[] { 
+                new Rectangle(179, 136, 18, 21),
+                new Rectangle(203, 136, 18, 21)
+            });
+
+            spriteSheet.Animations.Add("catMoveLeft", new Rectangle[] { 
+                new Rectangle(185, 162, 24, 21),
+                new Rectangle(212, 162, 24, 21)
+            });
+
+            spriteSheet.Animations.Add("catMoveUp", new Rectangle[] { 
+                new Rectangle(184, 187, 18, 21),
+                new Rectangle(208, 187, 18, 21)
+            });
+
+            spriteSheet.Animations.Add("catRight", new Rectangle[] { 
+                new Rectangle(158, 113, 24, 21) 
+            });
+
+            spriteSheet.Animations.Add("catDown", new Rectangle[] { 
+                new Rectangle(158, 136, 18, 21)
+            });
+
+            spriteSheet.Animations.Add("catLeft", new Rectangle[] { 
+                new Rectangle(158, 162, 24, 21)
+            });
+
+            spriteSheet.Animations.Add("catUp", new Rectangle[] { 
+                new Rectangle(160, 187, 18, 21)
+            });
+
+            #endregion
+
+            #region Goblins
+
+            spriteSheet.Animations.Add("goblinMoveRight", new Rectangle[] { 
+                new Rectangle(39, 98, 32, 32),
+                new Rectangle(75, 98, 32, 32) 
+            });
+
+            spriteSheet.Animations.Add("goblinMoveDown", new Rectangle[] { 
+                new Rectangle(36, 135, 32, 32),
+                new Rectangle(72, 135, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("goblinMoveLeft", new Rectangle[] { 
+                new Rectangle(40, 171, 32, 32),
+                new Rectangle(76, 171, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("goblinMoveUp", new Rectangle[] { 
+                new Rectangle(39, 207, 32, 32),
+                new Rectangle(75, 207, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("goblinRight", new Rectangle[] { 
+                new Rectangle(39, 98, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("goblinDown", new Rectangle[] { 
+                new Rectangle(2, 135, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("goblinLeft", new Rectangle[] { 
+                new Rectangle(40, 171, 32, 32)
+            });
+
+            spriteSheet.Animations.Add("goblinUp", new Rectangle[] { 
+                new Rectangle(3, 207, 32, 32)
+            });
+
+            #endregion
         }
 
         /// <summary>
