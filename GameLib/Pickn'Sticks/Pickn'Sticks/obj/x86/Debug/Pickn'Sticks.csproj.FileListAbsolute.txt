@@ -1,0 +1,12 @@
+C:\Users\Nathaniel\Desktop\GameLib\Pickn'Sticks\Pickn'Sticks\bin\x86\Debug\Content\player.xnb
+C:\Users\Nathaniel\Desktop\GameLib\Pickn'Sticks\Pickn'Sticks\bin\x86\Debug\Content\terrain.xnb
+C:\Users\Nathaniel\Desktop\GameLib\Pickn'Sticks\Pickn'Sticks\bin\x86\Debug\Content\stick.xnb
+C:\Users\Nathaniel\Desktop\GameLib\Pickn'Sticks\Pickn'Sticks\bin\x86\Debug\Content\plants.xnb
+C:\Users\Nathaniel\Desktop\GameLib\Pickn'Sticks\Pickn'Sticks\bin\x86\Debug\Content\Fonts\debugfont.xnb
+C:\Users\Nathaniel\Desktop\GameLib\Pickn'Sticks\Pickn'Sticks\bin\x86\Debug\Pickn'Sticks.exe
+C:\Users\Nathaniel\Desktop\GameLib\Pickn'Sticks\Pickn'Sticks\bin\x86\Debug\Pickn'Sticks.pdb
+C:\Users\Nathaniel\Desktop\GameLib\Pickn'Sticks\Pickn'Sticks\bin\x86\Debug\GameLibrary.dll
+C:\Users\Nathaniel\Desktop\GameLib\Pickn'Sticks\Pickn'Sticks\bin\x86\Debug\GameLibrary.pdb
+C:\Users\Nathaniel\Desktop\GameLib\Pickn'Sticks\Pickn'Sticks\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nathaniel\Desktop\GameLib\Pickn'Sticks\Pickn'Sticks\obj\x86\Debug\Pickn'Sticks.exe
+C:\Users\Nathaniel\Desktop\GameLib\Pickn'Sticks\Pickn'Sticks\obj\x86\Debug\Pickn'Sticks.pdb

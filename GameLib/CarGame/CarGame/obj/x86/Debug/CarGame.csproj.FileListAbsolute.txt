@@ -1,0 +1,11 @@
+C:\Users\Nathaniel\Desktop\GameLib\CarGame\CarGame\bin\x86\Debug\Content\car.xnb
+C:\Users\Nathaniel\Desktop\GameLib\CarGame\CarGame\bin\x86\Debug\Content\wheel.xnb
+C:\Users\Nathaniel\Desktop\GameLib\CarGame\CarGame\bin\x86\Debug\Content\Fonts\debugfont.xnb
+C:\Users\Nathaniel\Desktop\GameLib\CarGame\CarGame\bin\x86\Debug\CarGame.exe
+C:\Users\Nathaniel\Desktop\GameLib\CarGame\CarGame\bin\x86\Debug\CarGame.pdb
+C:\Users\Nathaniel\Desktop\GameLib\CarGame\CarGame\bin\x86\Debug\GameLibrary.dll
+C:\Users\Nathaniel\Desktop\GameLib\CarGame\CarGame\bin\x86\Debug\GameLibrary.pdb
+C:\Users\Nathaniel\Desktop\GameLib\CarGame\CarGame\obj\x86\Debug\CarGame.csprojResolveAssemblyReference.cache
+C:\Users\Nathaniel\Desktop\GameLib\CarGame\CarGame\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nathaniel\Desktop\GameLib\CarGame\CarGame\obj\x86\Debug\CarGame.exe
+C:\Users\Nathaniel\Desktop\GameLib\CarGame\CarGame\obj\x86\Debug\CarGame.pdb

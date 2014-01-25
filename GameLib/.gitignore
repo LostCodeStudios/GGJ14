@@ -1,0 +1,73 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.cache
+*.pdb
+/GameLib/README.md
+*.user
+bin/*
+obj/*
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+*.cachefile
+*.FileListAbsolute.txt
+*.cache
+*.suo
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+*.suo
+bin
+obj
+*.cache
+*.pdb
+*.txt
+*.dll
+*.pdb
+/GameLibTest/GameLibTest/obj/x86/Debug/cachefile-{565D78F0-C5A3-485E-8D18-21CDCDFDBD7A}-targetpath.txt
+/GameLibTest/GameLibTest/obj/x86/Debug/ContentPipeline-{565D78F0-C5A3-485E-8D18-21CDCDFDBD7A}.xml
+/GameLibTest/GameLibTest/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/GameLibTest/GameLibTest/obj/x86/Debug/GameLibTest.csproj.FileListAbsolute.txt
+/GameLibTest/GameLibTest/obj/x86/Debug/GameLibTest.csprojResolveAssemblyReference.cache
+/GameLibTest/GameLibTest/obj/x86/Debug/GameLibTest.exe
+/GameLibTest/GameLibTest/obj/x86/Debug/GameLibTest.pdb
+/GameLibTest/GameLibTest/obj/x86/Debug/Microsoft.Xna.Framework.RuntimeProfile.txt
+/GameLibTest/GameLibTest/bin/x86/Debug/Content
+/GameLibTest/GameLibTest/bin/x86/Debug/FarseerPhysicsXNA.dll
+/GameLibTest/GameLibTest/bin/x86/Debug/FarseerPhysicsXNA.pdb
+/GameLibTest/GameLibTest/bin/x86/Debug/FarseerPhysicsXNA.xml
+/GameLibTest/GameLibTest/bin/x86/Debug/GameLib.dll
+/GameLibTest/GameLibTest/bin/x86/Debug/GameLib.pdb
+/GameLibTest/GameLibTest/bin/x86/Debug/GameLibTest.exe
+/GameLibTest/GameLibTest/bin/x86/Debug/GameLibTest.pdb
+/GameLibrary/Dependencies/Entities/BlackBoard/triggermulticondition (716SLAB25-00206's conflicted copy 2013-05-02).cs
