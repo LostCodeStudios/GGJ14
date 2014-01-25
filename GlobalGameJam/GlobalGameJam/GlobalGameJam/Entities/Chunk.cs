@@ -13,7 +13,7 @@ namespace GlobalGameJam.Entities
 {
     public class Chunk
     {
-        public static float SIZE = 24;
+        public static float SIZE = 32;
 
         static Dictionary<int, string> tileKeys;
         static Random r = new Random();

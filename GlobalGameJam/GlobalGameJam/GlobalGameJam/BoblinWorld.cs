@@ -17,9 +17,9 @@ namespace GlobalGameJam
 {
     public class BoblinWorld : World
     {
-        public static int FIRST_CATS = 5;
+        public static int FIRST_CATS = 10;
         public static float FIRST_GOBLINS = 0f;
-        public static int FIRST_TREES = 25;
+        public static int FIRST_TREES = 40;
 
 
         public const float EVIL_INC = 0.03f;
