@@ -1,5 +1,0 @@
-Content\player.xnb
-Content\terrain.xnb
-Content\stick.xnb
-Content\plants.xnb
-Content\Fonts\debugfont.xnb

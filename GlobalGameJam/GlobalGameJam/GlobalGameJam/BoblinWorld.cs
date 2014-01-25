@@ -45,7 +45,7 @@ namespace GlobalGameJam
 
             //TEST BULLSHIT
             CreateEntity("Bunny", new Vector2(5, 0)).Refresh();
-            CreateEntityGroup("Chunk", "iamchunkTEST", Vector2.Zero);
+            chunkUpdateSytem.BuildInitial(Vector2.Zero, 3,3);
             CreateEntity("Goblin", new Vector2(-7, 0)).Refresh();
 
             base.BuildEntities(Content, args);
@@ -79,6 +79,7 @@ namespace GlobalGameJam
             playerControlSystem = this.SystemManager.SetSystem(new PlayerControlSystem(0.5f), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new BunnyMovementSystem(), ExecutionType.Update, 0);
             this.SystemManager.SetSystem(new BloodSystem(), ExecutionType.Update, 0);
+            chunkUpdateSytem = this.SystemManager.SetSystem(new ChunkUpdateSystem(64), ExecutionType.Update, 0);
 
             base.BuildSystems();
         }
@@ -95,7 +96,7 @@ namespace GlobalGameJam
 
         #region Fields
         PlayerControlSystem playerControlSystem;
-
+        ChunkUpdateSystem chunkUpdateSytem;
         #endregion
     }
 }

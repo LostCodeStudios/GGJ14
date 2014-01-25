@@ -15,20 +15,31 @@ namespace GlobalGameJam.Entities.Systems
         /// </summary>
         /// <param name="width"></param>
         /// <param name="height"></param>
-        public ChunkUpdateSystem(int width = 3, int height= 3) : base("Player")
+        public ChunkUpdateSystem(float chunkR) : base("Player")
         {
-            this.width = width;
-            this.height = height;
-
-            chunks = new KeyValuePair<Vector2, List<Entity>>[width, height];
+            chunks = new List<Chunk>();
+            radius = chunkR;
         }
         #region Fields
-        KeyValuePair<Vector2, List<Entity>>[,] chunks;
 
-        int width;
-        int height;
+        List<Chunk> chunks;
+
+        Vector2 oldPosition;
+        float radius;
 
         #endregion
+
+        public void BuildInitial(Vector2 pos, int width, int height)
+        {
+            for (int x = 0; x < width; x++)
+                for (int y = 0; y < height; y++)
+                {
+                    Vector2 chunkPos = pos + new Vector2(32 * x, 32 * y) - new Vector2(32); //see paper algorithm
+                    chunks.Add(new Chunk
+                    (chunkPos,
+                    new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", chunkPos))));
+                }
+        }
 
         /// <summary>
         /// Processes the player versus the locations of the chunks.
@@ -39,100 +50,32 @@ namespace GlobalGameJam.Entities.Systems
         public override void Process(Entity e)
         {
             Vector2 pos = e.GetComponent<Body>().Position;
-
-            #region Edge Detection
-            //Check top/bot
-            for (int x = 0; x < width; x++)
+            pos = new Vector2((((int)pos.X)/32)*32f, (((int)pos.Y)/32)*32f);
+            if (pos != oldPosition)
             {
-                Vector2 top = chunks[x, 0].Key;
-                Vector2 bottom = chunks[x, height - 1].Key;
+                List<Chunk> toRemove = new List<Chunk>();
 
-                if (Vector2.Distance(top, pos) > Math.Sqrt(2) * 32)
-                {
-                    DestroyChunk(x, 0);
-                    MoveCollumn(x, false);
-                }
-                else if (Vector2.Distance(bottom, pos) > Math.Sqrt(2) * 32)
-                {
-                    DestroyChunk(x, height - 1);
-                    MoveCollumn(x, true);
-                }
-            }
+                foreach(Chunk c in chunks)
+                    if(Vector2.Distance(c.Position, pos) > radius)
+                        toRemove.Add(c);
 
-            //Check left.right
-            for (int y = 0; y < height; y++)
-            {
-                Vector2 left = chunks[0, y].Key;
-                Vector2 right = chunks[width -1, y].Key;
-
-                if (Vector2.Distance(left, pos) > Math.Sqrt(2) * 32)
+                foreach(Chunk c in toRemove)
                 {
-                    DestroyChunk(0, y);
-                    MoveRow(y, false);
+                    chunks.Remove(c);
+                    Vector2 nChunkPos = c.Delete(oldPosition, pos);
+                    chunks.Add(new Chunk(nChunkPos, new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", nChunkPos))));
                 }
 
-                if (Vector2.Distance(right, pos) > Math.Sqrt(2) * 32)
-                {
-                    DestroyChunk(width-1, y);
-                    MoveRow(y, true);
-                }
+                toRemove.Clear();
 
             }
 
-            #endregion
-
-            #region Replenishment
-
-            for (int x = 0; x < width; x++)
-                for (int y = 0; y < height; y++)
-                    if (chunks[x, y].Value == null){
-                        Vector2 chunkPos = pos+new Vector2(32*x,32*y) - new Vector2(32); //see paper algorithm
-                        chunks[x,y] = new KeyValuePair<Vector2, List<Entity>>
-                        (chunkPos,
-                        new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", chunkPos)));
-                    }
-
-            #endregion
 
         }
 
-        private void DestroyChunk(int x, int y){
-            KeyValuePair<Vector2, List<Entity>> chunk = chunks[x, y];
-            if(chunk.Value != null)
-                foreach (Entity e in chunk.Value)
-                    e.Delete();
-        }
-
-        private void MoveCollumn(int x, bool down)
-        {
-            if (down)
-            {
-                chunks[x, height - 1] = chunks[x, height - 2];
-                chunks[x, height - 2] = chunks[x, 0];
-                chunks[x, 0] = new KeyValuePair<Vector2, List<Entity>>(Vector2.Zero, null);
-            }
-            else
-            {
-                chunks[x, 0] = chunks[x, height - 2];
-                chunks[x, height - 2] = chunks[x, height - 1];
-                chunks[x, height-1] = new KeyValuePair<Vector2, List<Entity>>(Vector2.Zero, null);
-            }
-        }
-
-        private void MoveRow(int y, bool right)
-        {
-            if (right)
-            {
-                chunks[width - 1, y] = chunks[width - 2, y];
-                chunks[width - 2, y] = chunks[0, y];
-                chunks[0, y] = new KeyValuePair<Vector2, List<Entity>>(Vector2.Zero, null);
-            }
-            else
-            {
-                chunks[0, y] = chunks[width - 2, y];
-                chunks[width - 2, y] = chunks[width-1, y];
-                chunks[width-1, y] = new KeyValuePair<Vector2, List<Entity>>(Vector2.Zero, null);
-            }
+        private void DestroyChunk(List<Entity> chunk){;
+            foreach (Entity e in chunk)
+                e.Delete();
         }
     }
 }
