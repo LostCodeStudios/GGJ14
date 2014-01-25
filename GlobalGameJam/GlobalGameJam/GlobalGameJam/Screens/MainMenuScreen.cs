@@ -10,7 +10,7 @@ namespace GlobalGameJam.Screens
     public class MainMenuScreen : MenuScreen
     {
         public MainMenuScreen()
-            : base("Bunnies & Goblins")
+            : base("Cats & Goblins")
         {
             MenuEntry playGameEntry;
             MenuEntry quitEntry;

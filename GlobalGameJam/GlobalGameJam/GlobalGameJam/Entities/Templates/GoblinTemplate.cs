@@ -44,6 +44,8 @@ namespace GlobalGameJam.Entities.Templates
             health.OnDeath += GenericEvents.BloodyDeath(world, e, 5);
             e.AddComponent<Health>(health);
 
+            e.AddComponent<Killable>(new Killable());
+
             return e;
         }
     }

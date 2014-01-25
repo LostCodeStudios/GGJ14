@@ -46,7 +46,14 @@ namespace GlobalGameJam.Entities.Templates
             body.OnCollision += GenericEvents.ReleaseHeart(world);
             e.AddComponent<Health>(health);
 
-            e.AddComponent<Heart>(new Heart());
+            if (world.Evil <= BoblinWorld.KILLING_EVIL)
+            {
+                e.AddComponent<Heart>(new Heart());
+            }
+            else
+            {
+                e.AddComponent<Killable>(new Killable());
+            }
             
             return e;
         }
