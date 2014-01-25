@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using GameLibrary.GameStates;
 
 namespace GlobalGameJam
 {
@@ -18,6 +19,7 @@ namespace GlobalGameJam
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        ScreenManager screenManager;
 
         public Game1()
         {
@@ -47,7 +49,7 @@ namespace GlobalGameJam
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            screenManager = new ScreenManager(this);
         }
 
         /// <summary>
@@ -71,6 +73,7 @@ namespace GlobalGameJam
                 this.Exit();
 
             // TODO: Add your update logic here
+            screenManager.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -84,6 +87,7 @@ namespace GlobalGameJam
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            screenManager.Draw(gameTime);
 
             base.Draw(gameTime);
         }

@@ -83,6 +83,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\GameLib\GameLibrary\GameLibrary.csproj">
+      <Project>{49ba83bf-05df-400b-b33a-3cbe32443d04}</Project>
+      <Name>GameLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GlobalGameJamContent\GlobalGameJamContent.contentproj">
       <Name>GlobalGameJamContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>
