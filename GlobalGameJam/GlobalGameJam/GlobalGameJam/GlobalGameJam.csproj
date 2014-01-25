@@ -86,6 +86,7 @@
     <Compile Include="Entities\Templates\BloodTemplate.cs" />
     <Compile Include="Entities\Templates\ChunkTemplate.cs" />
     <Compile Include="Entities\Templates\BunnyTemplate.cs" />
+    <Compile Include="Entities\Templates\CorpseTemplate.cs" />
     <Compile Include="Entities\Templates\GoblinTemplate.cs" />
     <Compile Include="Entities\Templates\PlayerTemplate.cs" />
     <Compile Include="Entities\Templates\Terrain\GrassTemplate.cs" />

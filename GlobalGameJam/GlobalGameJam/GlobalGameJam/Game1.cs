@@ -74,12 +74,20 @@ namespace GlobalGameJam
         void sourceRectangles(SpriteSheet spriteSheet)
         {
             spriteSheet.Animations.Add("bunny", new Rectangle[] { new Rectangle(6, 8, 23, 20) });
-            spriteSheet.Animations.Add("blood", new Rectangle[] { new Rectangle(6, 42, 19, 22) });
+
+            spriteSheet.Animations.Add("blood1", new Rectangle[] { new Rectangle(159, 335, 3, 3) });
+            spriteSheet.Animations.Add("blood2", new Rectangle[] { new Rectangle(180, 327, 21, 17) });
+            spriteSheet.Animations.Add("blood3", new Rectangle[] { new Rectangle(212, 331, 14, 11) });
+            spriteSheet.Animations.Add("blood4", new Rectangle[] { new Rectangle(233, 328, 25, 17) });
+            spriteSheet.Animations.Add("blood5", new Rectangle[] { new Rectangle(294, 328, 14, 18) });
+
             spriteSheet.Animations.Add("tree", new Rectangle[] { new Rectangle(78, 1, 25, 51) });
             spriteSheet.Animations.Add("goblin", new Rectangle[] { new Rectangle(39, 58, 12, 26) });
 
             spriteSheet.Animations.Add("grass1", new Rectangle[] { new Rectangle(179, 227, 32, 32) });
             spriteSheet.Animations.Add("grass2", new Rectangle[] { new Rectangle(179, 263, 32, 32) });
+
+            spriteSheet.Animations.Add("corpse", new Rectangle[] { new Rectangle(7, 404, 32, 20) });
 
             #region Player
             spriteSheet.Animations.Add("playerMoveRight", new Rectangle[] { 

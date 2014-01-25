@@ -26,7 +26,6 @@ namespace GlobalGameJam.Entities.Templates
             Vector2 position = (Vector2)args[0];
 
             Sprite sprite = new Sprite(ScreenHelper.SpriteSheet, "goblin", 0.5f);
-            sprite.Scale = 4f;
             e.AddComponent<Sprite>(sprite);
 
             Body body = new Body(world, e);
@@ -36,7 +35,7 @@ namespace GlobalGameJam.Entities.Templates
             e.AddComponent<Body>(body);
 
             Health health = new Health(5f);
-            health.OnDeath += GenericEvents.BloodyDeath(world, e);
+            health.OnDeath += GenericEvents.BloodyDeath(world, e, 5);
             e.AddComponent<Health>(health);
 
             return e;
