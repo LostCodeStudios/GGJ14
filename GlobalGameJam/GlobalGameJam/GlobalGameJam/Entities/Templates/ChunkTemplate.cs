@@ -26,10 +26,10 @@ namespace GlobalGameJam.Entities.Templates
                         position+new Vector2(x-16, y-16)));
 
             //and god said, fuck okay, trees.
-            for (int i = 0; i < 1000; i++) //Loop over tree density
-                if(r.NextDouble() < .25)
-                    terrain.Add(world.CreateEntity("Tree",
-                        position + new Vector2((float)r.NextDouble()*32-16)));
+            for (int i = 0; i < 25; i++ )
+                terrain.Add(world.CreateEntity("Tree",
+                    position + new Vector2((float)r.NextDouble() * 32 - 16,
+                        (float)r.NextDouble() * 32 - 16)));
                 return terrain.ToArray();
         }
     }

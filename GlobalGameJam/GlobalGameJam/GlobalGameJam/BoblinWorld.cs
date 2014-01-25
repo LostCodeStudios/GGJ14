@@ -62,6 +62,7 @@ namespace GlobalGameJam
 
             this.SetEntityGroupTemplate("Chunk", new ChunkTemplate());
                 this.SetEntityTemplate("Grass", new GrassTemplate());
+                this.SetEntityTemplate("Tree", new TreeTemplate(this));
 
             base.BuildTemplates(Content, args);
         }
