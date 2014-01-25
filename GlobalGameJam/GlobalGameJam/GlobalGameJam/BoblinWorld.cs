@@ -3,6 +3,7 @@ using GameLibrary.Dependencies.Entities;
 using GameLibrary.Entities.Components.Physics;
 using GlobalGameJam.Entities.Systems;
 using GlobalGameJam.Entities.Templates;
+using GlobalGameJam.Entities.Templates.Terrain;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -42,7 +43,9 @@ namespace GlobalGameJam
             Camera.EnableRotationTracking = false;
             #endregion
 
+            //TEST BULLSHIT
             CreateEntity("Bunny", new Vector2(5, 0)).Refresh();
+            CreateEntityGroup("Chunk", "iamchunkTEST", Vector2.Zero);
 
             base.BuildEntities(Content, args);
         }
@@ -56,6 +59,9 @@ namespace GlobalGameJam
         {
             this.SetEntityTemplate("Player", new PlayerTemplate(this));
             this.SetEntityTemplate("Bunny", new BunnyTemplate(this));
+
+            this.SetEntityGroupTemplate("Chunk", new ChunkTemplate());
+                this.SetEntityTemplate("Grass", new GrassTemplate());
 
             base.BuildTemplates(Content, args);
         }

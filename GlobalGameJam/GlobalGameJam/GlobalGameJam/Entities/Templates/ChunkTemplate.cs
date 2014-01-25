@@ -21,7 +21,7 @@ namespace GlobalGameJam.Entities.Templates
             ///make grass
             for (int x = 0; x < 32; x++)
                 for (int y = 0; y < 32; y++)
-                    terrain.Add(world.CreateEntity("grass",
+                    terrain.Add(world.CreateEntity("Grass",
                         position+new Vector2(x-16, y-16)));
 
             return terrain.ToArray();
