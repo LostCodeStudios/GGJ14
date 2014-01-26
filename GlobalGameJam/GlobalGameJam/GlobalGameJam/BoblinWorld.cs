@@ -119,6 +119,16 @@ namespace GlobalGameJam
             SystemManager.SetSystem(new ChunkRenderSystem(SpriteBatch, Camera), ExecutionType.Draw, -1);
 
             base.BuildSystems();
+
+            playerControlSystem.Enabled = false;
+        }
+
+        /// <summary>
+        /// Starts the game
+        /// </summary>
+        public void Start()
+        {
+            playerControlSystem.Enabled = true;
         }
 
         #endregion

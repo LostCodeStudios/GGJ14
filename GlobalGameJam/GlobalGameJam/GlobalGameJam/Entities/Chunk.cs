@@ -35,9 +35,9 @@ namespace GlobalGameJam.Entities
                 tileKeys.Add(2, "water1");
                 tileKeys.Add(3, "water2");
                 tileKeys.Add(4, "corrupt");
-                tileKeys.Add(5, "corrupt2");
-                tileKeys.Add(6, "lava1");
-                tileKeys.Add(7, "lava2");
+                tileKeys.Add(7, "corrupt2");
+                tileKeys.Add(5, "lava1");
+                tileKeys.Add(6, "lava2");
             }
 
             for (int y = 0; y < SIZE; ++y)
@@ -48,12 +48,7 @@ namespace GlobalGameJam.Entities
 
                     if (percentChance(bworld.Evil * BoblinWorld.REDGROUND_COEF))
                     {
-                        tiles[y, x] = r.Next(2) + 4;
-
-                        if (percentChance(BoblinWorld.LAVA_CHANCE))
-                        {
-                            tiles[y, x] = r.Next(2) + 6;
-                        }
+                        tiles[y, x] = r.Next(1)*3 + 4;
                     }
                 }
             }
@@ -85,12 +80,12 @@ namespace GlobalGameJam.Entities
             {
                 for (int x = 0; x < SIZE; ++x)
                 {
-                    int idx = (tiles[x,y] == 4 || tiles[x,y] == 5) ? tiles[x, y] -4 : tiles[x,y];
+                    int idx = (tiles[x,y] == 4 || tiles[x,y] == 7) ? tiles[x, y] -4 : tiles[x,y];
                     source = spriteSheet.Animations[tileKeys[idx]][0];
 
                     Vector2 position = new Vector2(Position.X - SIZE / 2 + x, Position.Y - SIZE / 2 + y);
 
-                    float colorSub = 255 * (bworld.Evil) + ((tiles[x, y] == 4 || tiles[x, y] == 5) ? tiles[x,y]*4 : 0);
+                    float colorSub = 255 * (bworld.Evil) * BoblinWorld.REDGROUND_COEF + ((tiles[x, y] == 4 || tiles[x, y] == 7) ? tiles[x,y]*4 : 0);
 
                     int colorValue = (int)(255 - colorSub);
                         
