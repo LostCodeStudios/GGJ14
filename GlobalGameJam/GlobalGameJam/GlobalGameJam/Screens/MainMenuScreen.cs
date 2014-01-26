@@ -1,6 +1,8 @@
 ﻿using GameLibrary.GameStates.Screens;
+using GameLibrary.Helpers;
 using GameLibrary.Input;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,12 +70,30 @@ namespace GlobalGameJam.Screens
         {
             world.Draw(gameTime);
             base.Draw(gameTime);
+
+            Manager.SpriteBatch.Begin();
+            Vector2 position = new Vector2(ScreenHelper.Viewport.Width / 14, 7 * ScreenHelper.Viewport.Height / 8);
+            string soundMessage = "(S)ound: " + (SoundManager.Volume > 0 ? "On" : "Off");
+            Manager.SpriteBatch.DrawString(Manager.Font, soundMessage, position, Color.White);
+            Manager.SpriteBatch.End();
         }
 
         public override void HandleInput(GameTime gameTime, InputState input)
         {
             base.HandleInput(gameTime, input);
-            base.Draw(gameTime);
+
+            PlayerIndex idx;
+            if (input.IsKeyPressed(Keys.S, null, out idx))
+            {
+                if (SoundManager.Volume != 0)
+                {
+                    SoundManager.Volume = 0;
+                }
+                else
+                {
+                    SoundManager.Volume = 1;
+                }
+            }
         }
     }
 }

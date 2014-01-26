@@ -72,7 +72,11 @@ namespace GlobalGameJam.Entities.Systems
                 Vector2 mouseLoc = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
                 Vector2 mouseWorldLoc = camera.ConvertScreenToWorld(mouseLoc);
 
-                if (Vector2.Distance(b.Position, mouseWorldLoc) < CLICK_TOO_CLOSE) return;
+                if (Vector2.Distance(b.Position, mouseWorldLoc) < CLICK_TOO_CLOSE)
+                {
+                    recharge = true;
+                    return;
+                }
 
                 Vector2 aiming = b.Position - mouseWorldLoc;
                 aiming.Normalize();
