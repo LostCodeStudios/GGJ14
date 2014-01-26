@@ -90,10 +90,12 @@ namespace GlobalGameJam.Screens
                 if (SoundManager.Volume != 0)
                 {
                     SoundManager.Volume = 0;
+                    MusicManager.Volume = 0;
                 }
                 else
                 {
                     SoundManager.Volume = 1;
+                    MusicManager.Volume = 1;
                 }
             }
         }

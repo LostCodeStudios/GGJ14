@@ -100,7 +100,7 @@ namespace GlobalGameJam.Entities
 
                         if (e1.Tag == "Player" && e2.HasComponent<Heart>())
                         {
-                            world.CreateEntity("Heart", f2.Body.Position).Refresh();
+                            world.CreateEntity("Heart", f2.Body).Refresh();
                             e2.RemoveComponent<Heart>(e2.GetComponent<Heart>());
                             world.Hearts++;
                             SoundManager.Play("Heart");
@@ -114,7 +114,7 @@ namespace GlobalGameJam.Entities
 
                         else if (e2.Tag == "Player" && e1.HasComponent<Heart>())
                         {
-                            world.CreateEntity("Heart", f1.Body.Position).Refresh();
+                            world.CreateEntity("Heart", f1.Body).Refresh();
                             e1.RemoveComponent<Heart>(e1.GetComponent<Heart>());
                             world.Hearts++;
                             SoundManager.Play("Heart");

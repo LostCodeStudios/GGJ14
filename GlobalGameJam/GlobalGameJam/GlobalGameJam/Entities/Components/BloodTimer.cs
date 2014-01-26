@@ -1,4 +1,5 @@
 ﻿using GameLibrary.Dependencies.Entities;
+using GameLibrary.Entities.Components.Physics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace GlobalGameJam.Entities.Components
     {
         public float Time;
         public float StartTime;
+
+        public Body TrackingBody;
 
         public BloodTimer(float time)
         {

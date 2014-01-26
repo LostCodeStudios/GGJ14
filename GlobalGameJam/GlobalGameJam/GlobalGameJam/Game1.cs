@@ -74,6 +74,9 @@ namespace GlobalGameJam
             sounds();
 
             base.LoadContent();
+
+            MusicManager.IsRepeating = true;
+            MusicManager.PlaySong("Music");
         }
 
         void sounds()
@@ -82,6 +85,9 @@ namespace GlobalGameJam
             SoundManager.Add("Heart", Content.Load<SoundEffect>("Sounds/Powerup35"));
             SoundManager.Add("Hit", Content.Load<SoundEffect>("Sounds/Hit_Hurt59"));
             SoundManager.Add("Door", Content.Load<SoundEffect>("Sounds/Hit_Hurt90"));
+            SoundManager.Add("Dash", Content.Load<SoundEffect>("Sounds/Explosion30"));
+
+            MusicManager.AddSong("Music", Content.Load<Song>("Music/AHeroisBorn_tgfcoder"));
         }
 
         void sourceRectangles(SpriteSheet spriteSheet)

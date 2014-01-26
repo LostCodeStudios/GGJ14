@@ -12,6 +12,7 @@ namespace GlobalGameJam.Entities.Systems
     public class BloodSystem : EntityProcessingSystem
     {
         const float FLOAT_SPEED = 0.5f;
+        public const float STARTING_HEART_HEIGHT = 0.5f;
 
         public BloodSystem()
             : base(typeof(BloodTimer))
@@ -38,7 +39,8 @@ namespace GlobalGameJam.Entities.Systems
             sprite.Color.A = (byte)(alpha * 255);
 
             Particle p = e.GetComponent<Particle>();
-            p.Position = new Microsoft.Xna.Framework.Vector2(p.Position.X, p.Position.Y - FLOAT_SPEED * (world.Delta / 1000f));
+            Body tb = timer.TrackingBody;
+            p.Position = new Microsoft.Xna.Framework.Vector2(tb.Position.X, tb.Position.Y - STARTING_HEART_HEIGHT - FLOAT_SPEED * (1 - alpha) * timer.StartTime);
 
             e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
             e.AddComponent<Sprite>(sprite);

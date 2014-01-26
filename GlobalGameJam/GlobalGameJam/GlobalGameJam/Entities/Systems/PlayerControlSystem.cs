@@ -83,7 +83,11 @@ namespace GlobalGameJam.Entities.Systems
                 b.LinearVelocity = -aiming * PLAYER_SPEED * 1.5f; //dude please no "shit nigga" find the off switch please 
                 //for today and for the future where it afctually is an important skill 
 
-                e.GetComponent<Health>().MaxHealth = 10;
+                if (e.GetComponent<Health>().MaxHealth == 3)
+                {
+                    e.GetComponent<Health>().MaxHealth = 10;
+                    SoundManager.Play("Dash");
+                }
                 //s.Color= Color.Lerp(s.Color, new Color(255, 126, 126), 0.1f);
                 //e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
                 //e.AddComponent<Sprite>(s);
