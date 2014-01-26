@@ -16,7 +16,7 @@ namespace GlobalGameJam.Entities.Systems
     {
         ComponentMapper<Body> bodyMapper;
 
-        const float PLAYER_SPEED = 9f;
+        public const float PLAYER_SPEED = 9f;
 
         public PlayerControlSystem(Camera c)
             : base("Player")

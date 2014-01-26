@@ -30,12 +30,15 @@ namespace GlobalGameJam.Entities
 
                 Body player = world.player.GetComponent<Body>();
 
-                float distance = Vector2.Distance(b.Position, player.Position);
-                if (distance < HearingRange)
+                if (player != null)
                 {
-                    float volume = 1 - (distance / HearingRange);
+                    float distance = Vector2.Distance(b.Position, player.Position);
+                    if (distance < HearingRange)
+                    {
+                        float volume = 1 - (distance / HearingRange);
 
-                    SoundManager.Play("Hit", volume);
+                        SoundManager.Play("Hit", volume);
+                    }
                 }
 
                 if (e.Tag == "Player") world.Evil += BoblinWorld.EVIL_INC;

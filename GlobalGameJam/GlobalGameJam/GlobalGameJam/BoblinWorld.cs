@@ -1,7 +1,10 @@
 ﻿using GameLibrary;
 using GameLibrary.Dependencies.Entities;
+using GameLibrary.Dependencies.Physics.Dynamics;
+using GameLibrary.Entities.Components;
 using GameLibrary.Entities.Components.Physics;
 using GlobalGameJam.Entities;
+using GlobalGameJam.Entities.Components;
 using GlobalGameJam.Entities.Systems;
 using GlobalGameJam.Entities.Templates;
 using GlobalGameJam.Entities.Templates.Terrain;
@@ -76,6 +79,9 @@ namespace GlobalGameJam
             Camera.EnableRotationTracking = false;
             #endregion
 
+            doorBack = CreateEntity("DoorBack");
+            doorBack.Refresh();
+
             base.BuildEntities(Content, args);
         }
 
@@ -100,6 +106,8 @@ namespace GlobalGameJam
             this.SetEntityTemplate("Corpse", new CorpseTemplate());
             this.SetEntityTemplate("House", new HouseTemplate(this));
 
+            this.SetEntityTemplate("DoorBack", new ThresholdTemplate());
+
             base.BuildTemplates(Content, args);
         }
 
@@ -123,18 +131,31 @@ namespace GlobalGameJam
             playerControlSystem.Enabled = false;
         }
 
+        bool animating = false;
+
+        Entity doorBack;
+
         /// <summary>
         /// Starts the game
         /// </summary>
         public void Start()
         {
-            playerControlSystem.Enabled = true;
+            HouseSprite hs = house.GetComponent<HouseSprite>();
+            house.RemoveComponent<Sprite>(house.GetComponent<Sprite>());
+            house.AddComponent<Sprite>(hs.Open);
+
+            Body b = player.GetComponent<Body>();
+            b.BodyType = BodyType.Kinematic;
+            b.LinearVelocity = new Vector2(0, PlayerControlSystem.PLAYER_SPEED / 6);
+
+            animating = true;
         }
 
         #endregion
 
         #region Functioning Loop
 
+        float elapsedAnimation = 0f;
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -142,6 +163,25 @@ namespace GlobalGameJam
             if (Hearts >= TRIGGER_HEARTS)
             {
                 FIRST_GOBLINS = 0.5f;
+            }
+
+            if (animating)
+            {
+                elapsedAnimation += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (elapsedAnimation >= 1.5f)
+                {
+                    Body b = player.GetComponent<Body>();
+                    b.BodyType = BodyType.Dynamic;
+                    b.LinearVelocity = Vector2.Zero;
+                    playerControlSystem.Enabled = true;
+
+                    HouseSprite hs = house.GetComponent<HouseSprite>();
+                    house.RemoveComponent<Sprite>(house.GetComponent<Sprite>());
+                    house.AddComponent<Sprite>(hs.Closed);
+
+                    doorBack.Delete();
+                }
             }
         }
 
