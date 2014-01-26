@@ -59,7 +59,7 @@ namespace GlobalGameJam.Entities
             }
         }
 
-        private bool percentChance(float chance)
+        protected bool percentChance(float chance)
         {
             return r.NextDouble() < chance;
         }

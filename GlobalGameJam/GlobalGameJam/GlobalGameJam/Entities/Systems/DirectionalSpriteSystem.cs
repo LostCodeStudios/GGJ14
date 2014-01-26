@@ -20,7 +20,10 @@ namespace GlobalGameJam.Entities.Systems
 
         public override void Process(Entity e)
         {
+            
             DirectionalSprite ds = e.GetComponent<DirectionalSprite>();
+            if (ds == null)
+                return;
             Sprite original = ds.CurrentSprite;
             Body b = e.GetComponent<Body>();
 

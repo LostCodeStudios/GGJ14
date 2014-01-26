@@ -1,6 +1,7 @@
 ﻿using GameLibrary.Dependencies.Entities;
 using GameLibrary.Dependencies.Physics.Factories;
 using GameLibrary.Entities.Components.Physics;
+using GlobalGameJam.Entities.Components;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,12 @@ namespace GlobalGameJam.Entities
 
         public override void Generate()
         {
+            base.Generate();
             int radius = r.Next(2, (int)(SIZE / 6));
             float xo = r.Next(2 + radius, (int)SIZE - radius - 2);
             float yo = r.Next(2 + radius, (int)SIZE - radius - 2);
+
+            bool lava = bworld.Evil > BoblinWorld.LAVA_EVIL;
             
             for(int i = 0; i < Terrain.Count; i++)
             {
@@ -38,9 +42,12 @@ namespace GlobalGameJam.Entities
                  {
                      //Satisfy x^2+y^2=(size/2)^2
                      if (Math.Abs(Math.Pow(x - xo, 2) + Math.Pow(y - yo, 2) - Math.Pow(radius, 2)) < radius*radius || (x == xo && y == yo))
-                         tiles[x, y] = 2 + r.Next(1);
-                     else
-                         tiles[x, y] = 0 + r.Next(1);
+                     {
+                         if (lava)
+                             tiles[x, y] = 5 + r.Next(1);
+                         else
+                             tiles[x, y] = 2 + r.Next(1);
+                     }
                  }
 
              Entity e = bworld.CreateEntity();
@@ -48,6 +55,17 @@ namespace GlobalGameJam.Entities
             FixtureFactory.AttachCircle(radius+ (float)Math.Sqrt(radius)/(float)Math.Sqrt(2f), 1f, b);
             b.Position = this.Position +  new Vector2(xo, yo) - new Vector2(SIZE/2);
 
+            if (lava)
+                b.OnCollision += (f1, f2, c) =>
+                {
+                    Entity e1 = (f1.Body.UserData as Entity);
+                    Entity e2 = (f2.Body.UserData as Entity);
+                    if (e1.Tag == "Player")
+                        e1.GetComponent<Health>().SetHealth(e2, 0);
+                    else if (e2.Tag == "Player")
+                        e2.GetComponent<Health>().SetHealth(e1, 0);
+                    return true;
+                };
 
 
              e.Refresh();
