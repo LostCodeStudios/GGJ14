@@ -1,6 +1,7 @@
 ﻿using GameLibrary.Dependencies.Entities;
 using GameLibrary.Dependencies.Physics.Collision;
 using GameLibrary.Dependencies.Physics.Dynamics;
+using GameLibrary.Entities.Components;
 using GameLibrary.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -122,8 +123,20 @@ namespace GlobalGameJam.Entities
         {
             foreach (Entity e in Terrain)
             {
-                if (e.Tag != "Player")
-                    e.Delete();
+                ITransform t = e.GetComponent<ITransform>();
+
+                if (t != null)
+                {
+                    Vector2 screen = (world as BoblinWorld).Camera.ConvertWorldToScreen(t.Position);
+                    Point pt = new Point((int)screen.X, (int)screen.Y);
+                    if (ScreenHelper.Viewport.Bounds.Contains(pt))
+                    {
+                        Console.WriteLine("Tried to remove a visible entity!");
+                        continue;
+                    }
+                }
+
+                e.Delete();
             }
 
             AABB box = new AABB(Position, SIZE, SIZE);

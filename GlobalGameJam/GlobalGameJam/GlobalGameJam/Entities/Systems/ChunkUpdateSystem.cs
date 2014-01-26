@@ -123,7 +123,7 @@ namespace GlobalGameJam.Entities.Systems
             chunks.Add(ccc);
         }
 
-        private void DestroyChunk(List<Entity> chunk){;
+        private void DestroyChunk(List<Entity> chunk){
             foreach (Entity e in chunk)
                 e.Delete();
         }
