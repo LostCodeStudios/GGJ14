@@ -16,9 +16,12 @@ namespace GlobalGameJam.Entities.Systems
     {
         ComponentMapper<Body> bodyMapper;
 
-        public const float PLAYER_SPEED = 9f;
+        public const float PLAYER_WALK_SPEED = 9 / 6f;
+        public const float PLAYER_SPEED = 7f;
         public const float FADE_RATE = 255f;
         public const float CLICK_TOO_CLOSE = 1f;
+
+        public const float CHARGE_SPEED = 2.5f;
 
         public const float SOUND_DELAY = 0.58f;
 
@@ -109,7 +112,7 @@ namespace GlobalGameJam.Entities.Systems
                     aiming = b.Position - mouseWorldLoc;
                 }
                 aiming.Normalize();
-                b.LinearVelocity = -aiming * PLAYER_SPEED * 1.5f; //dude please no "shit nigga" find the off switch please 
+                b.LinearVelocity = -aiming * PLAYER_SPEED * CHARGE_SPEED; //dude please no "shit nigga" find the off switch please 
                 //for today and for the future where it afctually is an important skill 
 
                 if (e.GetComponent<Health>().MaxHealth == 3)

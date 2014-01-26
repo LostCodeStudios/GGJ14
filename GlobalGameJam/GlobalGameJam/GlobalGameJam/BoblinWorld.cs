@@ -48,7 +48,7 @@ namespace GlobalGameJam
 
         public int Hearts = 0;
 
-        public const int TRIGGER_HEARTS = 5;
+        public const int TRIGGER_HEARTS = 6;
 
         MainMenuScreen main;
         GameplayScreen gameplay;
@@ -174,7 +174,7 @@ namespace GlobalGameJam
 
             Body b = player.GetComponent<Body>();
             b.BodyType = BodyType.Kinematic;
-            b.LinearVelocity = new Vector2(0, PlayerControlSystem.PLAYER_SPEED / 6);
+            b.LinearVelocity = new Vector2(0, PlayerControlSystem.PLAYER_WALK_SPEED);
 
             animating = true;
 
