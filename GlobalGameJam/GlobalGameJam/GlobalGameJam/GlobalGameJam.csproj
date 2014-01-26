@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoblinWorld.cs" />
+    <Compile Include="DelayCode.cs" />
     <Compile Include="Entities\Components\BloodTimer.cs" />
     <Compile Include="Entities\Components\BunnyAI.cs" />
     <Compile Include="Entities\Components\DirectionalSprite.cs" />

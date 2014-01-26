@@ -46,10 +46,16 @@ namespace GlobalGameJam.Screens
         void quit_Selected(object sender, EventArgs e)
         {
             FadeToBlack.SpriteBatch = Manager.SpriteBatch;
-            FadeToBlack.Fade(5);
-            main.OnFocus();
-            ExitScreen();
-            Manager.RemoveScreen(gameplayScreen);
+            FadeToBlack.Fade(1.25f);
+
+            DelayCode.Delay(
+                        () =>
+                        {
+                            main.OnFocus();
+                            ExitScreen();
+                            Manager.RemoveScreen(gameplayScreen);
+                        }, FadeToBlack.TRANSITION_TIME);
+            
         }
     }
 }

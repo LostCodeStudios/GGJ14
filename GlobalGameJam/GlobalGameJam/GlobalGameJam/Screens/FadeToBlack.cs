@@ -10,7 +10,7 @@ namespace GlobalGameJam.Screens
 {
     public static class FadeToBlack
     {
-        const float TRANSITION_TIME = 0.25f;
+        public const float TRANSITION_TIME = 0.25f;
 
         static float elapsedTime = 0f;
         static float duration = 0f;

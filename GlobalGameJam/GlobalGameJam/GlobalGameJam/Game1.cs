@@ -276,8 +276,7 @@ namespace GlobalGameJam
             // TODO: Add your update logic here
             screenManager.Update(gameTime);
 
-            FadeToBlack.Update(gameTime);
-
+            DelayCode.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -291,6 +290,8 @@ namespace GlobalGameJam
 
             // TODO: Add your drawing code here
             screenManager.Draw(gameTime);
+
+            FadeToBlack.Update(gameTime);
 
             base.Draw(gameTime);
         }
