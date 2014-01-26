@@ -15,10 +15,10 @@ namespace GlobalGameJam.Screens
             "Code by William Guss & Nathaniel Nelson",
             "Art by Oryx Design Lab & Nathaniel Nelson",
             "Music by tgfcoder from art.devsader.com",
-            "Sound effects by bfxr.net",
+            "Sound effects by Yuval from freesound.org",
+            "& bfxr.net",
             "",
-            "This game was made in 48 hours",
-            "for the 2014 Global Game Jam.",
+            "This game was made for the 2014 Global Game Jam.",
             "Many thanks to the wonderful developers,",
             "organizers, and volunteers who made",
             "the event such a success!")

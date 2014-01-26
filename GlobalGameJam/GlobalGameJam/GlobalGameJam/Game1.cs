@@ -156,7 +156,7 @@ namespace GlobalGameJam
             spriteSheet.Animations.Add("doorBack", new Rectangle[] { new Rectangle(433, 441, 32, 40) });
 
             spriteSheet.Animations.Add("healthBarFrame", new Rectangle[] { new Rectangle(244, 21, 180, 24) });
-            spriteSheet.Animations.Add("healthBarFill", new Rectangle[] { new Rectangle(244, 53, 180, 24) });
+            spriteSheet.Animations.Add("healthBarFill", new Rectangle[] { new Rectangle(248, 57, 172, 16) });
 
             #region Player
             spriteSheet.Animations.Add("playerMoveRight", new Rectangle[] { 
