@@ -47,6 +47,8 @@ namespace GlobalGameJam
         }
         #endregion
 
+        public Entity player;
+
         #region Initialization
 
         /// <summary>
@@ -65,7 +67,7 @@ namespace GlobalGameJam
 
             #region Player
             //Player
-            Entity player = this.CreateEntity("Player");
+            player = this.CreateEntity("Player");
             player.Refresh();
 
             //camerashit

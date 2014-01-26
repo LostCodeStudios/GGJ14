@@ -70,7 +70,16 @@ namespace GlobalGameJam
 
             screenManager.AddScreen(new MainMenuScreen(), null);
 
+            sounds();
+
             base.LoadContent();
+        }
+
+        void sounds()
+        {
+            SoundManager.Volume = 1f;
+            SoundManager.Add("Heart", Content.Load<SoundEffect>("Sounds/Powerup35"));
+            SoundManager.Add("Hit", Content.Load<SoundEffect>("Sounds/Hit_Hurt59"));
         }
 
         void sourceRectangles(SpriteSheet spriteSheet)
