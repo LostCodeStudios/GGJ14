@@ -1,6 +1,7 @@
 ﻿using GameLibrary.Dependencies.Entities;
 using GameLibrary.Dependencies.Physics.Dynamics;
 using GameLibrary.Entities.Components.Physics;
+using GameLibrary.Helpers;
 using GlobalGameJam.Entities.Components;
 using Microsoft.Xna.Framework;
 using System;
@@ -12,6 +13,8 @@ namespace GlobalGameJam.Entities
 {
     public static class GenericEvents
     {
+        public const float HearingRange = 20f;
+
         public static Action<Entity> BloodyDeath(BoblinWorld world, Entity owner, int bloodType)
         {
             return BloodyDeath(world, owner, bloodType, Vector2.Zero);
@@ -24,6 +27,16 @@ namespace GlobalGameJam.Entities
                 Body b = owner.GetComponent<Body>();
                 world.CreateEntity("Blood", b.Position + bloodOffset, bloodType).Refresh();
                 owner.Delete();
+
+                Body player = world.player.GetComponent<Body>();
+
+                float distance = Vector2.Distance(b.Position, player.Position);
+                if (distance < HearingRange)
+                {
+                    float volume = 1 - (distance / HearingRange);
+
+                    SoundManager.Play("Hit", volume);
+                }
 
                 if (e.Tag == "Player") world.Evil += BoblinWorld.EVIL_INC;
             };
@@ -86,6 +99,7 @@ namespace GlobalGameJam.Entities
                             world.CreateEntity("Heart", f2.Body.Position).Refresh();
                             e2.RemoveComponent<Heart>(e2.GetComponent<Heart>());
                             world.Hearts++;
+                            SoundManager.Play("Heart");
 
                             return false;
                         }
@@ -95,6 +109,7 @@ namespace GlobalGameJam.Entities
                             world.CreateEntity("Heart", f1.Body.Position).Refresh();
                             e1.RemoveComponent<Heart>(e1.GetComponent<Heart>());
                             world.Hearts++;
+                            SoundManager.Play("Heart");
 
                             return false;
                         }
