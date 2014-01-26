@@ -25,6 +25,8 @@ namespace GlobalGameJam
 
         public static bool ShowGuides = true;
 
+        public const float MUSIC_VOLUME = 0.8f;
+
         public Game1()
         {
             Window.Title = "Kittens & Kobolds";
@@ -81,6 +83,7 @@ namespace GlobalGameJam
 
             base.LoadContent();
 
+            MusicManager.Volume = MUSIC_VOLUME;
             MusicManager.IsRepeating = true;
             MusicManager.PlaySong("Music");
         }
@@ -93,6 +96,7 @@ namespace GlobalGameJam
             SoundManager.Add("Door", Content.Load<SoundEffect>("Sounds/Hit_Hurt90"));
             SoundManager.Add("Dash", Content.Load<SoundEffect>("Sounds/Explosion30"));
             SoundManager.Add("Kobold", Content.Load<SoundEffect>("Sounds/Randomize56"));
+            SoundManager.Add("Footstep", Content.Load<SoundEffect>("Sounds/yuval_grass-loop-short"));
 
             MusicManager.AddSong("Music", Content.Load<Song>("Music/AHeroisBorn_tgfcoder"));
         }
