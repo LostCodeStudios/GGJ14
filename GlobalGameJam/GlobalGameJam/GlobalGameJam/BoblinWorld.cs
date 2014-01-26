@@ -25,7 +25,7 @@ namespace GlobalGameJam
     {
         public static int FIRST_CATS = 10;
         public static float FIRST_GOBLINS = 0f;
-        public static int FIRST_TREES = 40;
+        public static int FIRST_TREES = 80;
 
 
         public const float EVIL_INC = 0.03f;

@@ -33,6 +33,10 @@ namespace GlobalGameJam
             Content.RootDirectory = "Content";
 
             graphics.PreferMultiSampling = true;
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 480;
+            graphics.ApplyChanges();
+
             IsFixedTimeStep = true;
 
         }
@@ -267,6 +271,9 @@ namespace GlobalGameJam
 
             spriteSheet.Animations.Add("WASD", new Rectangle[] { new Rectangle(275, 180, 184, 120) });
             spriteSheet.Animations.Add("Mouse", new Rectangle[] { new Rectangle(499, 205, 56, 96) });
+
+            spriteSheet.Animations.Add("LeftStick", new Rectangle[] { new Rectangle(500, 336, 56, 56) });
+            spriteSheet.Animations.Add("AnyButton", new Rectangle[] { new Rectangle(534, 397, 68, 68) });
         }
 
         /// <summary>

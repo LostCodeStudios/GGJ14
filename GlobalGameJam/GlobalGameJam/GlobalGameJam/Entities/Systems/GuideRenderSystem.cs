@@ -3,6 +3,7 @@ using GameLibrary.Helpers;
 using GlobalGameJam.Entities.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,8 @@ namespace GlobalGameJam.Entities.Systems
 
             timer.ElapsedTime += elapsedTime;
 
+            GamePadState padState = GamePad.GetState(PlayerIndex.One);
+
             spriteBatch.Begin();
             if (timer.ElapsedTime < GuideTimer.TRANSITION_TIME)
             {
@@ -63,12 +66,24 @@ namespace GlobalGameJam.Entities.Systems
                 Vector2 leftPos = offLeft + (keyPos - offLeft) * progress;
                 spriteBatch.DrawString(font, leftMessage, leftPos, Color.White);
                 Rectangle source = ScreenHelper.SpriteSheet.Animations["WASD"][0];
+
+                if (padState.IsConnected)
+                {
+                    source = ScreenHelper.SpriteSheet.Animations["LeftStick"][0];
+                }
+
                 Vector2 offset = new Vector2(-source.Width / 2 + leftMessageSize.X / 2, -source.Height);
                 spriteBatch.Draw(ScreenHelper.SpriteSheet.Texture, leftPos + offset, source, Color.White);
 
                 Vector2 rightPos = offRight + (mousePos - offRight) * progress;
                 spriteBatch.DrawString(font, rightMessage, rightPos, Color.White);
                 source = ScreenHelper.SpriteSheet.Animations["Mouse"][0];
+
+                if (padState.IsConnected)
+                {
+                    source = ScreenHelper.SpriteSheet.Animations["AnyButton"][0];
+                }
+
                 offset = new Vector2(-source.Width / 2 + rightMessageSize.X / 2, -source.Height);
                 spriteBatch.Draw(ScreenHelper.SpriteSheet.Texture, rightPos + offset, source, Color.White);
             }
@@ -80,12 +95,24 @@ namespace GlobalGameJam.Entities.Systems
                 Vector2 leftPos = keyPos + (offLeft - keyPos) * progress;
                 spriteBatch.DrawString(font, leftMessage, leftPos, Color.White);
                 Rectangle source = ScreenHelper.SpriteSheet.Animations["WASD"][0];
+
+                if (padState.IsConnected)
+                {
+                    source = ScreenHelper.SpriteSheet.Animations["LeftStick"][0];
+                }
+
                 Vector2 offset = new Vector2(-source.Width / 2 + leftMessageSize.X / 2, -source.Height);
                 spriteBatch.Draw(ScreenHelper.SpriteSheet.Texture, leftPos + offset, source, Color.White);
 
                 Vector2 rightPos = mousePos + (offRight - mousePos) * progress;
                 spriteBatch.DrawString(font, rightMessage, rightPos, Color.White);
                 source = ScreenHelper.SpriteSheet.Animations["Mouse"][0];
+
+                if (padState.IsConnected)
+                {
+                    source = ScreenHelper.SpriteSheet.Animations["AnyButton"][0];
+                }
+
                 offset = new Vector2(-source.Width / 2 + rightMessageSize.X / 2, -source.Height);
                 spriteBatch.Draw(ScreenHelper.SpriteSheet.Texture, rightPos + offset, source, Color.White);
             }
@@ -95,11 +122,23 @@ namespace GlobalGameJam.Entities.Systems
 
                 spriteBatch.DrawString(font, leftMessage, keyPos, Color.White);
                 Rectangle source = ScreenHelper.SpriteSheet.Animations["WASD"][0];
+
+                if (padState.IsConnected)
+                {
+                    source = ScreenHelper.SpriteSheet.Animations["LeftStick"][0];
+                }
+
                 Vector2 offset = new Vector2(-source.Width / 2 + leftMessageSize.X / 2, -source.Height);
                 spriteBatch.Draw(ScreenHelper.SpriteSheet.Texture, keyPos + offset, source, Color.White);
 
                 spriteBatch.DrawString(font, rightMessage, mousePos, Color.White);
                 source = ScreenHelper.SpriteSheet.Animations["Mouse"][0];
+
+                if (padState.IsConnected)
+                {
+                    source = ScreenHelper.SpriteSheet.Animations["AnyButton"][0];
+                }
+
                 offset = new Vector2(-source.Width / 2 + rightMessageSize.X / 2, -source.Height);
                 spriteBatch.Draw(ScreenHelper.SpriteSheet.Texture, mousePos + offset, source, Color.White);
             }
