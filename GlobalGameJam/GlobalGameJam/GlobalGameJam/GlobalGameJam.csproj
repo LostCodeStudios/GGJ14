@@ -73,8 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoblinWorld.cs" />
-    <Compile Include="DelayCode.cs" />
-    <Compile Include="Entities\Components\BloodTimer.cs" />
+    <Compile Include="Entities\Chunks\LavaChunk.cs" />    <Compile Include="DelayCode.cs" />    <Compile Include="Entities\Components\BloodTimer.cs" />
     <Compile Include="Entities\Components\BunnyAI.cs" />
     <Compile Include="Entities\Components\DirectionalSprite.cs" />
     <Compile Include="Entities\Components\GoblinAI.cs" />
@@ -83,6 +82,7 @@
     <Compile Include="Entities\Components\HouseSprite.cs" />
     <Compile Include="Entities\Components\Killable.cs" />
     <Compile Include="Entities\GenericEvents.cs" />
+    <Compile Include="Entities\Chunks\PondChunk.cs" />
     <Compile Include="Entities\Systems\BloodSystem.cs" />
     <Compile Include="Entities\Systems\BunnyMovementSystem.cs" />
     <Compile Include="Entities\Chunk.cs" />

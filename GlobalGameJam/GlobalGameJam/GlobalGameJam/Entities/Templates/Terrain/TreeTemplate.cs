@@ -38,9 +38,10 @@ namespace GlobalGameJam.Entities.Templates.Terrain
             FixtureFactory.AttachCircle(0.2f, 
                 1f, bitch, new Vector2(0, ConvertUnits.ToSimUnits(11)));
 
-
+            
             bitch.Position = (Vector2)args[0];
-            bitch.BodyType = BodyType.Static;
+            bitch.FixedRotation = true;
+            
 
             e.Refresh();
             return e;
