@@ -1,4 +1,5 @@
 ﻿using GameLibrary.GameStates.Screens;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +9,18 @@ namespace GlobalGameJam.Screens
 {
     public class PauseMenuScreen : MenuScreen
     {
-        GameplayScreen gameplayScreen;
-        private MainMenuScreen main;
 
-        public PauseMenuScreen(GameplayScreen gameplayScreen, MainMenuScreen main)
+        private MainMenuScreen main;
+        private BoblinWorld world;
+        private GameLibrary.GameStates.GameScreen gameplayScreen;
+
+        public PauseMenuScreen(BoblinWorld  world, GameplayScreen gameplayScreen,  MainMenuScreen main)
             : base("Paused")
         {
             MenuEntry resume = new MenuEntry("Resume");
             MenuEntry quit = new MenuEntry("Quit");
             this.main = main;
+            this.world = world;
 
             this.gameplayScreen = gameplayScreen;
 
@@ -25,6 +29,13 @@ namespace GlobalGameJam.Screens
 
             MenuEntries.Add(resume);
             MenuEntries.Add(quit);
+        }
+
+
+        public override void Draw(GameTime gameTime)
+        {
+            world.Draw(gameTime);
+            base.Draw(gameTime);
         }
 
         void resume_Selected(object sender, EventArgs e)
