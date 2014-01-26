@@ -66,19 +66,42 @@ namespace GlobalGameJam.Entities.Systems
 
             #endregion
 
-            Sprite s = e.GetComponent<Sprite>();
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed && charge > 0 && !recharge)
+            #region Gamepad Movement
+
+            GamePadState padState = GamePad.GetState(PlayerIndex.One);
+            if (padState.IsConnected)
             {
-                Vector2 mouseLoc = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
-                Vector2 mouseWorldLoc = camera.ConvertScreenToWorld(mouseLoc);
+                dir = new Vector2(padState.ThumbSticks.Left.X, -padState.ThumbSticks.Left.Y);
 
-                if (Vector2.Distance(b.Position, mouseWorldLoc) < CLICK_TOO_CLOSE)
+                dir *= PLAYER_SPEED;
+
+                b.LinearVelocity = dir;
+            }
+            
+
+            #endregion
+
+            Sprite s = e.GetComponent<Sprite>();
+            if ((!padState.IsConnected && Mouse.GetState().LeftButton == ButtonState.Pressed || AnyButtonPressed(padState) && padState.ThumbSticks.Left != Vector2.Zero)&& charge > 0 && !recharge)
+            {
+                Vector2 aiming = Vector2.Zero;
+                if (padState.IsConnected)
                 {
-                    recharge = true;
-                    return;
+                    aiming = -b.LinearVelocity;
                 }
+                else
+                {
+                    Vector2 mouseLoc = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+                    Vector2 mouseWorldLoc = camera.ConvertScreenToWorld(mouseLoc);
 
-                Vector2 aiming = b.Position - mouseWorldLoc;
+                    if (Vector2.Distance(b.Position, mouseWorldLoc) < CLICK_TOO_CLOSE)
+                    {
+                        recharge = true;
+                        return;
+                    }
+
+                    aiming = b.Position - mouseWorldLoc;
+                }
                 aiming.Normalize();
                 b.LinearVelocity = -aiming * PLAYER_SPEED * 1.5f; //dude please no "shit nigga" find the off switch please 
                 //for today and for the future where it afctually is an important skill 
@@ -127,5 +150,50 @@ namespace GlobalGameJam.Entities.Systems
 
         public float charge = 1;
         bool recharge = false;
+
+        bool AnyButtonPressed(GamePadState padState)
+        {
+            if (padState.Buttons.A == ButtonState.Pressed)
+            {
+                return true;
+            }
+
+            if (padState.Buttons.B == ButtonState.Pressed)
+            {
+                return true;
+            }
+
+            if (padState.Buttons.X == ButtonState.Pressed)
+            {
+                return true;
+            }
+
+            if (padState.Buttons.Y == ButtonState.Pressed)
+            {
+                return true;
+            }
+
+            if (padState.Buttons.LeftShoulder == ButtonState.Pressed)
+            {
+                return true;
+            }
+
+            if (padState.Buttons.RightShoulder == ButtonState.Pressed)
+            {
+                return true;
+            }
+
+            if (padState.Triggers.Left != 0)
+            {
+                return true;
+            }
+
+            if (padState.Triggers.Right != 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

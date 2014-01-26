@@ -19,8 +19,9 @@ namespace GlobalGameJam.Screens
             "",
             "This game was made in 48 hours",
             "for the 2014 Global Game Jam.",
-            "Many thanks to the wonderful developers and",
-            "volunteers who made the event a success!")
+            "Many thanks to the wonderful developers,",
+            "organizers, and volunteers who made",
+            "the event such a success!")
         {
             IsPopup = true;
 

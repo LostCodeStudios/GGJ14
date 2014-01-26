@@ -1,5 +1,7 @@
 ﻿using GameLibrary.GameStates.Screens;
+using GameLibrary.Input;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +31,10 @@ namespace GlobalGameJam.Screens
 
             MenuEntries.Add(resume);
             MenuEntries.Add(quit);
+
+            this.menuCancel = new InputAction(
+                new Buttons[] { Buttons.Start }, 
+                new Keys[] { Keys.Escape }, true);
         }
 
 

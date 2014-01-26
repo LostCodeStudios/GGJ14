@@ -43,7 +43,7 @@ namespace GlobalGameJam.Screens
             base.HandleInput(gameTime, input);
 
             PlayerIndex index;
-            if (input.IsKeyPressed(Keys.Escape, null, out index))
+            if (input.IsKeyPressed(Keys.Escape, null, out index) || input.IsButtonPressed(Buttons.Start, null, out index))
             {
                 Manager.AddScreen(new PauseMenuScreen(World, this, mainMenu), null);
             }
