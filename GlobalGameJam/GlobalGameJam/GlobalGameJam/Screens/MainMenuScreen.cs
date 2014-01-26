@@ -14,7 +14,7 @@ namespace GlobalGameJam.Screens
     {
         BoblinWorld world;
         public MainMenuScreen()
-            : base("Cats & Goblins")
+            : base("Kittens & Kobolds")
         {
             MenuEntry playGameEntry;
             MenuEntry quitEntry;
@@ -27,6 +27,8 @@ namespace GlobalGameJam.Screens
 
             MenuEntries.Add(playGameEntry);
             MenuEntries.Add(quitEntry);
+
+            menuCancel = new InputAction(new Buttons[] { }, new Keys[] { }, true);
         }
 
         void playGameEntry_Selected(object sender, PlayerIndexEventArgs e)
