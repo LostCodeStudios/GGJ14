@@ -150,7 +150,6 @@ namespace GlobalGameJam.Entities
 
                     return true;
                 }, ref box);
-
             return anchor - Position + origin;
         }
     }

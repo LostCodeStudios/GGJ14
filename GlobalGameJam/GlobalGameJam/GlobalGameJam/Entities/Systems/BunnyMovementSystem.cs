@@ -21,6 +21,8 @@ namespace GlobalGameJam.Entities.Systems
         {
             BunnyAI hop = e.GetComponent<BunnyAI>();
 
+            if (hop == null) return;
+
             float seconds = (float)world.Delta / 1000f;
 
             hop.Time -= seconds;

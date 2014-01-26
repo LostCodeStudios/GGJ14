@@ -14,6 +14,10 @@ using System.Text;
 
 namespace GlobalGameJam.Entities.Templates
 {
+    public class Player : Component
+    {
+
+    }
     class PlayerTemplate : IEntityTemplate
     {
         BoblinWorld _World;
@@ -29,6 +33,7 @@ namespace GlobalGameJam.Entities.Templates
         {
             e.Tag = "Player";
 
+            e.AddComponent<Player>(new Player());
             gameplay = (GameplayScreen)args[0];
 
             FixtureFactory.AttachCircle(0.4f, 1f, e.AddComponent<Body>(new Body(_World, e)));
