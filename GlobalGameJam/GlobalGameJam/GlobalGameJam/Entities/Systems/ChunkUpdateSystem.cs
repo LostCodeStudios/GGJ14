@@ -92,9 +92,12 @@ namespace GlobalGameJam.Entities.Systems
 
         private void MakeAChunk(Vector2 nChunkPos)
         {
-            BoblinWorld.Trees -= (int)((world as BoblinWorld).Evil * BoblinWorld.TREE_RATE);
-            BoblinWorld.Cats -= (int)((world as BoblinWorld).Evil * BoblinWorld.CAT_RATE);
-            BoblinWorld.Goblins += (int)((world as BoblinWorld).Evil * BoblinWorld.GOBLIN_RATE);
+            float trees = BoblinWorld.FIRST_TREES - (world as BoblinWorld).Evil * BoblinWorld.TREE_RATE * BoblinWorld.FIRST_TREES;
+            float cats = BoblinWorld.FIRST_CATS - (world as BoblinWorld).Evil * BoblinWorld.CAT_RATE * BoblinWorld.FIRST_CATS;
+            BoblinWorld.Goblins += (world as BoblinWorld).Evil * BoblinWorld.GOBLIN_RATE;
+
+            BoblinWorld.Trees = (int)trees;
+            BoblinWorld.Cats = (int)(cats);
             Chunk ccc = GenerateRandomChunkType(nChunkPos, bworld.CreateEntityGroup("Chunk", "terrain", nChunkPos).ToList(), bworld);
 
  

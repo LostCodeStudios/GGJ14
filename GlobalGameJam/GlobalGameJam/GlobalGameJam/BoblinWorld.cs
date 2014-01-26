@@ -37,8 +37,8 @@ namespace GlobalGameJam
 
         public static float BLACKTREE_COEF = 0.98f;
         public const float REDGROUND_COEF = 1f;
-        public const float TREE_RATE = 2.5f;
-        public const float CAT_RATE = 1.5f;
+        public const float TREE_RATE = 1.3F;
+        public const float CAT_RATE = 0.5f;
         public const float GOBLIN_RATE = 3f;
         public const float KILLING_EVIL = 0.3f;
 
