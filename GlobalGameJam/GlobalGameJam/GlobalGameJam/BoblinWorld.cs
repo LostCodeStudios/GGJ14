@@ -37,8 +37,8 @@ namespace GlobalGameJam
 
         public static float BLACKTREE_COEF = 0.98f;
         public const float REDGROUND_COEF = 1f;
-        public const float TREE_RATE = 2.5f;
-        public const float CAT_RATE = 1.5f;
+        public const float TREE_RATE = 1.3F;
+        public const float CAT_RATE = 0.5f;
         public const float GOBLIN_RATE = 3f;
         public const float KILLING_EVIL = 0.3f;
 
@@ -48,7 +48,7 @@ namespace GlobalGameJam
 
         public int Hearts = 0;
 
-        public const int TRIGGER_HEARTS = 5;
+        public const int TRIGGER_HEARTS = 6;
 
         MainMenuScreen main;
         GameplayScreen gameplay;
@@ -183,7 +183,7 @@ namespace GlobalGameJam
 
             Body b = player.GetComponent<Body>();
             b.BodyType = BodyType.Kinematic;
-            b.LinearVelocity = new Vector2(0, PlayerControlSystem.PLAYER_SPEED / 6);
+            b.LinearVelocity = new Vector2(0, PlayerControlSystem.PLAYER_WALK_SPEED);
 
             animating = true;
 
