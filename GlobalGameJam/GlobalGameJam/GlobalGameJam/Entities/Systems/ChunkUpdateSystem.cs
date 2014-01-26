@@ -48,20 +48,6 @@ namespace GlobalGameJam.Entities.Systems
 
 
                     chunks.Add(GenerateRandomChunkType(chunkPos, entities, this.bworld));
-
-                    //clearinhg house spot
-                    if (x == width / 2 && y == height / 2)
-                    {
-                        AABB box = new AABB(Vector2.Zero, 5f, 5f);
-                        bworld.QueryAABB(
-                            (f) =>
-                            {
-                                Entity e = f.Body.UserData as Entity;
-                                e.Delete();
-
-                                return true;
-                            }, ref box);
-                    }
                 }
         }
 

@@ -9,6 +9,9 @@ namespace GlobalGameJam.Entities.Components
     public class GoblinAI : Component
     {
         public Entity Target;
+
+        public bool CanMakeNoise = true;
+
         public GoblinAI(Entity target)
         {
             Target = target;
