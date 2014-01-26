@@ -48,6 +48,7 @@ namespace GlobalGameJam.Entities.Templates
 
             h.OnDeath += (e1) =>
                 {
+                    FadeToBlack.Fade(5);
                     main.OnFocus();
                     main.Manager.RemoveScreen(gameplay);
                 };

@@ -18,6 +18,7 @@ namespace GlobalGameJam.Entities.Systems
 
         public const float PLAYER_SPEED = 9f;
         public const float FADE_RATE = 255f;
+        public const float CLICK_TOO_CLOSE = 1f;
 
         public PlayerControlSystem(Camera c)
             : base("Player")
@@ -69,8 +70,11 @@ namespace GlobalGameJam.Entities.Systems
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && charge > 0 && !recharge)
             {
                 Vector2 mouseLoc = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
-                Vector2 mouseWorldLoc = mouseLoc - ScreenHelper.Center;
-                Vector2 aiming = b.Position - camera.ConvertScreenToWorld(mouseLoc);
+                Vector2 mouseWorldLoc = camera.ConvertScreenToWorld(mouseLoc);
+
+                if (Vector2.Distance(b.Position, mouseWorldLoc) < CLICK_TOO_CLOSE) return;
+
+                Vector2 aiming = b.Position - mouseWorldLoc;
                 aiming.Normalize();
                 b.LinearVelocity = -aiming * PLAYER_SPEED * 1.5f; //dude please no "shit nigga" find the off switch please 
                 //for today and for the future where it afctually is an important skill 

@@ -59,11 +59,13 @@ namespace GlobalGameJam
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            FadeToBlack.SpriteBatch = spriteBatch;
 
             SpriteSheet spriteSheet = new SpriteSheet(Content.Load<Texture2D>("Textures/spritesheet"));
 
             sourceRectangles(spriteSheet);
             ScreenHelper.SpriteSheet = spriteSheet;
+            ScreenHelper.BlankTexture = Content.Load<Texture2D>("Textures/blank");
 
             screenManager = new ScreenManager(this);
             screenManager.Initialize();
@@ -273,6 +275,8 @@ namespace GlobalGameJam
 
             // TODO: Add your update logic here
             screenManager.Update(gameTime);
+
+            FadeToBlack.Update(gameTime);
 
             base.Update(gameTime);
         }

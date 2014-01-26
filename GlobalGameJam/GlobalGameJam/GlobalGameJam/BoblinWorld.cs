@@ -58,6 +58,7 @@ namespace GlobalGameJam
             FIRST_GOBLINS = 0f;
             FIRST_TREES = 25;
 
+            FadeToBlack.SpriteBatch = SpriteBatch;
 
             this.main = main;
         }
