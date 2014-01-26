@@ -73,12 +73,22 @@ namespace GlobalGameJam.Entities.Systems
                 b.LinearVelocity = -aiming * PLAYER_SPEED * 1.5f;
 
                 e.GetComponent<Health>().MaxHealth = 10;
+                Sprite s = e.GetComponent<Sprite>();
+                s.Color= Color.Lerp(s.Color, new Color(255, 128, 128), 0.1f);
+                e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
+                e.AddComponent<Sprite>(s);
+
                 charge -= world.Delta / 300f;
             }
             else
             {
                 recharge = true;
                 e.GetComponent<Health>().MaxHealth = 3;
+                Sprite s = e.GetComponent<Sprite>();
+                s.Color.B = 255;
+                s.Color.G = 255;
+                e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
+                e.AddComponent<Sprite>(s);
             }
 
             if (recharge)
