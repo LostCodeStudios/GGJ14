@@ -79,6 +79,7 @@ namespace GlobalGameJam
             SoundManager.Volume = 1f;
             SoundManager.Add("Heart", Content.Load<SoundEffect>("Sounds/Powerup35"));
             SoundManager.Add("Hit", Content.Load<SoundEffect>("Sounds/Hit_Hurt59"));
+            SoundManager.Add("Door", Content.Load<SoundEffect>("Sounds/Hit_Hurt90"));
         }
 
         void sourceRectangles(SpriteSheet spriteSheet)

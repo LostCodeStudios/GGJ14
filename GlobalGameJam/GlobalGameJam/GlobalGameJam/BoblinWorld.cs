@@ -3,6 +3,7 @@ using GameLibrary.Dependencies.Entities;
 using GameLibrary.Dependencies.Physics.Dynamics;
 using GameLibrary.Entities.Components;
 using GameLibrary.Entities.Components.Physics;
+using GameLibrary.Helpers;
 using GlobalGameJam.Entities;
 using GlobalGameJam.Entities.Components;
 using GlobalGameJam.Entities.Systems;
@@ -143,6 +144,7 @@ namespace GlobalGameJam
             HouseSprite hs = house.GetComponent<HouseSprite>();
             house.RemoveComponent<Sprite>(house.GetComponent<Sprite>());
             house.AddComponent<Sprite>(hs.Open);
+            SoundManager.Play("Door");
 
             Body b = player.GetComponent<Body>();
             b.BodyType = BodyType.Kinematic;
@@ -179,8 +181,10 @@ namespace GlobalGameJam
                     HouseSprite hs = house.GetComponent<HouseSprite>();
                     house.RemoveComponent<Sprite>(house.GetComponent<Sprite>());
                     house.AddComponent<Sprite>(hs.Closed);
+                    SoundManager.Play("Door");
 
                     doorBack.Delete();
+                    animating = false;
                 }
             }
         }
