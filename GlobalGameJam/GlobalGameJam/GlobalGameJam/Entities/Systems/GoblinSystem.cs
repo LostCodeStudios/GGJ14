@@ -92,13 +92,16 @@ namespace GlobalGameJam.Entities.Systems
                 {
                     if (ai.CanMakeNoise)
                     {
-                        float distance = Vector2.Distance(goblin.Position, (world as BoblinWorld).player.GetComponent<Body>().Position);
-                        if (distance < GenericEvents.HearingRange)
+                        if ((world as BoblinWorld).player.Tag == "Player")
                         {
-                            float volume = 1 - (distance / GenericEvents.HearingRange);
+                            float distance = Vector2.Distance(goblin.Position, (world as BoblinWorld).player.GetComponent<Body>().Position);
+                            if (distance < GenericEvents.HearingRange)
+                            {
+                                float volume = 1 - (distance / GenericEvents.HearingRange);
 
-                            SoundManager.Play("Kobold", volume);
-                            ai.CanMakeNoise = false;
+                                SoundManager.Play("Kobold", volume);
+                                ai.CanMakeNoise = false;
+                            }
                         }
                     }
                 }

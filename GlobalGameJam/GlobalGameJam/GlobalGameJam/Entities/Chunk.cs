@@ -59,7 +59,7 @@ namespace GlobalGameJam.Entities
             }
         }
 
-        private bool percentChance(float chance)
+        protected bool percentChance(float chance)
         {
             return r.NextDouble() < chance;
         }
@@ -93,6 +93,8 @@ namespace GlobalGameJam.Entities
                     float colorSub = 255 * (bworld.Evil) * BoblinWorld.REDGROUND_COEF + ((tiles[x, y] == 4 || tiles[x, y] == 7) ? tiles[x,y]*4 : 0);
 
                     int colorValue = (int)(255 - colorSub);
+                    if (idx == 2 || idx == 3)
+                        colorValue = (int)MathHelper.Clamp(colorValue, 98, 255);
                         
                     spriteBatch.Draw(texture, ConvertUnits.ToDisplayUnits(position) + offset, source, new Color(255,colorValue, colorValue), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 }

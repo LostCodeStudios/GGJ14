@@ -48,16 +48,23 @@ namespace GlobalGameJam.Entities.Templates
 
             h.OnDeath += (e1) =>
                 {
-                    FadeToBlack.SpriteBatch = gameplay.Manager.SpriteBatch;
-                    FadeToBlack.Fade(1.25f);
 
 
                     DelayCode.Delay(
-                        () =>
+                        ()=>
                         {
-                            main.OnFocus();
-                            main.Manager.RemoveScreen(gameplay);
-                        }, FadeToBlack.TRANSITION_TIME);
+                            FadeToBlack.SpriteBatch = gameplay.Manager.SpriteBatch;
+                            FadeToBlack.Fade(1.25f);
+
+
+                            DelayCode.Delay(
+                                () =>
+                                {
+                                    main.OnFocus();
+                                    main.Manager.RemoveScreen(gameplay);
+                                }, FadeToBlack.TRANSITION_TIME);
+                            
+                        },1);
                 };
 
             return e;

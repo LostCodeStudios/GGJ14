@@ -26,11 +26,11 @@ namespace GlobalGameJam
         public static int FIRST_CATS = 10;
         public static float FIRST_GOBLINS = 0f;
         public static int FIRST_TREES = 160;
-
+        public static float LAVA_EVIL = 0.7f;
 
         public const float EVIL_INC = 0.03f;
 
-        public const float LAVA_CHANCE = 0.09f;
+       
         public const float REDGROUND_COEF = 1f;
         public const float TREE_RATE = 2.5f;
         public const float CAT_RATE = 1.5f;
@@ -266,6 +266,7 @@ namespace GlobalGameJam
         #region Fields
         public PlayerControlSystem playerControlSystem;
         public ChunkUpdateSystem chunkUpdateSytem;
+        
         #endregion
     }
 }
