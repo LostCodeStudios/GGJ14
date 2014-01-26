@@ -17,6 +17,7 @@ namespace GlobalGameJam.Entities.Systems
         ComponentMapper<Body> bodyMapper;
 
         public const float PLAYER_SPEED = 9f;
+        public const float FADE_RATE = 255f;
 
         public PlayerControlSystem(Camera c)
             : base("Player")
@@ -64,6 +65,7 @@ namespace GlobalGameJam.Entities.Systems
 
             #endregion
 
+            Sprite s = e.GetComponent<Sprite>();
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && charge > 0 && !recharge)
             {
                 Vector2 mouseLoc = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
@@ -73,8 +75,7 @@ namespace GlobalGameJam.Entities.Systems
                 b.LinearVelocity = -aiming * PLAYER_SPEED * 1.5f;
 
                 e.GetComponent<Health>().MaxHealth = 10;
-                Sprite s = e.GetComponent<Sprite>();
-                s.Color= Color.Lerp(s.Color, new Color(255, 128, 128), 0.1f);
+                s.Color= Color.Lerp(Color.White, new Color(255, 0, 0), 0.5f);
                 e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
                 e.AddComponent<Sprite>(s);
 
@@ -84,11 +85,6 @@ namespace GlobalGameJam.Entities.Systems
             {
                 recharge = true;
                 e.GetComponent<Health>().MaxHealth = 3;
-                Sprite s = e.GetComponent<Sprite>();
-                s.Color.B = 255;
-                s.Color.G = 255;
-                e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
-                e.AddComponent<Sprite>(s);
             }
 
             if (recharge)
@@ -96,9 +92,20 @@ namespace GlobalGameJam.Entities.Systems
                 charge += world.Delta / 2000f;
                 if (charge >= 1)
                     recharge = false;
+
+                if (s.Color != Color.White)
+                {
+                    int curr = s.Color.B;
+                    int final = 255;
+
+                    byte val = (byte)(curr + (final - curr) * FADE_RATE * (world.Delta / 1000f));
+                    s.Color.B = val;
+                    s.Color.G = val;
+
+                    e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
+                    e.AddComponent<Sprite>(s);
+                }
             }
-
-
         }
 
         float charge = 1;
