@@ -50,6 +50,9 @@ namespace GlobalGameJam.Entities.Templates.Terrain
             
             bitch.Position = (Vector2)args[0];
             bitch.FixedRotation = true;
+            bitch.IsStatic = true;
+            bitch.SleepingAllowed = true;
+            bitch.Awake = false;
             
 
             e.Refresh();

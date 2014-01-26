@@ -96,6 +96,24 @@ namespace GlobalGameJam
             doorBack = CreateEntity("DoorBack");
             doorBack.Refresh();
 
+            #region Player
+            //Player
+            player = this.CreateEntity("Player", gameplay);
+            player.Refresh();
+
+            //camerashit
+            Camera.TrackingBody = player.GetComponent<Body>();
+            Camera.EnableTracking = true;
+            Camera.EnableRotationTracking = false;
+            #endregion
+
+#if DEBUG && WINDOWS //Debug render system
+            this._DebugSystem.LoadContent(SpriteBatch.GraphicsDevice, Content,
+                new KeyValuePair<string, object>("Camera", this.Camera),
+                 new KeyValuePair<string, object>("EntitySystem Time:\n", this.SystemManager));
+
+#endif
+
             base.BuildEntities(Content, args);
         }
 
@@ -156,16 +174,7 @@ namespace GlobalGameJam
         /// </summary>
         public void Start()
         {
-            #region Player
-            //Player
-            player = this.CreateEntity("Player", gameplay);
-            player.Refresh();
-
-            //camerashit
-            Camera.TrackingBody = player.GetComponent<Body>();
-            Camera.EnableTracking = true;
-            Camera.EnableRotationTracking = false;
-            #endregion
+            
 
             HouseSprite hs = house.GetComponent<HouseSprite>();
             house.RemoveComponent<Sprite>(house.GetComponent<Sprite>());
