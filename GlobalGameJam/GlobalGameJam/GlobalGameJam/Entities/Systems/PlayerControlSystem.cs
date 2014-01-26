@@ -76,7 +76,7 @@ namespace GlobalGameJam.Entities.Systems
                 //for today and for the future where it afctually is an important skill 
 
                 e.GetComponent<Health>().MaxHealth = 10;
-                s.Color= Color.Lerp(Color.White, new Color(255, 0, 0), 0.5f);
+                s.Color= Color.Lerp(s.Color, new Color(255, 126, 126), 0.1f);
                 e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
                 e.AddComponent<Sprite>(s);
 
@@ -85,6 +85,11 @@ namespace GlobalGameJam.Entities.Systems
             else
             {
                 recharge = true;
+                s.Color.B = 255;
+                s.Color.G = 255;
+
+                e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
+                e.AddComponent<Sprite>(s);
                 e.GetComponent<Health>().MaxHealth = 3;
             }
 
@@ -93,20 +98,6 @@ namespace GlobalGameJam.Entities.Systems
                 charge += world.Delta / 2000f;
                 if (charge >= 1)
                     recharge = false;
-
-                if (s.Color != Color.White)
-                {
-
-                    int curr = s.Color.B;
-                    int final = 255;
-
-                    byte val = (byte)(curr + (final - curr) * FADE_RATE * (world.Delta / 1000f));
-                    s.Color.B = val;
-                    s.Color.G = val;
-
-                    e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
-                    e.AddComponent<Sprite>(s);
-                }
             }
         }
 

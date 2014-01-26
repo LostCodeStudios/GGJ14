@@ -1,4 +1,5 @@
 ﻿using GameLibrary.Dependencies.Entities;
+using GameLibrary.Dependencies.Physics.Collision;
 using GlobalGameJam.Entities.Systems;
 using Microsoft.Xna.Framework;
 using System;
@@ -13,6 +14,8 @@ namespace GlobalGameJam.Entities.Templates
     /// </summary>
     class ChunkTemplate : IEntityGroupTemplate
     {
+        public const float TREE_SPACE = 2f;
+
         Random r = new Random();
         public Entity[] BuildEntityGroup(EntityWorld world, params object[] args)
         {
@@ -40,10 +43,30 @@ namespace GlobalGameJam.Entities.Templates
 
             //and god said, fuck okay, trees.
             for (int i = 0; i < BoblinWorld.FIRST_TREES; i++)
-                terrain.Add(world.CreateEntity("Tree",
-                    position + new Vector2((float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE/2,
-                        (float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE/2)));
-                return terrain.ToArray();
+            {
+                Vector2 pos;
+                while (true)
+                {
+                    pos = position + new Vector2((float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE / 2,
+                            (float)r.NextDouble() * Chunk.SIZE - Chunk.SIZE / 2);
+
+                    AABB box = new AABB(pos, TREE_SPACE, TREE_SPACE);
+                    bool treeInSpace = false;
+                    world.QueryAABB(
+                        (f) =>
+                        {
+                            treeInSpace = true;
+
+                            return false;
+                        }, ref box);
+
+                    if (!treeInSpace)
+                        break;
+                }
+
+                terrain.Add(world.CreateEntity("Tree", pos));
+            }
+            return terrain.ToArray();
         }
 
         private bool percentChance(float chance)
