@@ -26,8 +26,11 @@ namespace GlobalGameJam.Entities.Templates
         {
             Vector2 position = (Vector2)args[0];
 
-
-            DirectionalSprite ds = new DirectionalSprite("cat");
+            DirectionalSprite ds;
+            if(Chunk.r.Next(100) <75)
+                ds = new DirectionalSprite("cat");
+            else
+                ds = new DirectionalSprite("black");
             e.AddComponent<DirectionalSprite>(ds);
             e.AddComponent<Sprite>(ds.CurrentSprite);
 

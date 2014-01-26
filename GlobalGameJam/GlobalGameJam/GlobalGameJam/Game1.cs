@@ -37,6 +37,9 @@ namespace GlobalGameJam
             graphics.PreferMultiSampling = true;
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 480;
+            #if !DEBUG
+            graphics.IsFullScreen = true;
+            #endif
             graphics.ApplyChanges();
 
             IsFixedTimeStep = true;
@@ -198,6 +201,7 @@ namespace GlobalGameJam
 
             #region Cats
 
+            #region white
             spriteSheet.Animations.Add("catMoveRight", new Rectangle[] { 
                 new Rectangle(185, 113, 24, 21),
                 new Rectangle(212, 113, 24, 21)
@@ -233,6 +237,49 @@ namespace GlobalGameJam
             spriteSheet.Animations.Add("catUp", new Rectangle[] { 
                 new Rectangle(160, 187, 18, 21)
             });
+            #endregion
+
+            #region black
+
+            spriteSheet.Animations.Add("blackMoveRight", new Rectangle[] { 
+                new Rectangle(185+316, 113-93, 24, 21),
+                new Rectangle(212+316, 113-93, 24, 21)
+            });
+
+            spriteSheet.Animations.Add("blackMoveDown", new Rectangle[] { 
+                new Rectangle(179+316, 136-93, 18, 21),
+                new Rectangle(203+316, 136-93, 18, 21)
+            });
+
+            spriteSheet.Animations.Add("blackMoveLeft", new Rectangle[] { 
+                new Rectangle(185+316, 162-93, 24, 21),
+                new Rectangle(212+316, 162-93, 24, 21)
+            });
+
+            spriteSheet.Animations.Add("blackMoveUp", new Rectangle[] { 
+                new Rectangle(184+316, 187-93, 18, 21),
+                new Rectangle(208+316, 187-93, 18, 21)
+            });
+
+            spriteSheet.Animations.Add("blackRight", new Rectangle[] { 
+                new Rectangle(158+316, 113-93, 24, 21) 
+            });
+
+            spriteSheet.Animations.Add("blackDown", new Rectangle[] { 
+                new Rectangle(158+316, 136-93, 18, 21)
+            });
+
+            spriteSheet.Animations.Add("blackLeft", new Rectangle[] { 
+                new Rectangle(158+316, 162-93, 24, 21)
+            });
+
+            spriteSheet.Animations.Add("blackUp", new Rectangle[] { 
+                new Rectangle(160+316, 187-93, 18, 21)
+            });
+            #endregion
+
+
+
 
             #endregion
 
