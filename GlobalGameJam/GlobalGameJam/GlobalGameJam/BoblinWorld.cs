@@ -112,6 +112,7 @@ namespace GlobalGameJam
             this.SetEntityTemplate("House", new HouseTemplate(this));
 
             this.SetEntityTemplate("DoorBack", new ThresholdTemplate());
+            this.SetEntityTemplate("Guide", new GuidesTemplate());
 
             base.BuildTemplates(Content, args);
         }
@@ -130,6 +131,7 @@ namespace GlobalGameJam
             chunkUpdateSytem = this.SystemManager.SetSystem(new ChunkUpdateSystem(Chunk.SIZE * (float)Math.Sqrt(2)), ExecutionType.Update, 0);
 
             SystemManager.SetSystem(new ChunkRenderSystem(SpriteBatch, Camera), ExecutionType.Draw, -1);
+            SystemManager.SetSystem(new GuideRenderSystem(SpriteBatch, main.Manager.Font), ExecutionType.Draw, 1);
 
             base.BuildSystems();
 
@@ -166,6 +168,13 @@ namespace GlobalGameJam
             b.LinearVelocity = new Vector2(0, PlayerControlSystem.PLAYER_SPEED / 6);
 
             animating = true;
+
+
+            if (Game1.ShowGuides)
+            {
+                CreateEntity("Guide").Refresh();
+                Game1.ShowGuides = false;
+            }
         }
 
         #endregion

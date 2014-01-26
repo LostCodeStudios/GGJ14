@@ -73,10 +73,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoblinWorld.cs" />
-    <Compile Include="Entities\Chunks\LavaChunk.cs" />    <Compile Include="DelayCode.cs" />    <Compile Include="Entities\Components\BloodTimer.cs" />
+    <Compile Include="Entities\Chunks\LavaChunk.cs" />
+    <Compile Include="DelayCode.cs" />
+    <Compile Include="Entities\Components\BloodTimer.cs" />
     <Compile Include="Entities\Components\BunnyAI.cs" />
     <Compile Include="Entities\Components\DirectionalSprite.cs" />
     <Compile Include="Entities\Components\GoblinAI.cs" />
+    <Compile Include="Entities\Components\GuideTimer.cs" />
     <Compile Include="Entities\Components\Health.cs" />
     <Compile Include="Entities\Components\Heart.cs" />
     <Compile Include="Entities\Components\HouseSprite.cs" />
@@ -90,18 +93,21 @@
     <Compile Include="Entities\Systems\ChunkUpdateSystem.cs" />
     <Compile Include="Entities\Systems\DirectionalSpriteSystem.cs" />
     <Compile Include="Entities\Systems\GoblinSystem.cs" />
+    <Compile Include="Entities\Systems\GuideRenderSystem.cs" />
     <Compile Include="Entities\Systems\PlayerControlSystem.cs" />
     <Compile Include="Entities\Templates\BloodTemplate.cs" />
     <Compile Include="Entities\Templates\ChunkTemplate.cs" />
     <Compile Include="Entities\Templates\BunnyTemplate.cs" />
     <Compile Include="Entities\Templates\CorpseTemplate.cs" />
     <Compile Include="Entities\Templates\GoblinTemplate.cs" />
+    <Compile Include="Entities\Templates\GuidesTemplate.cs" />
     <Compile Include="Entities\Templates\HeartTemplate.cs" />
     <Compile Include="Entities\Templates\HouseTemplate.cs" />
     <Compile Include="Entities\Templates\PlayerTemplate.cs" />
     <Compile Include="Entities\Templates\Terrain\GrassTemplate.cs" />
     <Compile Include="Entities\Templates\Terrain\TreeTemplate.cs" />
     <Compile Include="Entities\Templates\ThresholdTemplate.cs" />
+    <Compile Include="Screens\CreditScreen.cs" />
     <Compile Include="Screens\FadeToBlack.cs" />
     <Compile Include="Screens\GameplayScreen.cs" />
     <Compile Include="Screens\MainMenuScreen.cs" />

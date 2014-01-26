@@ -17,18 +17,33 @@ namespace GlobalGameJam.Screens
             : base("Kittens & Kobolds")
         {
             MenuEntry playGameEntry;
+            MenuEntry creditEntry = new MenuEntry("Credits");
             MenuEntry quitEntry;
 
             playGameEntry = new MenuEntry("Play");
             quitEntry = new MenuEntry("Exit");
 
             playGameEntry.Selected += playGameEntry_Selected;
+            creditEntry.Selected += creditEntry_Selected;
             quitEntry.Selected += quitEntry_Selected;
 
             MenuEntries.Add(playGameEntry);
+            MenuEntries.Add(creditEntry);
             MenuEntries.Add(quitEntry);
 
             menuCancel = new InputAction(new Buttons[] { }, new Keys[] { }, true);
+        }
+
+        public MainMenuScreen(BoblinWorld world)
+            : this()
+        {
+            this.world = world;
+        }
+
+        private void creditEntry_Selected(object sender, PlayerIndexEventArgs e)
+        {
+            ExitScreen();
+            Manager.AddScreen(new CreditScreen(world), null);
         }
 
         void playGameEntry_Selected(object sender, PlayerIndexEventArgs e)
@@ -49,7 +64,7 @@ namespace GlobalGameJam.Screens
         {
             base.Activate();
 
-            OnFocus();
+            if (world == null) OnFocus();
         }
 
         public override void OnFocus()

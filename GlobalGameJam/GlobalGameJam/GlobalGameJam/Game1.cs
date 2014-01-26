@@ -23,6 +23,8 @@ namespace GlobalGameJam
         SpriteBatch spriteBatch;
         ScreenManager screenManager;
 
+        public static bool ShowGuides = true;
+
         public Game1()
         {
             Window.Title = "Kittens & Kobolds";
@@ -262,6 +264,9 @@ namespace GlobalGameJam
             });
 
             #endregion
+
+            spriteSheet.Animations.Add("WASD", new Rectangle[] { new Rectangle(275, 180, 184, 120) });
+            spriteSheet.Animations.Add("Mouse", new Rectangle[] { new Rectangle(499, 205, 56, 96) });
         }
 
         /// <summary>
