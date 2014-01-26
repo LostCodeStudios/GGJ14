@@ -20,6 +20,10 @@ namespace GlobalGameJam.Entities.Systems
         public const float FADE_RATE = 255f;
         public const float CLICK_TOO_CLOSE = 1f;
 
+        public const float SOUND_DELAY = 0.58f;
+
+        float duration = 0f;
+
         public PlayerControlSystem(Camera c)
             : base("Player")
         {
@@ -35,6 +39,8 @@ namespace GlobalGameJam.Entities.Systems
 
         public override void Process(Entity e)
         {
+            duration -= (float)world.Delta / 1000f;
+
             Body b = bodyMapper.Get(e);
 
             KeyboardState keyState = Keyboard.GetState();
@@ -126,6 +132,17 @@ namespace GlobalGameJam.Entities.Systems
                 //e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
                 //e.AddComponent<Sprite>(s);
                 e.GetComponent<Health>().MaxHealth = 3;
+
+                if (dir != Vector2.Zero)
+                {
+
+
+                    if (duration <= 0f)
+                    {
+                        SoundManager.Play("Footstep");
+                        duration = SOUND_DELAY;
+                    }
+                }
             }
 
             if (recharge)

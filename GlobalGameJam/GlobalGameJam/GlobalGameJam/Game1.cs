@@ -25,6 +25,8 @@ namespace GlobalGameJam
 
         public static bool ShowGuides = true;
 
+        public const float MUSIC_VOLUME = 0.8f;
+
         public Game1()
         {
             Window.Title = "Kittens & Kobolds";
@@ -81,6 +83,7 @@ namespace GlobalGameJam
 
             base.LoadContent();
 
+            MusicManager.Volume = MUSIC_VOLUME;
             MusicManager.IsRepeating = true;
             MusicManager.PlaySong("Music");
         }
@@ -93,6 +96,7 @@ namespace GlobalGameJam
             SoundManager.Add("Door", Content.Load<SoundEffect>("Sounds/Hit_Hurt90"));
             SoundManager.Add("Dash", Content.Load<SoundEffect>("Sounds/Explosion30"));
             SoundManager.Add("Kobold", Content.Load<SoundEffect>("Sounds/Randomize56"));
+            SoundManager.Add("Footstep", Content.Load<SoundEffect>("Sounds/yuval_grass-loop-short"));
 
             MusicManager.AddSong("Music", Content.Load<Song>("Music/AHeroisBorn_tgfcoder"));
         }
@@ -152,7 +156,7 @@ namespace GlobalGameJam
             spriteSheet.Animations.Add("doorBack", new Rectangle[] { new Rectangle(433, 441, 32, 40) });
 
             spriteSheet.Animations.Add("healthBarFrame", new Rectangle[] { new Rectangle(244, 21, 180, 24) });
-            spriteSheet.Animations.Add("healthBarFill", new Rectangle[] { new Rectangle(244, 53, 180, 24) });
+            spriteSheet.Animations.Add("healthBarFill", new Rectangle[] { new Rectangle(248, 57, 172, 16) });
 
             #region Player
             spriteSheet.Animations.Add("playerMoveRight", new Rectangle[] { 

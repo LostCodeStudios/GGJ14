@@ -110,7 +110,7 @@ namespace GlobalGameJam.Screens
                 else
                 {
                     SoundManager.Volume = 1;
-                    MusicManager.Volume = 1;
+                    MusicManager.Volume = Game1.MUSIC_VOLUME;
                 }
             }
         }

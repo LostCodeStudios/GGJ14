@@ -224,20 +224,27 @@ namespace GlobalGameJam
 
             if (EnergyBar != -1)
             {
-                Rectangle source = ScreenHelper.SpriteSheet.Animations["healthBarFill"][0];
                 SpriteBatch.Begin();
+
+                Rectangle source = ScreenHelper.SpriteSheet.Animations["healthBarFrame"][0];
 
                 Vector2 position = new Vector2(ScreenHelper.Viewport.Width / 2, 7 * ScreenHelper.Viewport.Height / 8);
                 position -= new Vector2(source.Width / 2, source.Height / 2);
-                Rectangle dest = new Rectangle((int)position.X, (int)position.Y, (int)(source.Width * EnergyBar), source.Height);
+
+
+
+
+                SpriteBatch.Draw(ScreenHelper.SpriteSheet.Texture, position, source, Color.White);
+
+                source = ScreenHelper.SpriteSheet.Animations["healthBarFill"][0];
+
+
+
+                Rectangle dest = new Rectangle((int)position.X + 4, (int)position.Y + 4, (int)(source.Width * EnergyBar), source.Height);
 
                 SpriteBatch.Draw(ScreenHelper.SpriteSheet.Texture, dest, source, Color.White);
 
-                source = ScreenHelper.SpriteSheet.Animations["healthBarFrame"][0];
 
-                
-
-                SpriteBatch.Draw(ScreenHelper.SpriteSheet.Texture, position, source, Color.White);
                 SpriteBatch.End();
             }
         }
