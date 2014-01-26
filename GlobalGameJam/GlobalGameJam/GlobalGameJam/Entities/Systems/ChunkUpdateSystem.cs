@@ -46,10 +46,10 @@ namespace GlobalGameJam.Entities.Systems
                     List<Entity> entities = new List<Entity>();
                     entities.AddRange(world.CreateEntityGroup("Chunk", "terrain", chunkPos));
 
-                    Chunk ccc = new Chunk(chunkPos, entities, bworld);
-                    chunks.Add(ccc);
-                    ccc.Generate();
 
+                    chunks.Add(GenerateRandomChunkType(chunkPos, entities, this.bworld));
+
+                    //clearinhg house spot
                     if (x == width / 2 && y == height / 2)
                     {
                         AABB box = new AABB(Vector2.Zero, 5f, 5f);
@@ -92,7 +92,7 @@ namespace GlobalGameJam.Entities.Systems
                     
                     Vector2 nChunkPos = c.Delete(oldPosition, pos, world);
 
-                    makeAChunk(nChunkPos);
+                    MakeAChunk(nChunkPos);
                 }
 
                 toRemove.Clear();
@@ -104,23 +104,31 @@ namespace GlobalGameJam.Entities.Systems
 
         }
 
-        private void makeAChunk(Vector2 nChunkPos)
+        private void MakeAChunk(Vector2 nChunkPos)
         {
             BoblinWorld.FIRST_TREES -= (int)((world as BoblinWorld).Evil * BoblinWorld.TREE_RATE);
             BoblinWorld.FIRST_CATS -= (int)((world as BoblinWorld).Evil * BoblinWorld.CAT_RATE);
             BoblinWorld.FIRST_GOBLINS += (int)((world as BoblinWorld).Evil * BoblinWorld.GOBLIN_RATE);
-            Chunk ccc = null;
+            Chunk ccc = GenerateRandomChunkType(nChunkPos, bworld.CreateEntityGroup("Chunk", "terrain", nChunkPos).ToList(), bworld);
 
-            if (r.Next(0) == 1)
+ 
+            chunks.Add(ccc);
+        }
+
+        private Chunk GenerateRandomChunkType(Vector2 Position, List<Entity> terrain, BoblinWorld bworld)
+        {
+            Chunk ccc;
+            if (r.Next(2) == 1 && Position != Vector2.Zero)
             {
-                ccc = new Chunk(nChunkPos, new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", nChunkPos)), this.bworld);
+                ccc = new PondChunk(Position, terrain, bworld);
             }
             else
             {
-                ccc = new PondChunk(nChunkPos, new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", nChunkPos)), this.bworld);
+                ccc = new Chunk(Position, terrain, bworld);
             }
             ccc.Generate();
-            chunks.Add(ccc);
+            return ccc;
+            
         }
 
         private void DestroyChunk(List<Entity> chunk){
