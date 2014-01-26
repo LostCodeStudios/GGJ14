@@ -14,6 +14,7 @@ namespace GlobalGameJam.Entities
     public static class GenericEvents
     {
         public const float HearingRange = 20f;
+        public const float HEART_STAMINA = 0.3f;
 
         public static Action<Entity> BloodyDeath(BoblinWorld world, Entity owner, int bloodType)
         {
@@ -104,6 +105,10 @@ namespace GlobalGameJam.Entities
                             world.Hearts++;
                             SoundManager.Play("Heart");
 
+                            world.playerControlSystem.charge += HEART_STAMINA;
+                            if (world.playerControlSystem.charge > 1)
+                                world.playerControlSystem.charge = 1;
+
                             return false;
                         }
 
@@ -113,6 +118,10 @@ namespace GlobalGameJam.Entities
                             e1.RemoveComponent<Heart>(e1.GetComponent<Heart>());
                             world.Hearts++;
                             SoundManager.Play("Heart");
+
+                            world.playerControlSystem.charge += HEART_STAMINA;
+                            if (world.playerControlSystem.charge > 1)
+                                world.playerControlSystem.charge = 1;
 
                             return false;
                         }

@@ -12,6 +12,8 @@ namespace GlobalGameJam.Entities.Systems
 {
     public class ChunkUpdateSystem : TagSystem
     {
+        static Random r = new Random();
+
         /// <summary>
         /// Makes a chunk update system with a width and height of the cunks surroudning the player :)
         /// </summary>
@@ -43,11 +45,10 @@ namespace GlobalGameJam.Entities.Systems
 
                     List<Entity> entities = new List<Entity>();
                     entities.AddRange(world.CreateEntityGroup("Chunk", "terrain", chunkPos));
-                    
-                    if(Chunk.r.Next(1) == 1)
-                        chunks.Add(new PondChunk(chunkPos, entities, bworld));
-                    else
-                        chunks.Add(new PondChunk(chunkPos, entities, bworld));
+
+                    Chunk ccc = new Chunk(chunkPos, entities, bworld);
+                    chunks.Add(ccc);
+                    ccc.Generate();
 
                     if (x == width / 2 && y == height / 2)
                     {
@@ -91,10 +92,7 @@ namespace GlobalGameJam.Entities.Systems
                     
                     Vector2 nChunkPos = c.Delete(oldPosition, pos, world);
 
-                    BoblinWorld.FIRST_TREES -= (int)((world as BoblinWorld).Evil * BoblinWorld.TREE_RATE);
-                    BoblinWorld.FIRST_CATS -= (int)((world as BoblinWorld).Evil * BoblinWorld.CAT_RATE);
-                    BoblinWorld.FIRST_GOBLINS += (int)((world as BoblinWorld).Evil * BoblinWorld.GOBLIN_RATE);
-                    chunks.Add(new Chunk( nChunkPos, new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", nChunkPos)), this.bworld));
+                    makeAChunk(nChunkPos);
                 }
 
                 toRemove.Clear();
@@ -104,6 +102,25 @@ namespace GlobalGameJam.Entities.Systems
             }
 
 
+        }
+
+        private void makeAChunk(Vector2 nChunkPos)
+        {
+            BoblinWorld.FIRST_TREES -= (int)((world as BoblinWorld).Evil * BoblinWorld.TREE_RATE);
+            BoblinWorld.FIRST_CATS -= (int)((world as BoblinWorld).Evil * BoblinWorld.CAT_RATE);
+            BoblinWorld.FIRST_GOBLINS += (int)((world as BoblinWorld).Evil * BoblinWorld.GOBLIN_RATE);
+            Chunk ccc = null;
+
+            if (r.Next(0) == 1)
+            {
+                ccc = new Chunk(nChunkPos, new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", nChunkPos)), this.bworld);
+            }
+            else
+            {
+                ccc = new PondChunk(nChunkPos, new List<Entity>(world.CreateEntityGroup("Chunk", "terrain", nChunkPos)), this.bworld);
+            }
+            ccc.Generate();
+            chunks.Add(ccc);
         }
 
         private void DestroyChunk(List<Entity> chunk){;

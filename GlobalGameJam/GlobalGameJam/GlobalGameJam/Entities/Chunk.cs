@@ -39,7 +39,6 @@ namespace GlobalGameJam.Entities
                 tileKeys.Add(5, "lava1");
                 tileKeys.Add(6, "lava2");
             }
-            Generate();
       
         }
 

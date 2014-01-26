@@ -101,11 +101,23 @@ namespace GlobalGameJam.Entities.Systems
             {
                 charge += world.Delta / 2000f;
                 if (charge >= 1)
+                {
+                    charge = 1;
                     recharge = false;
+                }
+            }
+
+            if (charge != 1)
+            {
+                (world as BoblinWorld).EnergyBar = charge;
+            }
+            else
+            {
+                (world as BoblinWorld).EnergyBar = -1;
             }
         }
 
-        float charge = 1;
+        public float charge = 1;
         bool recharge = false;
     }
 }

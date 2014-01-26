@@ -16,6 +16,7 @@ namespace GlobalGameJam.Entities
         public override void Generate()
         {
             int radius = r.Next(2, (int)(SIZE / 6));
+            bworld.ClearArea(Position, radius * 2, radius * 2);
             float xo = r.Next(2+radius, (int)SIZE-radius-2);
             float yo = r.Next(2+radius, (int)SIZE-radius-2);
  	         for(int x = 0; x < SIZE; x++)
@@ -33,6 +34,16 @@ namespace GlobalGameJam.Entities
             FixtureFactory.AttachCircle(radius+ (float)Math.Sqrt(radius)/2f, 1f, b);
             b.Position = this.Position +  new Vector2(xo, yo) - new Vector2(SIZE/2);
 
+
+            foreach (Entity t in Terrain)
+            {
+                Body bt = t.GetComponent<Body>();
+
+                if (Vector2.Distance(bt.Position, this.Position) < radius + (float)Math.Sqrt(radius) / 2f)
+                {
+                    t.Delete();
+                }
+            }
 
              e.Refresh();
              Terrain.Add(e);

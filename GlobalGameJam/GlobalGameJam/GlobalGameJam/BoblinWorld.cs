@@ -1,5 +1,6 @@
 ﻿using GameLibrary;
 using GameLibrary.Dependencies.Entities;
+using GameLibrary.Dependencies.Physics.Collision;
 using GameLibrary.Dependencies.Physics.Dynamics;
 using GameLibrary.Entities.Components;
 using GameLibrary.Entities.Components.Physics;
@@ -202,16 +203,54 @@ namespace GlobalGameJam
             }
         }
 
+        public float EnergyBar = -1;
+        public override void Draw(GameTime gameTime)
+        {
+            base.Draw(gameTime);
+
+            if (EnergyBar != -1)
+            {
+                Rectangle source = ScreenHelper.SpriteSheet.Animations["healthBarFill"][0];
+                SpriteBatch.Begin();
+
+                Vector2 position = new Vector2(ScreenHelper.Viewport.Width / 2, 7 * ScreenHelper.Viewport.Height / 8);
+                position -= new Vector2(source.Width / 2, source.Height / 2);
+                Rectangle dest = new Rectangle((int)position.X, (int)position.Y, (int)(source.Width * EnergyBar), source.Height);
+
+                SpriteBatch.Draw(ScreenHelper.SpriteSheet.Texture, dest, source, Color.White);
+
+                source = ScreenHelper.SpriteSheet.Animations["healthBarFrame"][0];
+
+                
+
+                SpriteBatch.Draw(ScreenHelper.SpriteSheet.Texture, position, source, Color.White);
+                SpriteBatch.End();
+            }
+        }
+
         #endregion
 
         #region Properties
 
         #endregion
 
+        public void ClearArea(Vector2 center, float width, float height)
+        {
+            AABB box = new AABB(center, width, height);
+
+            QueryAABB(
+                (f) =>
+                {
+                    (f.Body.UserData as Entity).Delete();
+
+                    return true;
+                }, ref box);
+        }
+
         Entity house;
 
         #region Fields
-        PlayerControlSystem playerControlSystem;
+        public PlayerControlSystem playerControlSystem;
         public ChunkUpdateSystem chunkUpdateSytem;
         #endregion
     }
