@@ -84,20 +84,20 @@ namespace GlobalGameJam.Entities.Systems
                 //for today and for the future where it afctually is an important skill 
 
                 e.GetComponent<Health>().MaxHealth = 10;
-                s.Color= Color.Lerp(s.Color, new Color(255, 126, 126), 0.1f);
-                e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
-                e.AddComponent<Sprite>(s);
+                //s.Color= Color.Lerp(s.Color, new Color(255, 126, 126), 0.1f);
+                //e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
+                //e.AddComponent<Sprite>(s);
 
                 charge -= world.Delta / 300f;
             }
             else
             {
                 recharge = true;
-                s.Color.B = 255;
-                s.Color.G = 255;
+                //s.Color.B = 255;
+                //s.Color.G = 255;
 
-                e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
-                e.AddComponent<Sprite>(s);
+                //e.RemoveComponent<Sprite>(e.GetComponent<Sprite>());
+                //e.AddComponent<Sprite>(s);
                 e.GetComponent<Health>().MaxHealth = 3;
             }
 

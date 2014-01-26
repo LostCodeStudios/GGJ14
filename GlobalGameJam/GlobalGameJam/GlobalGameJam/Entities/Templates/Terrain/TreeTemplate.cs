@@ -20,6 +20,7 @@ namespace GlobalGameJam.Entities.Templates.Terrain
             this.world = world;
         }
 
+        static Random r = new Random();
 
         /// <summary>
         /// Makes the tree
@@ -29,8 +30,11 @@ namespace GlobalGameJam.Entities.Templates.Terrain
         /// <returns></returns>
         public Entity BuildEntity(Entity e, params object[] args)
         {
+            int num = r.Next(2) + 1;
+
             //gotta lok pretty. its firday put makeup on
-            Sprite sex = e.AddComponent<Sprite>(new Sprite(ScreenHelper.SpriteSheet, "tree", 0.6f));
+            Sprite sex = new Sprite(ScreenHelper.SpriteSheet, "tree" + num, 0.6f);
+            e.AddComponent<Sprite>(sex);
 
             //damn look at dat body its oak
             Body bitch = e.AddComponent<Body>(new Body(world, e));

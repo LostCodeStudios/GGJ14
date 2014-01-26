@@ -61,6 +61,7 @@ namespace GlobalGameJam
 
             FadeToBlack.SpriteBatch = SpriteBatch;
 
+            //Camera.Zoom = 1.3f;
             this.main = main;
         }
         #endregion
