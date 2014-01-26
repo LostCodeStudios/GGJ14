@@ -23,6 +23,7 @@ namespace GlobalGameJam.Screens
 
         public static void Fade(float time)
         {
+            elapsedTime = 0f;
             duration = time;
         }
 
