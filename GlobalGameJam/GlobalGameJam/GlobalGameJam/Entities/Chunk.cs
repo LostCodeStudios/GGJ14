@@ -20,7 +20,7 @@ namespace GlobalGameJam.Entities
 
         protected int[,] tiles = new int[(int)SIZE, (int)SIZE];
 
-        BoblinWorld bworld;
+        protected BoblinWorld bworld;
         public Chunk(Vector2 position, List<Entity> terrain, BoblinWorld bworld)
         {
             this.Position = position;
