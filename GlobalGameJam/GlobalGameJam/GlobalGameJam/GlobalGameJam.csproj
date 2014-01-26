@@ -101,7 +101,7 @@
     <Compile Include="Entities\Templates\Terrain\GrassTemplate.cs" />
     <Compile Include="Entities\Templates\Terrain\TreeTemplate.cs" />
     <Compile Include="Entities\Templates\ThresholdTemplate.cs" />
-    <Compile Include="Screens\GameOverScreen.cs" />
+    <Compile Include="Screens\FadeToBlack.cs" />
     <Compile Include="Screens\GameplayScreen.cs" />
     <Compile Include="Screens\MainMenuScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

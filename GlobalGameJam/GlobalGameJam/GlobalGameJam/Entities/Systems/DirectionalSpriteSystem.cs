@@ -84,7 +84,7 @@ namespace GlobalGameJam.Entities.Systems
                     Animation anim = new Animation(AnimationType.Loop, 500);
                     e.AddComponent<Animation>(anim);
                     e.Refresh();
-                    Console.WriteLine("A new animation was created.");
+                    //Console.WriteLine("A new animation was created.");
                 }
                 
             }
