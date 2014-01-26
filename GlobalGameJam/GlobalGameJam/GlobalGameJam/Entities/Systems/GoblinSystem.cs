@@ -1,6 +1,7 @@
 ﻿using GameLibrary.Dependencies.Entities;
 using GameLibrary.Dependencies.Physics.Collision;
 using GameLibrary.Entities.Components.Physics;
+using GameLibrary.Helpers;
 using GlobalGameJam.Entities.Components;
 using Microsoft.Xna.Framework;
 using System;
@@ -15,6 +16,8 @@ namespace GlobalGameJam.Entities.Systems
         const float SEARCH_DISTANCE = 10;
         const float GOBLIN_SPEED = 4;
         const float SEARCH_DELAY = 3f;
+
+        const float NOISE_DISTANCE = 3f;
 
         public GoblinSystem()
             : base("Goblins")
@@ -84,6 +87,21 @@ namespace GlobalGameJam.Entities.Systems
                 dir *= GOBLIN_SPEED;
 
                 goblin.LinearVelocity = dir;
+
+                if (Vector2.Distance(target.Position, goblin.Position) < NOISE_DISTANCE)
+                {
+                    if (ai.CanMakeNoise)
+                    {
+                        float distance = Vector2.Distance(goblin.Position, (world as BoblinWorld).player.GetComponent<Body>().Position);
+                        if (distance < GenericEvents.HearingRange)
+                        {
+                            float volume = 1 - (distance / GenericEvents.HearingRange);
+
+                            SoundManager.Play("Kobold", volume);
+                            ai.CanMakeNoise = false;
+                        }
+                    }
+                }
             }
         }
     }

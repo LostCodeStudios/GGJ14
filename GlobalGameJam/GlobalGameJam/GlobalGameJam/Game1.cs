@@ -92,6 +92,7 @@ namespace GlobalGameJam
             SoundManager.Add("Hit", Content.Load<SoundEffect>("Sounds/Hit_Hurt59"));
             SoundManager.Add("Door", Content.Load<SoundEffect>("Sounds/Hit_Hurt90"));
             SoundManager.Add("Dash", Content.Load<SoundEffect>("Sounds/Explosion30"));
+            SoundManager.Add("Kobold", Content.Load<SoundEffect>("Sounds/Randomize56"));
 
             MusicManager.AddSong("Music", Content.Load<Song>("Music/AHeroisBorn_tgfcoder"));
         }
@@ -112,6 +113,8 @@ namespace GlobalGameJam
 
             spriteSheet.Animations.Add("tree1", new Rectangle[] { new Rectangle(277, 99, 32, 32) });
             spriteSheet.Animations.Add("tree2", new Rectangle[] { new Rectangle(317, 98, 32, 32) });
+            spriteSheet.Animations.Add("tree3", new Rectangle[] { new Rectangle(363, 86, 40, 36) });
+            spriteSheet.Animations.Add("tree4", new Rectangle[] { new Rectangle(415, 90, 36, 32) });
 
             spriteSheet.Animations.Add("goblin", new Rectangle[] { new Rectangle(39, 58, 12, 26) });
 

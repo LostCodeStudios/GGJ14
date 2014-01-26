@@ -25,7 +25,7 @@ namespace GlobalGameJam
     {
         public static int FIRST_CATS = 10;
         public static float FIRST_GOBLINS = 0f;
-        public static int FIRST_TREES = 80;
+        public static int FIRST_TREES = 160;
 
 
         public const float EVIL_INC = 0.03f;
@@ -37,11 +37,13 @@ namespace GlobalGameJam
         public const float GOBLIN_RATE = 3f;
         public const float KILLING_EVIL = 0.3f;
 
+        const float HOUSE_SPACE = 7f;
+
         public float Evil = 0f;
 
         public int Hearts = 0;
 
-        public const int TRIGGER_HEARTS = 1;
+        public const int TRIGGER_HEARTS = 5;
 
         MainMenuScreen main;
         GameplayScreen gameplay;
@@ -80,6 +82,8 @@ namespace GlobalGameJam
             //TEST BULLSHIT
         	chunkUpdateSytem.BuildInitial(Vector2.Zero, 3, 3, this);
             //CreateEntity("Goblin", new Vector2(-7, 0)).Refresh();
+
+            ClearArea(Vector2.Zero, HOUSE_SPACE, HOUSE_SPACE);
 
             house = CreateEntity("House");
             house.Refresh();
