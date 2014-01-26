@@ -44,7 +44,10 @@ namespace GlobalGameJam.Entities.Systems
                     List<Entity> entities = new List<Entity>();
                     entities.AddRange(world.CreateEntityGroup("Chunk", "terrain", chunkPos));
                     
-                    chunks.Add(new Chunk(chunkPos, entities, bworld));
+                    if(Chunk.r.Next(1) == 1)
+                        chunks.Add(new PondChunk(chunkPos, entities, bworld));
+                    else
+                        chunks.Add(new PondChunk(chunkPos, entities, bworld));
 
                     if (x == width / 2 && y == height / 2)
                     {

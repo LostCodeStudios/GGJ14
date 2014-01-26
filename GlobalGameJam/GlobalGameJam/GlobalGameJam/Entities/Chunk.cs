@@ -16,9 +16,9 @@ namespace GlobalGameJam.Entities
         public static float SIZE = 32;
 
         static Dictionary<int, string> tileKeys;
-        static Random r = new Random();
+        public static Random r = new Random();
 
-        int[,] tiles = new int[(int)SIZE, (int)SIZE];
+        protected int[,] tiles = new int[(int)SIZE, (int)SIZE];
 
         BoblinWorld bworld;
         public Chunk(Vector2 position, List<Entity> terrain, BoblinWorld bworld)
@@ -39,16 +39,21 @@ namespace GlobalGameJam.Entities
                 tileKeys.Add(5, "lava1");
                 tileKeys.Add(6, "lava2");
             }
+            Generate();
+      
+        }
 
+        public virtual void Generate()
+        {
             for (int y = 0; y < SIZE; ++y)
             {
                 for (int x = 0; x < SIZE; ++x)
                 {
-                    tiles[y, x] = r.Next(2);
+                    tiles[x, y] = r.Next(2);
 
                     if (percentChance(bworld.Evil * BoblinWorld.REDGROUND_COEF))
                     {
-                        tiles[y, x] = r.Next(1)*3 + 4;
+                        tiles[x, y] = r.Next(1) * 3 + 4;
                     }
                 }
             }

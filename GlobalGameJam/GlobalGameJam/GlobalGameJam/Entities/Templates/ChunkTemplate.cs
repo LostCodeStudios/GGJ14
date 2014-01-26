@@ -18,6 +18,7 @@ namespace GlobalGameJam.Entities.Templates
         {
             List<Entity> terrain = new List<Entity>();
 
+
             Vector2 position = (Vector2)args[0];
             int cats = BoblinWorld.FIRST_CATS;
             int goblins = toInt(BoblinWorld.FIRST_GOBLINS);
