@@ -95,6 +95,7 @@ namespace GlobalGameJam.Entities.Systems
 
                 if (s.Color != Color.White)
                 {
+
                     int curr = s.Color.B;
                     int final = 255;
 

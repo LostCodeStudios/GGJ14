@@ -9,6 +9,7 @@ using GlobalGameJam.Entities.Components;
 using GlobalGameJam.Entities.Systems;
 using GlobalGameJam.Entities.Templates;
 using GlobalGameJam.Entities.Templates.Terrain;
+using GlobalGameJam.Screens;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpaceHordes.Entities.Systems;
@@ -41,13 +42,24 @@ namespace GlobalGameJam
 
         public const int TRIGGER_HEARTS = 1;
 
+        MainMenuScreen main;
+        GameplayScreen gameplay;
+
+        public GameplayScreen GameplayScreen
+        {
+            set { gameplay = value; }
+        }
+
         #region Constructors
-        public BoblinWorld(Game game)
+        public BoblinWorld(Game game, MainMenuScreen main)
             : base(game, Vector2.Zero)
         {
             FIRST_CATS = 5;
             FIRST_GOBLINS = 0f;
             FIRST_TREES = 25;
+
+
+            this.main = main;
         }
         #endregion
 
@@ -69,17 +81,6 @@ namespace GlobalGameJam
             house = CreateEntity("House");
             house.Refresh();
 
-            #region Player
-            //Player
-            player = this.CreateEntity("Player");
-            player.Refresh();
-
-            //camerashit
-            Camera.TrackingBody = player.GetComponent<Body>();
-            Camera.EnableTracking = true;
-            Camera.EnableRotationTracking = false;
-            #endregion
-
             doorBack = CreateEntity("DoorBack");
             doorBack.Refresh();
 
@@ -93,7 +94,7 @@ namespace GlobalGameJam
         /// <param name="args"></param>
         protected override void BuildTemplates(Microsoft.Xna.Framework.Content.ContentManager Content, params object[] args)
         {
-            this.SetEntityTemplate("Player", new PlayerTemplate(this));
+            this.SetEntityTemplate("Player", new PlayerTemplate(this, main));
             this.SetEntityTemplate("Cat", new BunnyTemplate(this));
             this.SetEntityTemplate("Blood", new BloodTemplate());
             this.SetEntityTemplate("Heart", new HeartTemplate());
@@ -141,6 +142,17 @@ namespace GlobalGameJam
         /// </summary>
         public void Start()
         {
+            #region Player
+            //Player
+            player = this.CreateEntity("Player", gameplay);
+            player.Refresh();
+
+            //camerashit
+            Camera.TrackingBody = player.GetComponent<Body>();
+            Camera.EnableTracking = true;
+            Camera.EnableRotationTracking = false;
+            #endregion
+
             HouseSprite hs = house.GetComponent<HouseSprite>();
             house.RemoveComponent<Sprite>(house.GetComponent<Sprite>());
             house.AddComponent<Sprite>(hs.Open);

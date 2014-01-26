@@ -13,5 +13,7 @@ namespace GlobalGameJam.Entities.Components
         {
             Target = target;
         }
+
+        public float Delay = 0f;
     }
 }

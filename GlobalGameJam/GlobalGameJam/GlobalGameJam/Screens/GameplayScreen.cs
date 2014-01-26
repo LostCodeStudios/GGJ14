@@ -18,7 +18,6 @@ namespace GlobalGameJam.Screens
         {
             this.World = world;
             this.mainMenu = mainMenu;
-            world.Start();
         }
 
 

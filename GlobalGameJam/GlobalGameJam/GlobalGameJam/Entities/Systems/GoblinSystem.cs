@@ -14,6 +14,7 @@ namespace GlobalGameJam.Entities.Systems
     {
         const float SEARCH_DISTANCE = 10;
         const float GOBLIN_SPEED = 4;
+        const float SEARCH_DELAY = 3f;
 
         public GoblinSystem()
             : base("Goblins")
@@ -36,7 +37,7 @@ namespace GlobalGameJam.Entities.Systems
                         Body b = (Body)f.Body;
                         Entity e1 = b.UserData as Entity;
 
-                        Console.WriteLine("Checking entity " + e1.Group + " for targeting");
+                        //Console.WriteLine("Checking entity " + e1.Group + " for targeting");
 
                         if (e1.Group != "Goblins" && e1.HasComponent<Health>())
                         {
@@ -54,16 +55,24 @@ namespace GlobalGameJam.Entities.Systems
                 }
                 else
                 {
-                    e.Delete(); //avoid repeated fruitless searchers
+                    GoblinAI ai = new GoblinAI(null);
+                    ai.Delay = SEARCH_DELAY;
                 }
             }
             else
             {
+                GoblinAI ai = e.GetComponent<GoblinAI>();
                 Body goblin = e.GetComponent<Body>();
-                Body target = e.GetComponent<GoblinAI>().Target.GetComponent<Body>();
+                Body target = ai.Target.GetComponent<Body>();
 
                 if (target == null)
                 {
+                    if (ai.Delay > 0f)
+                    {
+                        ai.Delay -= world.Delta / 1000f;
+                        return;
+                    }
+
                     e.RemoveComponent<GoblinAI>(e.GetComponent<GoblinAI>());
                     goblin.LinearVelocity = Vector2.Zero;
                     return;
