@@ -72,7 +72,8 @@ namespace GlobalGameJam.Entities.Systems
                 Vector2 mouseWorldLoc = mouseLoc - ScreenHelper.Center;
                 Vector2 aiming = b.Position - camera.ConvertScreenToWorld(mouseLoc);
                 aiming.Normalize();
-                b.LinearVelocity = -aiming * PLAYER_SPEED * 1.5f;
+                b.LinearVelocity = -aiming * PLAYER_SPEED * 1.5f; //dude please no "shit nigga" find the off switch please 
+                //for today and for the future where it afctually is an important skill 
 
                 e.GetComponent<Health>().MaxHealth = 10;
                 s.Color= Color.Lerp(Color.White, new Color(255, 0, 0), 0.5f);
