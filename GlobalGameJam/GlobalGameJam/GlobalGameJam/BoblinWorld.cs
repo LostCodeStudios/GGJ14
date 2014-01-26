@@ -23,9 +23,14 @@ namespace GlobalGameJam
 {
     public class BoblinWorld : World
     {
-        public static int FIRST_CATS = 10;
-        public static float FIRST_GOBLINS = 0f;
-        public static int FIRST_TREES = 160;
+        public const int FIRST_CATS = 10;
+        public const float FIRST_GOBLINS = 0f;
+        public const int FIRST_TREES = 75;
+
+        public static int Trees;
+        public static int Cats;
+        public static float Goblins;
+
         public static float LAVA_EVIL = 0.7f;
 
         public const float EVIL_INC = 0.03f;
@@ -57,9 +62,9 @@ namespace GlobalGameJam
         public BoblinWorld(Game game, MainMenuScreen main)
             : base(game, Vector2.Zero)
         {
-            FIRST_CATS = 5;
-            FIRST_GOBLINS = 0f;
-            FIRST_TREES = 25;
+            Cats = FIRST_CATS;
+            Goblins = FIRST_GOBLINS;
+            Trees = FIRST_TREES;
 
             FadeToBlack.SpriteBatch = SpriteBatch;
 
@@ -192,7 +197,7 @@ namespace GlobalGameJam
 
             if (Hearts >= TRIGGER_HEARTS)
             {
-                FIRST_GOBLINS = 0.5f;
+                Goblins = 0.5f;
             }
 
             if (animating)

@@ -23,8 +23,8 @@ namespace GlobalGameJam.Entities.Templates
 
 
             Vector2 position = (Vector2)args[0];
-            int cats = BoblinWorld.FIRST_CATS;
-            int goblins = toInt(BoblinWorld.FIRST_GOBLINS);
+            int cats = BoblinWorld.Cats;
+            int goblins = toInt(BoblinWorld.Goblins);
 
             for (int i = 0; i < cats; ++i)
             {
@@ -43,7 +43,7 @@ namespace GlobalGameJam.Entities.Templates
             }
 
             //and god said, fuck okay, trees.
-            for (int i = 0; i < BoblinWorld.FIRST_TREES; i++)
+            for (int i = 0; i < BoblinWorld.Trees; i++)
             {
                 Vector2 pos;
                 while (true)
