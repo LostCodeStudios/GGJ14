@@ -14,10 +14,10 @@ namespace GlobalGameJam.Entities.Templates.Terrain
 {
     class TreeTemplate : IEntityTemplate
     {
-        EntityWorld world;
-        public TreeTemplate(EntityWorld world)
+        BoblinWorld bworld;
+        public TreeTemplate(BoblinWorld world)
         {
-            this.world = world;
+            this.bworld = world;
         }
 
         static Random r = new Random();
@@ -32,12 +32,17 @@ namespace GlobalGameJam.Entities.Templates.Terrain
         {
             int num = r.Next(2) + 1;
 
+            
+
             //gotta lok pretty. its firday put makeup on
             Sprite sex = new Sprite(ScreenHelper.SpriteSheet, "tree" + num, 0.6f);
+
+
+
             e.AddComponent<Sprite>(sex);
 
             //damn look at dat body its oak
-            Body bitch = e.AddComponent<Body>(new Body(world, e));
+            Body bitch = e.AddComponent<Body>(new Body(bworld, e));
             //Create a circle with radius average of height and width over 2
             FixtureFactory.AttachCircle(0.2f, 
                 1f, bitch, new Vector2(0, ConvertUnits.ToSimUnits(11)));

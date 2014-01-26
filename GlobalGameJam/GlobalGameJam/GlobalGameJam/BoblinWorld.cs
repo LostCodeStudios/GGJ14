@@ -30,7 +30,7 @@ namespace GlobalGameJam
 
         public const float EVIL_INC = 0.03f;
 
-       
+        public static float BLACKTREE_COEF = 0.98f;
         public const float REDGROUND_COEF = 1f;
         public const float TREE_RATE = 2.5f;
         public const float CAT_RATE = 1.5f;
@@ -266,6 +266,7 @@ namespace GlobalGameJam
         #region Fields
         public PlayerControlSystem playerControlSystem;
         public ChunkUpdateSystem chunkUpdateSytem;
+
         
         #endregion
     }
