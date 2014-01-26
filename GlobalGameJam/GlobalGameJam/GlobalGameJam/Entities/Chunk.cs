@@ -122,7 +122,10 @@ namespace GlobalGameJam.Entities
         public Vector2 Delete(Vector2 anchor, Vector2 origin, PhysicsWorld world)
         {
             foreach (Entity e in Terrain)
-                e.Delete();
+            {
+                if (e.Tag != "Player")
+                    e.Delete();
+            }
 
             AABB box = new AABB(Position, SIZE, SIZE);
             world.QueryAABB(

@@ -4,6 +4,7 @@ using GameLibrary.Entities.Components;
 using GameLibrary.Entities.Components.Physics;
 using GameLibrary.Helpers;
 using GlobalGameJam.Entities.Components;
+using GlobalGameJam.Screens;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -16,15 +17,20 @@ namespace GlobalGameJam.Entities.Templates
     class PlayerTemplate : IEntityTemplate
     {
         BoblinWorld _World;
-        public PlayerTemplate(BoblinWorld world)
+        MainMenuScreen main;
+        GameplayScreen gameplay;
+        public PlayerTemplate(BoblinWorld world, MainMenuScreen main)
         {
             this._World = world;
+            this.main = main;
         }
 
         public Entity BuildEntity(Entity e, params object[] args)
         {
             e.Tag = "Player";
-            
+
+            gameplay = (GameplayScreen)args[0];
+
             FixtureFactory.AttachCircle(0.4f, 1f, e.AddComponent<Body>(new Body(_World, e)));
             e.GetComponent<Body>().BodyType = GameLibrary.Dependencies.Physics.Dynamics.BodyType.Dynamic;
             e.GetComponent<Body>().FixedRotation = true;
@@ -39,6 +45,12 @@ namespace GlobalGameJam.Entities.Templates
             e.GetComponent<Body>().OnCollision += GenericEvents.BasicCollision();
 
             e.AddComponent<Health>(h);
+
+            h.OnDeath += (e1) =>
+                {
+                    main.OnFocus();
+                    main.Manager.RemoveScreen(gameplay);
+                };
 
             return e;
         }

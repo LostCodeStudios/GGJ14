@@ -29,7 +29,10 @@ namespace GlobalGameJam.Screens
 
         void playGameEntry_Selected(object sender, PlayerIndexEventArgs e)
         {
-            Manager.AddScreen(new GameplayScreen(world, this), null);
+            GameplayScreen screen = new GameplayScreen(world, this);
+            world.GameplayScreen = screen;
+            Manager.AddScreen(screen, null);
+            world.Start();
         }
 
         void quitEntry_Selected(object sender, PlayerIndexEventArgs e)
@@ -47,7 +50,7 @@ namespace GlobalGameJam.Screens
 
         public override void OnFocus()
         {
-            world = new BoblinWorld(Manager.Game);
+            world = new BoblinWorld(Manager.Game, this);
             world.Initialize();
             world.LoadContent(Manager.Game.Content);
 
