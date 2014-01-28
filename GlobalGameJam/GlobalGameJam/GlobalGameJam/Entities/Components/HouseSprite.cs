@@ -15,8 +15,8 @@ namespace GlobalGameJam.Entities.Components
 
         public HouseSprite()
         {
-            Closed = new Sprite(ScreenHelper.SpriteSheet, "house", 1f);
-            Open = new Sprite(ScreenHelper.SpriteSheet, "houseOpen", 1f);
+            Closed = new Sprite(ScreenHelper.SpriteSheet, "house", 0.6f);
+            Open = new Sprite(ScreenHelper.SpriteSheet, "houseOpen", 0.6f);
         }
     }
 }

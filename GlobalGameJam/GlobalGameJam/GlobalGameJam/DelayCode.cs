@@ -9,19 +9,19 @@ namespace GlobalGameJam
     public static class DelayCode
     {
        
-        static List<Delay> delays = new List<Delay>();
+        public static List<Delay> Delays = new List<Delay>();
 
         public static void Delay(Action code, float time)
         {
-            delays.Add(new Delay(code, time));
+            Delays.Add(new Delay(code, time));
         }
 
         public static void Update(GameTime gameTime)
         {
-            for(int i = 0; i < delays.Count; i++){
-                if (delays[i].Update(gameTime))
+            for(int i = 0; i < Delays.Count; i++){
+                if (Delays[i].Update(gameTime))
                 {
-                    delays.RemoveAt(i);
+                    Delays.RemoveAt(i);
                     i--;
                 }
             }
@@ -32,7 +32,7 @@ namespace GlobalGameJam
     /// <summary>
     /// Basic dleay unit for DelayCoded
     /// </summary>
-    class Delay{
+    public class Delay{
         Action lambda;
         float duration;
         public Delay(Action code, float time){

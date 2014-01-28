@@ -105,6 +105,8 @@ namespace GlobalGameJam
             Camera.TrackingBody = player.GetComponent<Body>();
             Camera.EnableTracking = true;
             Camera.EnableRotationTracking = false;
+
+            Camera.Zoom = 1.6f;
             #endregion
 
 #if DEBUG && WINDOWS //Debug render system

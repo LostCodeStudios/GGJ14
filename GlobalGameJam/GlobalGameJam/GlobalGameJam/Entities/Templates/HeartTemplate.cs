@@ -21,7 +21,7 @@ namespace GlobalGameJam.Entities.Templates
             Body trackingBody = (Body)args[0];
             //Vector2 position = (Vector2)args[0];
 
-            Sprite sprite = new Sprite(ScreenHelper.SpriteSheet, "heart", 1f);
+            Sprite sprite = new Sprite(ScreenHelper.SpriteSheet, "heart", 0.61f);
             e.AddComponent<Sprite>(sprite);
 
             Particle p = new Particle(e);
