@@ -17,6 +17,7 @@ namespace GlobalGameJam.Screens
         public GameplayScreen(BoblinWorld world, MainMenuScreen mainMenu)
         {
             this.World = world;
+            world.GameplayScreen = this;
             this.mainMenu = mainMenu;
         }
 

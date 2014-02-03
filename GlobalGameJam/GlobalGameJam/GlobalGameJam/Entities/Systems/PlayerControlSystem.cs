@@ -19,7 +19,7 @@ namespace GlobalGameJam.Entities.Systems
         public const float PLAYER_WALK_SPEED = 9 / 6f;
         public const float PLAYER_SPEED = 7f;
         public const float FADE_RATE = 255f;
-        public const float CLICK_TOO_CLOSE = 1f;
+        public const float CLICK_TOO_CLOSE = 0.5f;
 
         public const float CHARGE_SPEED = 2.5f;
 

@@ -56,6 +56,7 @@ namespace GlobalGameJam.Screens
 
         void quitEntry_Selected(object sender, PlayerIndexEventArgs e)
         {
+            MusicManager.Pause();
             Manager.Game.Exit();
         }
 

@@ -34,7 +34,7 @@ namespace GlobalGameJam.Entities.Templates
             e.Tag = "Player";
 
             e.AddComponent<Player>(new Player());
-            gameplay = (GameplayScreen)args[0];
+            this.gameplay = (GameplayScreen)args[0];
 
             FixtureFactory.AttachCircle(0.4f, 1f, e.AddComponent<Body>(new Body(_World, e)));
             e.GetComponent<Body>().BodyType = GameLibrary.Dependencies.Physics.Dynamics.BodyType.Dynamic;
@@ -50,13 +50,6 @@ namespace GlobalGameJam.Entities.Templates
             e.GetComponent<Body>().OnCollision += GenericEvents.BasicCollision();
 
             e.AddComponent<Health>(h);
-
-            h.OnDeath += (e1) =>
-                {
-
-                            main.OnFocus();
-                            main.Manager.RemoveScreen(gameplay);
-                };
 
             return e;
         }

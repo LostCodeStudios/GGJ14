@@ -23,6 +23,13 @@ namespace GlobalGameJam
 {
     public class BoblinWorld : World
     {
+        private enum GameOverState
+        {
+            NotYet,
+            Dead,
+            Transitioning
+        }
+
         public const int FIRST_CATS = 10;
         public const float FIRST_GOBLINS = 0f;
         public const int FIRST_TREES = 75;
@@ -50,6 +57,13 @@ namespace GlobalGameJam
 
         public const int TRIGGER_HEARTS = 6;
 
+        public bool GameStarted = false;
+
+        bool theEnd = false;
+
+        float timer;
+        GameOverState gameOverState = GameOverState.NotYet;
+
         MainMenuScreen main;
         GameplayScreen gameplay;
 
@@ -70,6 +84,11 @@ namespace GlobalGameJam
 
             //Camera.Zoom = 1.3f;
             this.main = main;
+
+
+#if DEBUG
+            Evil = 1f;
+#endif
         }
         #endregion
 
@@ -176,7 +195,7 @@ namespace GlobalGameJam
         /// </summary>
         public void Start()
         {
-            
+            GameStarted = true;
 
             HouseSprite hs = house.GetComponent<HouseSprite>();
             house.RemoveComponent<Sprite>(house.GetComponent<Sprite>());
@@ -195,6 +214,22 @@ namespace GlobalGameJam
                 CreateEntity("Guide").Refresh();
                 Game1.ShowGuides = false;
             }
+
+            Health h = player.GetComponent<Health>();
+            h.OnDeath += (e1) =>
+            {
+                gameOverState = GameOverState.Dead;
+
+                if (Evil < 1f)
+                {
+                    timer = 1f;
+                }
+                else
+                {
+                    timer = 3f;
+                    theEnd = true;
+                }
+            };
         }
 
         #endregion
@@ -205,6 +240,30 @@ namespace GlobalGameJam
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            if (gameOverState == GameOverState.Dead)
+            {
+                timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (timer <= 0f)
+                {
+                    gameOverState = GameOverState.Transitioning;
+                    timer = FadeToBlack.TRANSITION_TIME;
+                    FadeToBlack.SpriteBatch = gameplay.Manager.SpriteBatch;
+                    FadeToBlack.Fade(1.25f);
+                }
+            }
+
+            else if (gameOverState == GameOverState.Transitioning)
+            {
+                timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (timer <= 0f)
+                {
+                     main.OnFocus();
+                     main.Manager.RemoveScreen(gameplay);
+                }
+            }
 
             if (Hearts >= TRIGGER_HEARTS)
             {
@@ -261,6 +320,16 @@ namespace GlobalGameJam
                 SpriteBatch.Draw(ScreenHelper.SpriteSheet.Texture, dest, source, Color.White);
 
 
+                SpriteBatch.End();
+            }
+
+            if (theEnd)
+            {
+                Vector2 size = main.Manager.TitleFont.MeasureString("The End");
+
+                SpriteBatch.Begin();
+                SpriteBatch.DrawString(main.Manager.TitleFont, "The End",
+                    new Vector2(ScreenHelper.Viewport.Width / 2, ScreenHelper.Viewport.Height / 2), Color.Yellow, 0f, size / 2, 1f, SpriteEffects.None, 1f);
                 SpriteBatch.End();
             }
         }

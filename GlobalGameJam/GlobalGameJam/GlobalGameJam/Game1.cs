@@ -37,9 +37,7 @@ namespace GlobalGameJam
             graphics.PreferMultiSampling = true;
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 480;
-            #if !DEBUG
-            graphics.IsFullScreen = true;
-            #endif
+
             graphics.ApplyChanges();
 
             IsFixedTimeStep = true;

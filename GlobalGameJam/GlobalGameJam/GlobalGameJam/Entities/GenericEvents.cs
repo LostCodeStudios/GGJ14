@@ -98,7 +98,7 @@ namespace GlobalGameJam.Entities
                         Entity e1 = f1.Body.UserData as Entity;
                         Entity e2 = f2.Body.UserData as Entity;
 
-                        if (e1.Tag == "Player" && e2.HasComponent<Heart>())
+                        if (e1.Tag == "Player" && e2.HasComponent<Heart>() && world.GameStarted)
                         {
                             world.CreateEntity("Heart", f2.Body).Refresh();
                             e2.RemoveComponent<Heart>(e2.GetComponent<Heart>());
@@ -112,7 +112,7 @@ namespace GlobalGameJam.Entities
                             return false;
                         }
 
-                        else if (e2.Tag == "Player" && e1.HasComponent<Heart>())
+                        else if (e2.Tag == "Player" && e1.HasComponent<Heart>() && world.GameStarted)
                         {
                             world.CreateEntity("Heart", f1.Body).Refresh();
                             e1.RemoveComponent<Heart>(e1.GetComponent<Heart>());
